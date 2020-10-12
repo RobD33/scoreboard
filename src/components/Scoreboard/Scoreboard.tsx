@@ -1,5 +1,5 @@
 import React from 'react';
-import PlayerDisplay from '../PlayerDisplay/PlayerDisplay';
+import PlayerDisplay from './PlayerDisplay/PlayerDisplay';
 
 const Scoreboard = () => {
     return (
