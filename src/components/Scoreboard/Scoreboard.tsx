@@ -1,12 +1,10 @@
 import React from 'react';
-import PlayerScore from '../PlayerScore/PlayerScore';
-import PlayerTag from '../PlayerTag/PlayerTag'
+import PlayerDisplay from '../PlayerDisplay/PlayerDisplay';
 
 const Scoreboard = () => {
     return (
         <div>
-            <PlayerTag/>
-            <PlayerScore/>
+            <PlayerDisplay/>
         </div>
     )
 }
