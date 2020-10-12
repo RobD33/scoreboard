@@ -4,8 +4,8 @@ import PlayerDisplay from './PlayerDisplay/PlayerDisplay';
 const Scoreboard = ({ sessionState }: Props) => {
     return (
         <div>
-            {Object.keys(sessionState).map((player, index) => {
-                <PlayerDisplay key={index} player={player} scores={sessionState[player]}/>
+            {Object.keys(sessionState).length && Object.keys(sessionState).map((player, index) => {
+                return <PlayerDisplay key={index} player={player} scores={sessionState[player]}/>
             })}
             
         </div>
