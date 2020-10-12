@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlayerScore = ({ scores } :Props) => {
+const PlayerScore = ({ playerFrames } :Props) => {
     return (
         <div>
             0
@@ -9,7 +9,7 @@ const PlayerScore = ({ scores } :Props) => {
 }
 
 interface Props {
-    scores: {};
+    playerFrames: { winner: string, loser: string, eightball: boolean }[];
 }
 
 export default PlayerScore

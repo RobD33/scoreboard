@@ -1,14 +1,14 @@
 import React from 'react'
 import AddButton from './AddButton/AddButton'
 
-const PlayerSelector = ({ listOfPotentialPlayers, addPlayerToState }: Props) => {
+const PlayerSelector = ({ listOfPotentialPlayers, addPlayerToSession }: Props) => {
     return (
         <div>
             {listOfPotentialPlayers.length && listOfPotentialPlayers.map(player => {
                 return (
                     <div key={player}>
                         {player}
-                        <AddButton addPlayerToState={ addPlayerToState } player={ player }/>
+                        <AddButton addPlayerToSession={ addPlayerToSession } player={ player }/>
                     </div>
                 )
             })}
@@ -18,7 +18,7 @@ const PlayerSelector = ({ listOfPotentialPlayers, addPlayerToState }: Props) => 
 
 interface Props {
     listOfPotentialPlayers: string[];
-    addPlayerToState: Function;
+    addPlayerToSession: Function;
 }
 
 export default PlayerSelector;

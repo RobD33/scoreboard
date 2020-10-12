@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AddPlayer = () => {
+const AddPlayer = ({ addPlayerToGroup } :Props) => {
     return (
         <div>
             AddPlayer
@@ -8,4 +8,7 @@ const AddPlayer = () => {
     )
 }
 
+interface Props {
+    addPlayerToGroup: Function;
+}
 export default AddPlayer;

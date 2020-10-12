@@ -1,19 +1,33 @@
 import React from 'react';
 import PlayerDisplay from './PlayerDisplay/PlayerDisplay';
 
-const Scoreboard = ({ sessionState }: Props) => {
+const Scoreboard = ({ frames, sessionPlayers }: Props) => {
     return (
         <div>
-            {Object.keys(sessionState).length && Object.keys(sessionState).map((player, index) => {
-                return <PlayerDisplay key={index} player={player} scores={sessionState[player]}/>
+            {sessionPlayers.map((player, index) => {
+                return <PlayerDisplay
+                    key={index}
+                    player={player}
+                    playerFrames={ getPlayerFrames(frames, player) }
+                    opponents={ getOpponents(player, sessionPlayers) }
+                />
             })}
             
         </div>
     )
 }
 
+const getOpponents = (player: string, sessionPlayers: string[]) => {
+    return sessionPlayers.filter(sessionPlayer => sessionPlayer !== player)
+}
+
+const getPlayerFrames = (frames: { winner: string, loser: string, eightball: boolean }[], player: string) => {
+    return frames.filter(frame => frame.winner === player)
+}
+
 interface Props {
-    sessionState: { [name: string]: {} };
+    frames: { winner: string, loser: string, eightball: boolean }[];
+    sessionPlayers: string[];
 }
 
 export default Scoreboard

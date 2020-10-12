@@ -1,11 +1,13 @@
 import React from 'react'
 
-const OpponentsSelector = ({ scores } :Props) => {
+const OpponentsSelector = ({ opponents }: Props) => {
     return (
         <div>
-            {Object.keys(scores).map(player => {
+            {opponents.map(opponent => {
                 return (
-                    <div>{player}</div>
+                    <div>
+                        { opponent}
+                    </div>
                 )
             })}
         </div>
@@ -13,7 +15,7 @@ const OpponentsSelector = ({ scores } :Props) => {
 }
 
 interface Props {
-    scores: {};
+    opponents: string[];
 }
 
 export default OpponentsSelector

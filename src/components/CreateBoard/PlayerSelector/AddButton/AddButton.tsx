@@ -1,11 +1,11 @@
 import React from 'react'
 
-const AddButton = ({ addPlayerToState, player }: Props) => {
-    return <button onClick={(e) => addPlayerToState(player)}>+</button>
+const AddButton = ({ addPlayerToSession, player }: Props) => {
+    return <button onClick={(e) => addPlayerToSession(player)}>+</button>
 }
 
 interface Props {
-    addPlayerToState: Function;
+    addPlayerToSession: Function;
     player: string;
 }
 

@@ -3,19 +3,21 @@ import AddPlayer from './AddPlayer/AddPlayer'
 import PlayerList from './PlayerList/PlayerList'
 import PlayerSelector from './PlayerSelector/PlayerSelector'
 
-const CreateBoard = ({ addPlayerToState, listOfPotentialPlayers }: Props) => {
+const CreateBoard = ({ addPlayerToSession, listOfPotentialPlayers, sessionPlayers, addPlayerToGroup }: Props) => {
     return (
         <div>
-            <PlayerSelector listOfPotentialPlayers={ listOfPotentialPlayers } addPlayerToState={ addPlayerToState }/>
-            <AddPlayer/>
-            <PlayerList/>
+            <PlayerSelector listOfPotentialPlayers={ listOfPotentialPlayers } addPlayerToSession={ addPlayerToSession }/>
+            <AddPlayer addPlayerToGroup={ addPlayerToGroup } />
+            <PlayerList sessionPlayers={ sessionPlayers }/>
         </div>
     )
 }
 
 interface Props {
-    addPlayerToState: Function;
+    addPlayerToSession: Function;
     listOfPotentialPlayers: string[];
+    sessionPlayers: string[];
+    addPlayerToGroup: Function;
 }
 
 export default CreateBoard;

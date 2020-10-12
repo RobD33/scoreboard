@@ -10,8 +10,16 @@ function App() {
   return (
     <div>
       {appState.sessionInProgress ? 
-        <Scoreboard sessionState={ appState.sessionState }/> :
-        <CreateBoard addPlayerToState={ addPlayerToState(appState,setAppState) } listOfPotentialPlayers={getListOfPotentialPLayers(appState)}/>
+        <Scoreboard 
+          frames={ appState.frames }
+          sessionPlayers={ appState.sessionPlayers }
+        /> :
+        <CreateBoard
+          addPlayerToSession={ addPlayerToSession(appState,setAppState) }
+          listOfPotentialPlayers={ getListOfPotentialPLayers(appState) }
+          sessionPlayers={ appState.sessionPlayers }
+          addPlayerToGroup={ addPlayerToGroup }
+        />
       }
     </div>
   );
@@ -20,37 +28,41 @@ function App() {
 const generateNewAppState = (): AppState => {
   return {
     sessionInProgress: false,
-    sessionState: {}
+    frames: [],
+    groupPlayers: getGroupPlayers(),
+    sessionPlayers: []
   }
 }
 
-const addPlayerToState = (appState : AppState , setAppState : Function) => {
-  return (newPlayer :string) => {
-    const newAppState = {
-      sessionInProgress: appState.sessionInProgress,
-      sessionState: { ...appState.sessionState }
-    }
-    newAppState.sessionState[newPlayer] = {}
-    for(let player in newAppState.sessionState) {
-      if(player !== newPlayer) {
-        newAppState.sessionState[player][newPlayer] = 0
-        newAppState.sessionState[newPlayer][player] = 0
-      }
-    }
-    setAppState(newAppState)
+const addPlayerToSession = (appState : AppState , setAppState : Function) => {
+  return (player: string) => {
+    const sessionPlayers = [ ...appState.sessionPlayers, player ]
+    appState = { ...appState, sessionPlayers }
+    setAppState(appState)
   }
 }
 
 const getListOfPotentialPLayers = (appState: AppState) => {
-  return getGroupPlayers().filter(player => !appState.sessionState[player])
+  return appState.groupPlayers.filter(player => !appState.sessionPlayers.includes(player))
+}
+
+const addPlayerToGroup = (appState: AppState, setAppState: Function) => {
+  return (player: string) => {
+    const groupPlayers = [ ...appState.groupPlayers, player ]
+    appState = { ...appState, groupPlayers }
+    setAppState(appState)
+  }
 }
 
 const getGroupPlayers = () => {
   return ['Rob', 'Jamie', 'Bails','JP']
 }
+
 interface AppState {
   sessionInProgress: boolean;
-  sessionState: { [player: string]: { [player: string]: number}}
+  frames: { winner: string, loser: string, eightball: boolean }[];
+  groupPlayers: string[];
+  sessionPlayers: string[];
 }
 
 export default App;
