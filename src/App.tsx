@@ -18,7 +18,8 @@ function App() {
           addPlayerToSession={ addPlayerToSession(appState,setAppState) }
           listOfPotentialPlayers={ getListOfPotentialPLayers(appState) }
           sessionPlayers={ appState.sessionPlayers }
-          addPlayerToGroup={ addPlayerToGroup }
+          addPlayerToGroupAndSession={ addPlayerToGroupAndSession(appState, setAppState) }
+          removePlayerFromSession={ removePlayerFromSession(appState, setAppState) }
         />
       }
     </div>
@@ -42,16 +43,25 @@ const addPlayerToSession = (appState : AppState , setAppState : Function) => {
   }
 }
 
-const getListOfPotentialPLayers = (appState: AppState) => {
-  return appState.groupPlayers.filter(player => !appState.sessionPlayers.includes(player))
-}
-
-const addPlayerToGroup = (appState: AppState, setAppState: Function) => {
+const addPlayerToGroupAndSession = (appState : AppState , setAppState : Function) => {
   return (player: string) => {
+    const sessionPlayers = [ ...appState.sessionPlayers, player ]
     const groupPlayers = [ ...appState.groupPlayers, player ]
-    appState = { ...appState, groupPlayers }
+    appState = { ...appState, sessionPlayers, groupPlayers }
     setAppState(appState)
   }
+}
+
+const removePlayerFromSession = (appState: AppState, setAppState: Function): Function => {
+  return (playerOut: string) => {
+    const sessionPlayers = [ ...appState.sessionPlayers.filter(player => player !== playerOut) ]
+    appState = { ...appState, sessionPlayers }
+    setAppState(appState)
+  }
+}
+
+const getListOfPotentialPLayers = (appState: AppState) => {
+  return appState.groupPlayers.filter(player => !appState.sessionPlayers.includes(player))
 }
 
 const getGroupPlayers = () => {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AddPlayer = ({ addPlayerToGroup, addPlayerToSession } :Props) => {
+const AddPlayer = ({ addPlayerToGroupAndSession, addPlayerToSession } :Props) => {
     const [state, setState] = React.useState({value: ''});
     return (
         <div>
@@ -8,7 +8,7 @@ const AddPlayer = ({ addPlayerToGroup, addPlayerToSession } :Props) => {
                 Add Player:
                 <input type="text" value={state.value} onChange={(e) => handleChange(e, setState)} />
             </label>
-            <button onClick={(e) => handleSubmit(state.value, addPlayerToGroup, addPlayerToSession,setState)}>+</button>
+            <button onClick={(e) => handleSubmit(state.value, addPlayerToGroupAndSession, addPlayerToSession,setState)}>+</button>
         </div>
     )
 }
@@ -17,16 +17,15 @@ const handleChange = (e: any, setState: Function) => {
     setState({ value: e.target.value });
 }
 
-const handleSubmit = (value: string, addPlayerToGroup: Function, addPlayerToSession: Function, setState: Function): void => {
+const handleSubmit = (value: string, addPlayerToGroupAndSession: Function, addPlayerToSession: Function, setState: Function): void => {
     if(value) {
-        addPlayerToGroup(value)
-        addPlayerToSession(value)
+        addPlayerToGroupAndSession(value)
         setState({ value: '' })
     }
 }
 
 interface Props {
-    addPlayerToGroup: Function;
+    addPlayerToGroupAndSession: Function;
     addPlayerToSession: Function;
 }
 export default AddPlayer;

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const AddButton = ({ addPlayerToSession, player }: Props) => {
-    return <button onClick={(e) => addPlayerToSession(player)}>+</button>
+    return <button onClick={(e) => {e.preventDefault(); addPlayerToSession(player)}}>+</button>
 }
 
 interface Props {
