@@ -7,7 +7,7 @@ const CreateBoard = ({ addPlayerToSession, listOfPotentialPlayers, sessionPlayer
     return (
         <div>
             <PlayerSelector listOfPotentialPlayers={ listOfPotentialPlayers } addPlayerToSession={ addPlayerToSession }/>
-            <AddPlayer addPlayerToGroup={ addPlayerToGroup } />
+            <AddPlayer addPlayerToGroup={ addPlayerToGroup } addPlayerToSession={ addPlayerToSession }/>
             <PlayerList sessionPlayers={ sessionPlayers }/>
         </div>
     )
