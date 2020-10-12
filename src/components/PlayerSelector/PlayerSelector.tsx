@@ -7,3 +7,5 @@ const PlayerSelector = () => {
         </div>
     )
 }
+
+export default PlayerSelector;
