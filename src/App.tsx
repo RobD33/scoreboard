@@ -11,7 +11,7 @@ function App() {
     <div>
       {appState.sessionInProgress ? 
         <Scoreboard sessionState={ appState.sessionState }/> :
-        <CreateBoard addPlayerToState={ addPlayerToState(appState,setAppState) }/>
+        <CreateBoard addPlayerToState={ addPlayerToState(appState,setAppState) } listOfPotentialPlayers={getListOfPotentialPLayers(appState)}/>
       }
     </div>
   );
@@ -30,14 +30,24 @@ const addPlayerToState = (appState : AppState , setAppState : Function) => {
       sessionInProgress: appState.sessionInProgress,
       sessionState: { ...appState.sessionState }
     }
+    newAppState.sessionState[newPlayer] = {}
     for(let player in newAppState.sessionState) {
-      newAppState.sessionState[player][newPlayer] = 0
-      newAppState.sessionState[newPlayer][player] = 0
+      if(player !== newPlayer) {
+        newAppState.sessionState[player][newPlayer] = 0
+        newAppState.sessionState[newPlayer][player] = 0
+      }
     }
     setAppState(newAppState)
   }
 }
 
+const getListOfPotentialPLayers = (appState: AppState) => {
+  return getGroupPlayers().filter(player => !appState.sessionState[player])
+}
+
+const getGroupPlayers = () => {
+  return ['Rob', 'Jamie', 'Bails','JP']
+}
 interface AppState {
   sessionInProgress: boolean;
   sessionState: { [player: string]: { [player: string]: number}}
