@@ -1,11 +1,15 @@
 import React from 'react'
 
-const PlayerScore = () => {
+const PlayerScore = ({ scores } :Props) => {
     return (
         <div>
-            PlayerScore
+            0
         </div>
     )
+}
+
+interface Props {
+    scores: {};
 }
 
 export default PlayerScore
