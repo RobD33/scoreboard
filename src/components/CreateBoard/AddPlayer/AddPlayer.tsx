@@ -13,7 +13,7 @@ const AddPlayer = ({ addPlayerToGroupAndSession} :Props) => {
     )
 }
 
-const handleChange = (e: any, setState: Function) => {
+const handleChange = (e: any, setState: Function): void => {
     setState({ value: e.target.value });
 }
 
