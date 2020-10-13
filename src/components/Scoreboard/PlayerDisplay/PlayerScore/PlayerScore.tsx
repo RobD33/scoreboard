@@ -3,7 +3,7 @@ import React from 'react'
 const PlayerScore = ({ playerFrames } :Props) => {
     return (
         <div>
-            0
+            {playerFrames.length}
         </div>
     )
 }

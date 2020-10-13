@@ -3,7 +3,7 @@ import OpponentsSelector from './OpponentsSelector/OpponentsSelector'
 import PlayerScore from './PlayerScore/PlayerScore'
 import PlayerTag from './PlayerTag/PlayerTag'
 
-const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, toggleEightball } :Props) => {
+const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, toggleEightball, displaySettings } :Props) => {
     return (
         <div>
             <PlayerTag player={player}/>
@@ -14,7 +14,9 @@ const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, t
                 createFrameAndToggleEightball={ createFrameAndToggleEightball(player, eightball, toggleEightball) }
                 />
             }
-            <PlayerScore playerFrames={playerFrames}/>
+            {displaySettings.scores === 'total' &&
+                <PlayerScore playerFrames={playerFrames}/>
+            }
         </div>
     )
 }
@@ -34,6 +36,7 @@ interface Props {
     addFrame: Function;
     eightball: boolean;
     toggleEightball: Function;
+    displaySettings: { scores: string };
 }
 
 

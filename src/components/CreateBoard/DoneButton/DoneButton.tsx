@@ -3,7 +3,7 @@ import React from 'react';
 const DoneButton = ({ numberOfSessionPlayers, changeComponent }: Props) => {
     return (
         <div>
-            <button disabled={ numberOfSessionPlayers < 2 } onClick={(e) => changeComponent('ScoreBoard')}>Done</button>
+            <button disabled={ numberOfSessionPlayers < 2 } onClick={(e) => changeComponent('Scoreboard')}>Done</button>
         </div>
     )
 }

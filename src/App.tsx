@@ -14,6 +14,8 @@ function App() {
           frames={ appState.frames }
           sessionPlayers={ appState.sessionPlayers }
           addFrame={ addFrame(appState, setAppState) }
+          changeComponent={ changeComponent(appState, setAppState) }
+          displaySettings={ appState.displaySettings }
         />
       }
       {appState.showComponent === 'CreateBoard' &&
@@ -35,7 +37,8 @@ const generateNewAppState = (): AppState => {
     showComponent: 'CreateBoard',
     frames: [],
     groupPlayers: getGroupPlayers(),
-    sessionPlayers: []
+    sessionPlayers: [],
+    displaySettings: getDisplaySettings()
   }
 }
 
@@ -88,11 +91,16 @@ const getGroupPlayers = () => {
   return ['Rob', 'Jamie', 'Bails','JP']
 }
 
+const getDisplaySettings = () => {
+  return { scores: 'total' }
+}
+
 interface AppState {
   showComponent: string,
   frames: { winner: string, loser: string, eightball: boolean }[];
   groupPlayers: string[];
   sessionPlayers: string[];
+  displaySettings: { scores: string};
 }
 
 export default App;
