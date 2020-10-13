@@ -1,15 +1,21 @@
 import React from 'react'
 
-const PlayerScore = ({ playerFrames } :Props) => {
+const PlayerScore = ({ playerFrames, createFrameAndToggleEightball, opponents, addFrame } :Props) => {
     return (
-        <div>
+        <button 
+            onClick={(e) => addFrame(createFrameAndToggleEightball(opponents[0]))}
+            disabled={opponents.length > 1}
+        >
             {playerFrames.length}
-        </div>
+        </button>
     )
 }
 
 interface Props {
     playerFrames: { winner: string, loser: string, eightball: boolean }[];
+    createFrameAndToggleEightball: Function;
+    opponents: string[];
+    addFrame: Function;
 }
 
 export default PlayerScore

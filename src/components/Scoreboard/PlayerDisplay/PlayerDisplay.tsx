@@ -9,13 +9,18 @@ const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, t
             <PlayerTag player={player}/>
             {opponents.length > 1 &&
                 <OpponentsSelector
-                opponents={ opponents }
-                addFrame={ addFrame }
-                createFrameAndToggleEightball={ createFrameAndToggleEightball(player, eightball, toggleEightball) }
+                    opponents={ opponents }
+                    addFrame={ addFrame }
+                    createFrameAndToggleEightball={ createFrameAndToggleEightball(player, eightball, toggleEightball) }
                 />
             }
-            {displaySettings.scores === 'total' &&
-                <PlayerScore playerFrames={playerFrames}/>
+            {(displaySettings.scores === 'total' || opponents.length === 1) &&
+                <PlayerScore
+                    playerFrames={playerFrames}
+                    addFrame={ addFrame }
+                    createFrameAndToggleEightball={createFrameAndToggleEightball(player, eightball, toggleEightball)}
+                    opponents={ opponents }
+                />
             }
         </div>
     )
