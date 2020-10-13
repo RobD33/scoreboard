@@ -1,11 +1,15 @@
 import React from 'react';
 
-const DoneButton = () => {
+const DoneButton = ({ numberOfSessionPlayers }: Props) => {
     return (
         <div>
-            <button>Done</button>
+            <button disabled={numberOfSessionPlayers < 2}>Done</button>
         </div>
     )
+}
+
+interface Props {
+    numberOfSessionPlayers: number;
 }
 
 export default DoneButton;
