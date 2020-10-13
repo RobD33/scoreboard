@@ -1,12 +1,12 @@
 import React from 'react'
 
-const OpponentsSelector = ({ opponents }: Props) => {
+const OpponentsSelector = ({ opponents, addFrame, createFrameAndToggleEightball }: Props) => {
     return (
         <div>
             {opponents.map(opponent => {
                 return (
-                    <div>
-                        { opponent}
+                    <div key={ opponent }>
+                        <button onClick={ (e) =>  addFrame(createFrameAndToggleEightball(opponent)) }>{ opponent }</button>
                     </div>
                 )
             })}
@@ -16,6 +16,8 @@ const OpponentsSelector = ({ opponents }: Props) => {
 
 interface Props {
     opponents: string[];
+    addFrame: Function;
+    createFrameAndToggleEightball: Function;
 }
 
 export default OpponentsSelector

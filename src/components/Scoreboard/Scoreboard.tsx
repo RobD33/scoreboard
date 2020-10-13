@@ -1,7 +1,10 @@
 import React from 'react';
+import EightballToggle from './EightballToggle/EightballToggle';
 import PlayerDisplay from './PlayerDisplay/PlayerDisplay';
 
-const Scoreboard = ({ frames, sessionPlayers }: Props) => {
+const Scoreboard = ({ frames, sessionPlayers, addFrame }: Props) => {
+
+    const [state, setState] = React.useState({ eightball: false});
     return (
         <div>
             {sessionPlayers.map((player, index) => {
@@ -10,9 +13,15 @@ const Scoreboard = ({ frames, sessionPlayers }: Props) => {
                     player={player}
                     playerFrames={ getPlayerFrames(frames, player) }
                     opponents={ getOpponents(player, sessionPlayers) }
+                    addFrame={ addFrame }
+                    eightball={ state.eightball }
+                    toggleEightball={toggleEightball(state, setState)}
                 />
             })}
-            
+            <EightballToggle
+                toggleEightball={toggleEightball(state, setState)}
+                eightball={state.eightball}
+            />
         </div>
     )
 }
@@ -25,9 +34,18 @@ const getPlayerFrames = (frames: { winner: string, loser: string, eightball: boo
     return frames.filter(frame => frame.winner === player)
 }
 
+const toggleEightball = (state: { eightball:boolean }, setState: Function): Function => {
+    return () => {
+        const newState = { ...state }
+        newState.eightball = !newState.eightball
+        setState(newState)
+    }
+}
+
 interface Props {
     frames: { winner: string, loser: string, eightball: boolean }[];
     sessionPlayers: string[];
+    addFrame: Function;
 }
 
 export default Scoreboard

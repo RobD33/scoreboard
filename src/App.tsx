@@ -9,17 +9,21 @@ function App() {
 
   return (
     <div>
-      {appState.sessionInProgress ? 
+      {appState.showComponent === 'Scoreboard' && 
         <Scoreboard 
           frames={ appState.frames }
           sessionPlayers={ appState.sessionPlayers }
-        /> :
+          addFrame={ addFrame(appState, setAppState) }
+        />
+      }
+      {appState.showComponent === 'CreateBoard' &&
         <CreateBoard
           addPlayerToSession={ addPlayerToSession(appState,setAppState) }
           listOfPotentialPlayers={ getListOfPotentialPLayers(appState) }
           sessionPlayers={ appState.sessionPlayers }
           addPlayerToGroupAndSession={ addPlayerToGroupAndSession(appState, setAppState) }
           removePlayerFromSession={ removePlayerFromSession(appState, setAppState) }
+          changeComponent={changeComponent(appState, setAppState)}
         />
       }
     </div>
@@ -28,7 +32,7 @@ function App() {
 
 const generateNewAppState = (): AppState => {
   return {
-    sessionInProgress: false,
+    showComponent: 'CreateBoard',
     frames: [],
     groupPlayers: getGroupPlayers(),
     sessionPlayers: []
@@ -64,12 +68,28 @@ const getListOfPotentialPLayers = (appState: AppState) => {
   return appState.groupPlayers.filter(player => !appState.sessionPlayers.includes(player))
 }
 
+const changeComponent = (appState: AppState, setAppState: Function): Function => {
+  return (component: string) => {
+    const newAppState: AppState = { ...appState };
+    newAppState.showComponent = component
+    setAppState(newAppState)
+  }
+}
+
+const addFrame = (appState: AppState, setAppState: Function): Function => {
+  return (frame: { winner: string, loser: string, eightball: boolean }) => {
+    const newAppState = { ...appState };
+    newAppState.frames = [ ...newAppState.frames, frame]
+    setAppState(newAppState)
+  }
+}
+
 const getGroupPlayers = () => {
   return ['Rob', 'Jamie', 'Bails','JP']
 }
 
 interface AppState {
-  sessionInProgress: boolean;
+  showComponent: string,
   frames: { winner: string, loser: string, eightball: boolean }[];
   groupPlayers: string[];
   sessionPlayers: string[];
