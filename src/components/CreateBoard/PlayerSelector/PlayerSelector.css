@@ -1,0 +1,18 @@
+.PlayerSelector {
+    grid-area: PlayerSelector;
+    font-size: 200%;
+    border: yellowgreen;
+    border-style: double;
+    color: springgreen;
+    padding: 5%;
+    float: left;
+    border-radius: 5%;
+}
+
+.Player {
+    height: 10%;
+}
+
+.Name {
+    display: inline;
+}

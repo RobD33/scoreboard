@@ -1,14 +1,23 @@
 import React from 'react'
+import './AddPlayer.css'
 
 const AddPlayer = ({ addPlayerToGroupAndSession} :Props) => {
     const [state, setState] = React.useState({value: ''});
     return (
-        <div>
+        <div className='AddPlayer'>
             <label>
                 Add Player:
-                <input type="text" value={state.value} onChange={(e) => handleChange(e, setState)} />
+                <input
+                    className='AddPlayerInput'
+                    type="text"
+                    value={state.value}
+                    onChange={(e) => handleChange(e, setState)}
+                />
             </label>
-            <button onClick={(e) => handleSubmit(state.value, addPlayerToGroupAndSession, setState)}>+</button>
+            <button
+                className='AddPlayerInputButton'
+                onClick={(e) => handleSubmit(state.value, addPlayerToGroupAndSession, setState)}
+            >+</button>
         </div>
     )
 }

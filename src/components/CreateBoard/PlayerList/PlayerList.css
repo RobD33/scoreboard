@@ -1,0 +1,16 @@
+.PlayerList {
+    grid-area: PlayerList;
+    font-size: 200%;
+    border: yellowgreen;
+    border-style: double;
+    color: springgreen;
+    padding: 2%;
+    border-radius: 5%;
+}
+
+.RemovePlayer {
+    background-color: black;
+    font-size: 100%;
+    border: none;
+    color: red;
+}

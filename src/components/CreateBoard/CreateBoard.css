@@ -1,0 +1,13 @@
+.CreateBoard {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 10% 30% 20% 30% 10%;
+    grid-template-rows: 10% 60% 5% 15% 10%;
+    grid-template-areas:
+        ". . . . ."
+        ". PlayerSelector . PlayerList ."
+        ". . . . ."
+        ". AddPlayer . DoneButton ."
+        ". . . . .";
+}

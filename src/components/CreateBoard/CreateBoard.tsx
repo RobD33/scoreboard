@@ -3,10 +3,11 @@ import AddPlayer from './AddPlayer/AddPlayer'
 import DoneButton from './DoneButton/DoneButton'
 import PlayerList from './PlayerList/PlayerList'
 import PlayerSelector from './PlayerSelector/PlayerSelector'
+import './CreateBoard.css'
 
 const CreateBoard = ({ addPlayerToSession, listOfPotentialPlayers, sessionPlayers, addPlayerToGroupAndSession, removePlayerFromSession, changeComponent }: Props) => {
     return (
-        <div>
+        <div className='CreateBoard'>
             <PlayerSelector listOfPotentialPlayers={ listOfPotentialPlayers } addPlayerToSession={ addPlayerToSession }/>
             <AddPlayer addPlayerToGroupAndSession={ addPlayerToGroupAndSession }/>
             <PlayerList sessionPlayers={ sessionPlayers } removePlayerFromSession={ removePlayerFromSession }/>

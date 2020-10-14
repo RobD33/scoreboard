@@ -1,13 +1,14 @@
 import React from 'react'
+import './PlayerList.css'
 
 const PlayerList = ({ sessionPlayers, removePlayerFromSession }: Props) => {
     return (
-        <div>
+        <div className='PlayerList'>
             {sessionPlayers.map(player => {
                 return(
                     <div key={player}>
                         {player}
-                        <button onClick={(e) => removePlayerFromSession(player) }>-</button>
+                        <button className='RemovePlayer' onClick={(e) => removePlayerFromSession(player) }>-</button>
                     </div>
                 )
             })}

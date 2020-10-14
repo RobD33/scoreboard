@@ -1,0 +1,21 @@
+.DoneButton {
+    grid-area: DoneButton;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DoneButtonButton {
+    width: 80%;
+    height: 80%;
+    font-size: 300%;
+    border-radius: 50%;
+    background-color: green;
+    color:springgreen;
+}
+
+.DoneButtonButton:disabled {
+    background-color: rgb(33, 39, 33);
+    color: rgb(45, 53, 45);
+}

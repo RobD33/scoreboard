@@ -8,7 +8,7 @@ function App() {
   const [appState, setAppState] = React.useState(generateNewAppState());
 
   return (
-    <div>
+    <div className='App'>
       {appState.showComponent === 'Scoreboard' && 
         <Scoreboard 
           frames={ appState.frames }
@@ -100,7 +100,7 @@ interface AppState {
   frames: { winner: string, loser: string, eightball: boolean }[];
   groupPlayers: string[];
   sessionPlayers: string[];
-  displaySettings: { scores: string};
+  displaySettings: { scores: string };
 }
 
 export default App;

@@ -1,0 +1,28 @@
+.AddPlayer {
+    grid-area: AddPlayer;
+    font-size: 150%;
+    color: springgreen;
+    padding: 2%;
+}
+
+.AddPlayerInput {
+    background-color: black;
+    color: springgreen;
+    font-size: 100%;
+    width: 80%;
+    height: 30%;
+    text-align: center;
+}
+
+.AddPlayerInputButton {
+    background-color: black;
+    font-size: 150%;
+    border: none;
+    color: springgreen;
+    float: right;
+    width: 16%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+}
