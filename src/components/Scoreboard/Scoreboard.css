@@ -1,0 +1,49 @@
+.Scoreboard {
+    height: 100%;
+    width: 100%;
+}
+
+.twoPlayer {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 10% 60% 5% 25%;
+    grid-template-areas:
+        ". . . . ."
+        ". playerOne dash playerTwo ."
+        ". . . . ."
+        "EightballToggle EightballToggle . . EditPlayers";
+}
+
+.threePlayer {
+    display: grid;
+    grid-template-columns: 10% 20% 10% 20% 10% 20% 10%;
+    grid-template-rows: 10% 60% 5% 25%;
+    grid-template-areas:
+        ". . . . . . ."
+        ". playerOne . playerTwo . playerThree ."
+        ". . . . . . ."
+        "EightballToggle EightballToggle . . . . EditPlayers";
+}
+
+.fourPlayer {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 3fr 1fr;
+    grid-template-rows: 10% 30% 10% 30% 5% 15%;
+    grid-template-areas:
+        ". . . . ."
+        ". playerOne . playerTwo ."
+        ". . . . ."
+        ". playerThree . playerFour ."
+        ". . . . ."
+        "EightballToggle . . . EditPlayers";
+}
+
+.dash {
+    grid-area: dash;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30vw;
+    margin-top: 30%;
+    color: springgreen;
+}

@@ -1,9 +1,13 @@
 import React from 'react'
+import './EditPlayers.css'
 
 const EditPlayers = ({ changeComponent }: Props) => {
     return (
-        <div>
-            <button onClick={ (e) => changeComponent('CreateBoard')}>Edit Players</button>
+        <div className='EditPlayers'>
+            <button
+                onClick={ (e) => changeComponent('CreateBoard')}
+                className='EditPlayersButton'
+            >Edit Players</button>
         </div>
     )
 }

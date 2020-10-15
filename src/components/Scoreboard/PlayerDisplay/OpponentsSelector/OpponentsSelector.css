@@ -1,0 +1,54 @@
+.OpponentsSelector {
+ grid-area: OpponentsSelector;
+}
+
+.TwoOpponents {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+        "OpponentOne OpponentTwo"
+}
+
+.ThreeOpponents {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "OpponentOne OpponentTwo OpponentThree"
+}
+
+.OpponentsSelectorButton {
+    background-color: black;
+    color: springgreen;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.TwoOpponentsButton {
+    font-size: 3vw;
+}
+
+.ThreeOpponentsButton {
+    font-size: 2vw;
+}
+
+.OpponentOne {
+    grid-area: OpponentOne;
+}
+
+.OpponentTwo {
+    grid-area: OpponentTwo;
+}
+
+.OpponentThree {
+    grid-area: OpponentThree;
+}
+
+.OpponentFour {
+    grid-area: OpponentFour;
+}

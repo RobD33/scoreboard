@@ -2,11 +2,11 @@ import React from 'react'
 import './AddPlayer.css'
 
 const AddPlayer = ({ addPlayerToGroupAndSession} :Props) => {
-    const [state, setState] = React.useState({value: ''});
+    const [state, setState] = React.useState({ value: '' });
     return (
         <div className='AddPlayer'>
-            <label>
-                Add Player:
+            <label className='AddPlayerLabel'>
+                Add New Player:
                 <input
                     className='AddPlayerInput'
                     type="text"

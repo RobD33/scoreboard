@@ -4,7 +4,7 @@
     border: yellowgreen;
     border-style: double;
     color: springgreen;
-    padding: 2%;
+    padding: 5%;
     border-radius: 5%;
 }
 
@@ -13,4 +13,5 @@
     font-size: 100%;
     border: none;
     color: red;
+    float: right;
 }

@@ -1,0 +1,53 @@
+.PlayerDisplay {
+    color: springgreen;
+}
+
+.TwoPlayer {
+    display: grid;
+    grid-template-rows: 20% 80%;
+    grid-template-areas:
+        "PlayerTag"
+        "PlayerScore"
+}
+
+.ThreePlayer {
+    display: grid;
+    grid-template-rows: 20% 20% 60%;
+    grid-template-areas:
+        "PlayerTag"
+        "OpponentsSelector"
+        "PlayerScore"
+}
+
+.FourPlayer {
+    display: grid;
+    grid-template-rows: 20% 20% 60%;
+    grid-template-areas:
+        "PlayerTag"
+        "OpponentsSelector"
+        "PlayerScore"
+}
+
+.playerOne {
+    grid-area: playerOne;
+}
+
+.playerTwo {
+    grid-area: playerTwo;
+}
+
+.playerThree {
+    grid-area: playerThree;
+}
+
+.playerFour {
+    grid-area: playerFour;
+}
+
+.playerFive {
+    grid-area: playerFive;
+}
+
+.playerSix {
+    grid-area: playerSix;
+}

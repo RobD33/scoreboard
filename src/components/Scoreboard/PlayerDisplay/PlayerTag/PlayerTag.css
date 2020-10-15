@@ -1,0 +1,26 @@
+.PlayerTag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: PlayerTag;
+}
+
+.two {
+    font-size: 5vw;
+}
+
+.three {
+    font-size: 5vw;
+}
+
+.four {
+    font-size: 4vw;
+}
+
+.five {
+    font-size: 4vw;
+}
+
+.six {
+    font-size: 4vw;
+}

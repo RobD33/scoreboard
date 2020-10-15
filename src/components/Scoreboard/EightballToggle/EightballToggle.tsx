@@ -1,9 +1,18 @@
 import React from 'react'
+import './EightballToggle.css'
 
 const EightballToggle = ({ toggleEightball, eightball }: Props) => {
     return (
-        <div>
-            <button onClick={(e) => toggleEightball()} style={{color: eightball? 'red':'black'}}>8ball</button>
+        <div className='EightballToggle'>
+            <button
+                onClick={(e) => toggleEightball()}
+                className={`ToggleButton ${eightball ? 'highlight' : 'normal'}`}
+            >
+                <span className='emoji'
+                    role='img'
+                    aria-label='8ball'
+                >🎱</span>
+            </button>
         </div>
     )
 }

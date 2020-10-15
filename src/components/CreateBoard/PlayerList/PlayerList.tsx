@@ -6,7 +6,7 @@ const PlayerList = ({ sessionPlayers, removePlayerFromSession }: Props) => {
         <div className='PlayerList'>
             {sessionPlayers.map(player => {
                 return(
-                    <div key={player}>
+                    <div key={player} className='Player'>
                         {player}
                         <button className='RemovePlayer' onClick={(e) => removePlayerFromSession(player) }>-</button>
                     </div>
