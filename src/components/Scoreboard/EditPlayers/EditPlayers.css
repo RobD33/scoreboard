@@ -1,6 +1,8 @@
 .EditPlayers {
     grid-area: EditPlayers;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .EditPlayersButton {

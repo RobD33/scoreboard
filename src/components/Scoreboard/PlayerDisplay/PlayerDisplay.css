@@ -28,26 +28,42 @@
         "PlayerScore"
 }
 
+.FivePlayer {
+    display: grid;
+    grid-template-rows: 20% 30% 40% 10%;
+    grid-template-areas:
+        "PlayerTag"
+        "OpponentsSelector"
+        "PlayerScore"
+        "."
+}
+
 .playerOne {
     grid-area: playerOne;
+    color: rgb(252, 252, 109);
 }
 
 .playerTwo {
     grid-area: playerTwo;
+    color: rgb(0, 183, 255);
 }
 
 .playerThree {
     grid-area: playerThree;
+    color: rgb(238, 81, 81);
 }
 
 .playerFour {
     grid-area: playerFour;
+    color: pink;
 }
 
 .playerFive {
     grid-area: playerFive;
+    color:orange;
 }
 
 .playerSix {
     grid-area: playerSix;
+    color: green;
 }

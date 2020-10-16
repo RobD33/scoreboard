@@ -16,6 +16,15 @@
         "OpponentOne OpponentTwo OpponentThree"
 }
 
+.FourOpponents {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "OpponentOne OpponentTwo"
+        "OpponentThree OpponentFour"
+}
+
 .OpponentsSelectorButton {
     background-color: black;
     color: springgreen;
@@ -37,6 +46,10 @@
     font-size: 2vw;
 }
 
+.FourOpponentsButton {
+    font-size: 2vw;
+}
+
 .OpponentOne {
     grid-area: OpponentOne;
 }
@@ -51,4 +64,8 @@
 
 .OpponentFour {
     grid-area: OpponentFour;
+}
+
+.PlayerNumberOne {
+    color: yellow;
 }

@@ -5,7 +5,7 @@ import './PlayerSelector.css'
 const PlayerSelector = ({ listOfPotentialPlayers, addPlayerToSession }: Props) => {
     return (
         <div className='PlayerSelector'>
-            {listOfPotentialPlayers.length && listOfPotentialPlayers.map(player => {
+            {listOfPotentialPlayers.length ? listOfPotentialPlayers.map(player => {
                 console.log(listOfPotentialPlayers)
                 return (
                     <div key={player} className='Player'>
@@ -13,7 +13,9 @@ const PlayerSelector = ({ listOfPotentialPlayers, addPlayerToSession }: Props) =
                         <AddButton addPlayerToSession={ addPlayerToSession } player={ player }/>
                     </div>
                 )
-            })}
+            })
+        :
+        <div>Add players below</div>}
         </div>
     )
 }

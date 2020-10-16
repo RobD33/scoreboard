@@ -1,7 +1,7 @@
 .PlayerSelector {
     grid-area: PlayerSelector;
     font-size: 200%;
-    border: yellowgreen;
+    border: springgreen;
     border-style: double;
     color: springgreen;
     padding: 5%;
