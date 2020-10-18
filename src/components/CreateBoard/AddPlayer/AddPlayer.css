@@ -1,13 +1,11 @@
 .AddPlayer {
     grid-area: AddPlayer;
     font-size: 150%;
-    color: springgreen;
     padding: 2%;
 }
 
 .AddPlayerInput {
     background-color: black;
-    color: springgreen;
     font-size: 100%;
     width: 80%;
     height: 30%;

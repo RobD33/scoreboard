@@ -3,6 +3,7 @@ import OpponentsSelector from './OpponentsSelector/OpponentsSelector'
 import PlayerScore from './PlayerScore/PlayerScore'
 import PlayerTag from './PlayerTag/PlayerTag'
 import './PlayerDisplay.css'
+import DisplaySettings from '../../../Data/DisplaySettings'
 
 const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, toggleEightball, displaySettings, playerNumber, sessionPlayers } :Props) => {
     return (
@@ -17,7 +18,7 @@ const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, t
                     sessionPlayers={ sessionPlayers }
                 />
             }
-            {(displaySettings.scores === 'total' || opponents.length === 1) &&
+            {(displaySettings.totalScores || opponents.length === 1) &&
                 <PlayerScore
                     playerFrames={playerFrames}
                     addFrame={ addFrame }
@@ -53,7 +54,7 @@ interface Props {
     addFrame: Function;
     eightball: boolean;
     toggleEightball: Function;
-    displaySettings: { scores: string };
+    displaySettings: DisplaySettings;
     playerNumber: number;
     sessionPlayers: string[];
 }

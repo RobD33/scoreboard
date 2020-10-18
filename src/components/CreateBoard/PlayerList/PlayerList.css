@@ -1,9 +1,7 @@
 .PlayerList {
     grid-area: PlayerList;
     font-size: 200%;
-    border: springgreen;
     border-style: double;
-    color: springgreen;
     padding: 5%;
     border-radius: 5%;
 }
@@ -12,6 +10,7 @@
     background-color: black;
     font-size: 100%;
     border: none;
+    outline: none;
     color: red;
     float: right;
 }

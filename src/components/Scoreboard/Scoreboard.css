@@ -5,13 +5,12 @@
 
 .twoPlayer {
     display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows: 10% 60% 5% 25%;
+    grid-template-columns: 5fr 1fr 1fr 1fr 5fr;
+    grid-template-rows: 10% 60% 30%;
     grid-template-areas:
         ". . . . ."
-        ". playerOne dash playerTwo ."
-        ". . . . ."
-        "EightballToggle EightballToggle . . EditPlayers";
+        "playerOne playerOne dash playerTwo playerTwo"
+        ". EightballToggle SettingsButton EditPlayers .";
 }
 
 .threePlayer {
@@ -55,5 +54,4 @@
     align-items: center;
     font-size: 30vw;
     margin-top: 30%;
-    color: springgreen;
 }

@@ -2,6 +2,7 @@
     background-color: black;
     font-size: 100%;
     border: none;
-    color: springgreen;
+    outline: none;
+    color: rgb(0, 255, 0);
     float: right;
 }

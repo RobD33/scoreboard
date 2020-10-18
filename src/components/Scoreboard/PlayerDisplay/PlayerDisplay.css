@@ -1,13 +1,10 @@
-.PlayerDisplay {
-    color: springgreen;
-}
-
 .TwoPlayer {
     display: grid;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 1fr 3fr 1fr;
     grid-template-areas:
         "PlayerTag"
         "PlayerScore"
+        "."
 }
 
 .ThreePlayer {
@@ -40,30 +37,24 @@
 
 .playerOne {
     grid-area: playerOne;
-    color: rgb(252, 252, 109);
 }
 
 .playerTwo {
     grid-area: playerTwo;
-    color: rgb(0, 183, 255);
 }
 
 .playerThree {
     grid-area: playerThree;
-    color: rgb(238, 81, 81);
 }
 
 .playerFour {
     grid-area: playerFour;
-    color: pink;
 }
 
 .playerFive {
     grid-area: playerFive;
-    color:orange;
 }
 
 .playerSix {
     grid-area: playerSix;
-    color: green;
 }

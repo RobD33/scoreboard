@@ -1,8 +1,10 @@
 import React from 'react';
+import DisplaySettings from '../../Data/DisplaySettings';
 import EditPlayers from './EditPlayers/EditPlayers';
 import EightballToggle from './EightballToggle/EightballToggle';
 import PlayerDisplay from './PlayerDisplay/PlayerDisplay';
 import './Scoreboard.css'
+import SettingsButton from './SettingsButton/SettingsButton';
 
 const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, displaySettings }: Props) => {
 
@@ -33,6 +35,7 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, display
                 eightball={ state.eightball }
             />
             <EditPlayers changeComponent={ changeComponent }/>
+            <SettingsButton changeComponent={ changeComponent }/>
         </div>
     )
 }
@@ -66,7 +69,7 @@ interface Props {
     sessionPlayers: string[];
     addFrame: Function;
     changeComponent: Function;
-    displaySettings: { scores: string };
+    displaySettings: DisplaySettings;
 }
 
 export default Scoreboard

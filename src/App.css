@@ -1,7 +1,46 @@
+:root {
+  --mainColor: rgb(0, 255, 0);
+  --playerOneColor: rgb(0, 255, 0);
+  --playerTwoColor: rgb(0, 255, 0);
+  --playerThreeColor: rgb(0, 255, 0);
+  --playerFourColor: rgb(0, 255, 0);
+  --playerFiveColor: rgb(0, 255, 0);
+  --playerSixColor: rgb(0, 255, 0);
+  --font-family: 'Trebuchet MS';
+}
+
 .App {
   background-color: black;
-  color: aliceblue;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: var(--mainColor);
+  font-family: var(--font-family), sans-serif;
   height: 100vh;
   width: 100vw;
+}
+
+.playerOne {
+  color: var(--playerOneColor);
+}
+
+.playerTwo {
+  color: var(--playerTwoColor);
+}
+
+.playerThree {
+  color: var(--playerThreeColor);
+}
+
+.playerFour {
+  color: var(--playerFourColor);
+}
+
+.playerFive {
+  color: var(--playerFiveColor);
+}
+
+.playerSix {
+  color: var(--playerSixColor);
+}
+
+.test {
+  color:rgb(0, 128, 0);
 }

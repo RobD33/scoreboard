@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import CreateBoard from './components/CreateBoard/CreateBoard';
 import Scoreboard from './components/Scoreboard/Scoreboard'
+import Settings from './components/Settings/Settings';
+import DisplaySettings from './Data/DisplaySettings';
 
 function App() {
 
@@ -27,6 +29,14 @@ function App() {
           removePlayerFromSession={ removePlayerFromSession(appState, setAppState) }
           changeComponent={changeComponent(appState, setAppState)}
         />
+      }
+      {
+        appState.showComponent === 'Settings' &&
+          <Settings
+          changeComponent={changeComponent(appState, setAppState)}
+          updateDisplaySettings={updateDisplaySettings(appState, setAppState)}
+          displaySettings={appState.displaySettings}
+          />
       }
     </div>
   );
@@ -91,8 +101,43 @@ const getGroupPlayers = () => {
   return ['Rob', 'Jamie', 'Bails','JP']
 }
 
-const getDisplaySettings = () => {
-  return { scores: 'total' }
+const getDisplaySettings = (): DisplaySettings => {
+  return { 
+    totalScores: true,
+    individualScores: false,
+    theme: 'mono',
+    fontFamily: "'Trebuchet MS', sans-serif",
+    colors: {
+      mainColor: 'rgb(0, 255, 0)',
+      playerOneColor: 'rgb(255, 255, 0)',
+      playerTwoColor: 'rgb(0, 0, 255)',
+      playerThreeColor: 'rgb(255, 0, 0)',
+      playerFourColor: 'rgb(255, 192, 203)',
+      playerFiveColor: 'rgb(255, 165, 0)',
+      playerSixColor: 'rgb(0, 128, 0)',
+    }
+  }
+}
+
+const updateDisplaySettings = (appState : AppState , setAppState : Function): Function => {
+  return (displaySettings: DisplaySettings): void => {
+    setAppState({...appState, displaySettings})
+    setCSSVariables(displaySettings)
+  }
+}
+
+const setCSSVariables = (displaySettings: DisplaySettings): void => {
+  let root = document.documentElement
+  if(displaySettings.theme==='mono') {
+    for(let variable in displaySettings.colors) {
+      root.style.setProperty(`--${variable}`, displaySettings.colors.mainColor)
+    }
+  } else if (displaySettings.theme==='individual') {
+    for(let variable in displaySettings.colors) {
+      root.style.setProperty(`--${variable}`, displaySettings.colors[variable])
+    }
+  }
+  root.style.setProperty(`--font-family`, displaySettings.fontFamily)
 }
 
 interface AppState {
@@ -100,7 +145,7 @@ interface AppState {
   frames: { winner: string, loser: string, eightball: boolean }[];
   groupPlayers: string[];
   sessionPlayers: string[];
-  displaySettings: { scores: string };
+  displaySettings: DisplaySettings;
 }
 
 export default App;
