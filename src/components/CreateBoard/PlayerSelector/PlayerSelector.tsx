@@ -6,7 +6,6 @@ const PlayerSelector = ({ listOfPotentialPlayers, addPlayerToSession }: Props) =
     return (
         <div className='PlayerSelector'>
             {listOfPotentialPlayers.length ? listOfPotentialPlayers.map(player => {
-                console.log(listOfPotentialPlayers)
                 return (
                     <div key={player} className='Player'>
                         <label className='Name'>{player}</label>

@@ -105,8 +105,9 @@ const getDisplaySettings = (): DisplaySettings => {
   return { 
     totalScores: true,
     individualScores: false,
+    eightballClears: false,
     theme: 'mono',
-    fontFamily: "'Trebuchet MS', sans-serif",
+    fontFamily: 'Trebuchet MS',
     colors: {
       mainColor: 'rgb(0, 255, 0)',
       playerOneColor: 'rgb(255, 255, 0)',

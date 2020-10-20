@@ -1,0 +1,34 @@
+.ScoresToggle {
+    grid-area: ScoresToggle;
+    font-size: 0.03em;
+    border-style: double;
+    padding: 1%;
+    border-radius: 5vmin;
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        ". scoresHeader ."
+        "totalScores individualScores eightballClears";
+}
+
+.scoresHeader {
+    grid-area: scoresHeader;
+    margin: 0.02em;
+    text-align: center;
+}
+
+.totalScores {
+    grid-area: totalScores;
+    text-align: center;
+}
+
+.individualScores {
+    grid-area: individualScores;
+    text-align: center;
+}
+
+.eightballClears {
+    grid-area: eightballClears;
+    text-align: center;
+}

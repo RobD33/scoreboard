@@ -8,6 +8,10 @@
         ". . . ."
         ". ThemeSelector ThemeSelector ."
         ". FontSelector FontSelector ."
-        "BackButton . . ."
-        ". . . .";
+        ". ScoresToggle ScoresToggle ."
+        "BackButton . . .";
+}
+
+.BackButton {
+    grid-area: BackButton;
 }

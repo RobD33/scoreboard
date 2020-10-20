@@ -21,7 +21,7 @@
         ". . . . . . ."
         ". playerOne . playerTwo . playerThree ."
         ". . . . . . ."
-        "EightballToggle EightballToggle . . . . EditPlayers";
+        ". EightballToggle . SettingsButton . EditPlayers .";
 }
 
 .fourPlayer {
@@ -34,7 +34,7 @@
         ". . . . ."
         ". playerThree . playerFour ."
         ". . . . ."
-        ". EightballToggle . EditPlayers .";
+        ". EightballToggle SettingsButton EditPlayers .";
 }
 
 .fivePlayer {
