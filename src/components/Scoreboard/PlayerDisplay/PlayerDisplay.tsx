@@ -4,6 +4,7 @@ import PlayerScore from './PlayerScore/PlayerScore'
 import PlayerTag from './PlayerTag/PlayerTag'
 import './PlayerDisplay.css'
 import DisplaySettings from '../../../Data/DisplaySettings'
+import EightballScoreDisplay from './EightballScoreDisplay/EightballScoreDisplay'
 
 const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, toggleEightball, displaySettings, playerNumber, sessionPlayers } :Props) => {
     return (
@@ -25,6 +26,9 @@ const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, t
                     createFrameAndToggleEightball={createFrameAndToggleEightball(player, eightball, toggleEightball)}
                     opponents={ opponents }
                 />
+            }
+            {displaySettings.eightballClears &&
+                <EightballScoreDisplay player={ player } playerFrames={playerFrames} />
             }
         </div>
     )
