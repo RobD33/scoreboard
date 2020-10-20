@@ -1,16 +1,25 @@
 .PlayerList {
     grid-area: PlayerList;
-    font-size: 200%;
+    font-size: 0.07em;
     border-style: double;
     padding: 5%;
     border-radius: 5%;
+    
 }
 
-.RemovePlayer {
+.RemoveButton {
     background-color: black;
     font-size: 100%;
     border: none;
     outline: none;
     color: red;
     float: right;
+}
+
+.Player {
+    height: 15%;
+    display: grid;
+    grid-template-columns: 85% 15%;
+    grid-template-areas:
+        "Name RemoveButton"
 }

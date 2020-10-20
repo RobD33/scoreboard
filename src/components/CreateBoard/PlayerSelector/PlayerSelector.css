@@ -1,6 +1,6 @@
 .PlayerSelector {
     grid-area: PlayerSelector;
-    font-size: 200%;
+    font-size: 0.07em;
     border-style: double;
     padding: 5%;
     float: left;
@@ -9,8 +9,12 @@
 
 .Player {
     height: 15%;
+    display: grid;
+    grid-template-columns: 85% 15%;
+    grid-template-areas:
+        "Name AddButton"
 }
 
 .Name {
-    display: inline;
+    grid-area: Name;
 }

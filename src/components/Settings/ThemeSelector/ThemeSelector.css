@@ -1,0 +1,42 @@
+.ThemeSelector {
+    grid-area: ThemeSelector;
+    font-size: 0.03em;
+    border-style: double;
+    padding: 2%;
+    border-radius: 5vmin;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas:
+        "themeHeader pickerWrapper"
+        "themeListWrapper pickerWrapper";
+}
+
+.ColorPicker {
+    font-size: 0.02em;
+    max-width: 40vmin;
+    max-height: min(160px, 30vmin);
+    overflow: hidden;
+}
+
+.themeHeader {
+    margin: 0px;
+    grid-area: themeHeader;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pickerWrapper {
+    grid-area: pickerWrapper;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.themeListWrapper {
+    grid-area: themeListWrapper;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

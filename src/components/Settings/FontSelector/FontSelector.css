@@ -1,0 +1,50 @@
+.FontSelector {
+    grid-area: FontSelector;
+    font-size: 0.03em;
+    border-style: double;
+    padding: 2%;
+    border-radius: 5vmin;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-areas:
+        "fontHeader fontHeader"
+        "itemOne itemTwo"
+        "itemThree itemFour"
+        "itemFive itemSix";
+}
+
+.fontListItem {
+    width: 100%;
+    margin: 0.1em
+}
+
+.fontHeader {
+    grid-area: fontHeader;
+    margin: 0.02em;
+    text-align: center;
+}
+
+.itemOne {
+    grid-area: itemOne;
+}
+
+.itemTwo {
+    grid-area: itemTwo;
+}
+
+.itemThree {
+    grid-area: itemThree;
+}
+
+.itemFour {
+    grid-area: itemFour;
+}
+
+.itemFive {
+    grid-area: itemFive;
+}
+
+.itemSix {
+    grid-area: itemSix;
+}

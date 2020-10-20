@@ -1,40 +1,24 @@
 import React from 'react';
 import DisplaySettings from '../../Data/DisplaySettings';
-import { ColorResult, SketchPicker } from 'react-color'
+import { ColorResult } from 'react-color'
 import FontSelector from './FontSelector/FontSelector';
+import './Settings.css'
+import ThemeSelector from './ThemeSelector/ThemeSelector';
 
 const Settings = ( { changeComponent, updateDisplaySettings, displaySettings }: Props) => {
     return (
-        <div>
-            <button onClick={(e) => changeComponent('Scoreboard')}>Exit</button>
-            <div>
-                <label>
-                    One colour
-                    <input
-                        type='radio'
-                        value='mono'
-                        checked={displaySettings.theme === 'mono'}
-                        onChange={(e) => handleThemeChange(displaySettings, updateDisplaySettings, e.target.value)}
-                    /> 
-                </label>
-                <label>
-                    individual players
-                    <input
-                        type='radio'
-                        value='individual'
-                        checked={displaySettings.theme === 'individual'}
-                        onChange={(e) => handleThemeChange(displaySettings, updateDisplaySettings, e.target.value)}
-                    />
-                </label>
-            </div>
-            <SketchPicker color={displaySettings.colors.mainColor} onChangeComplete={(color, e) => onChangeComplete(color, e, displaySettings, updateDisplaySettings)}/>
+        <div className='Settings'>
+            <button className='BackButton' onClick={(e) => changeComponent('Scoreboard')}>Exit</button>
+            <ThemeSelector displaySettings={ displaySettings } handleThemeChange={handleThemeChange(displaySettings, updateDisplaySettings)} onChangeComplete={onChangeComplete(displaySettings, updateDisplaySettings)}/>
             <FontSelector displaySettings={ displaySettings } handleFontChange= { handleFontChange(displaySettings, updateDisplaySettings)}/>
         </div>
     )
 }
 
-const handleThemeChange = (displaySettings: DisplaySettings, updateDisplaySettings: Function, theme: string): void => {
-    updateDisplaySettings({...displaySettings, theme})
+const handleThemeChange = (displaySettings: DisplaySettings, updateDisplaySettings: Function): Function => {
+    return (theme: string): void => {
+        updateDisplaySettings({...displaySettings, theme})
+    }
 }
 
 const handleFontChange = (displaySettings: DisplaySettings, updateDisplaySettings: Function): Function => {
@@ -43,11 +27,13 @@ const handleFontChange = (displaySettings: DisplaySettings, updateDisplaySetting
     }
 }
 
-const onChangeComplete = (color :ColorResult, event: any, displaySettings: DisplaySettings, updateDisplaySettings: Function): void => {
-    const newDisplaySettings = {...displaySettings}
-    const { r, g, b} = color.rgb
-    newDisplaySettings.colors.mainColor = `rgb(${r},${g},${b})`
-    updateDisplaySettings(newDisplaySettings)
+const onChangeComplete = ( displaySettings: DisplaySettings, updateDisplaySettings: Function): Function => {
+    return (color :ColorResult) => {
+        const newDisplaySettings = {...displaySettings}
+        const { r, g, b} = color.rgb
+        newDisplaySettings.colors.mainColor = `rgb(${r},${g},${b})`
+        updateDisplaySettings(newDisplaySettings)
+    }
 }
 
 interface Props {

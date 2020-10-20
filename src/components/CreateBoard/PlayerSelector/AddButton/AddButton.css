@@ -1,4 +1,5 @@
 .AddButton {
+    grid-area: AddButton;
     background-color: black;
     font-size: 100%;
     border: none;

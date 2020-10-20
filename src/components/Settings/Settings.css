@@ -1,0 +1,13 @@
+.Settings {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 10% 40% 40% 10%;
+    grid-template-rows: 10% 30% 30% 20% 10%;
+    grid-template-areas:
+        ". . . ."
+        ". ThemeSelector ThemeSelector ."
+        ". FontSelector FontSelector ."
+        "BackButton . . ."
+        ". . . .";
+}
