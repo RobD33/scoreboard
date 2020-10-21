@@ -23,6 +23,7 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, display
                     toggleEightball={ toggleEightball(state, setState) }
                     displaySettings={ displaySettings }
                     sessionPlayers={sessionPlayers}
+                    frames={ frames }
                 />
             })}
             {sessionPlayers.length === 2 &&

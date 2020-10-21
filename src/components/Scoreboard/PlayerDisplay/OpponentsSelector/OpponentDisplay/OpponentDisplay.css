@@ -1,0 +1,42 @@
+.OpponentDisplay.threePlayer {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "opponentName"
+        "opponentScore";
+}
+
+.opponentName {
+    grid-area: opponentName;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.opponentScore {
+    grid-area: opponentScore;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.OpponentDisplay.opponentOne {
+    grid-area: opponentOne;
+}
+
+.OpponentDisplay.opponentTwo {
+    grid-area: opponentTwo;
+}
+
+.OpponentDisplay.opponentThree {
+    grid-area: opponentThree;
+}
+
+.OpponentDisplay.opponentFour {
+    grid-area: opponentFour;
+}
+
+.OpponentDisplay.opponentFive {
+    grid-area: opponentFive;
+}

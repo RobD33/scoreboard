@@ -2,21 +2,26 @@
  grid-area: OpponentsSelector;
 }
 
-.TwoOpponents {
+.OpponentsSelector.threePlayer {
+    font-size: 0.03em;
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 50% 50%;
+    grid-template-rows: none;
     grid-template-areas:
-        "OpponentOne OpponentTwo"
+        "opponentOne opponentTwo"
 }
 
-.ThreeOpponents {
+.OpponentsSelector.fourPlayer {
+
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
         "OpponentOne OpponentTwo OpponentThree"
 }
 
-.FourOpponents {
+.OpponentsSelector.fivePlayer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -54,20 +59,4 @@
     font-size: 2vw;
     position: relative;
     z-index: 1;
-}
-
-.OpponentOne {
-    grid-area: OpponentOne;
-}
-
-.OpponentTwo {
-    grid-area: OpponentTwo;
-}
-
-.OpponentThree {
-    grid-area: OpponentThree;
-}
-
-.OpponentFour {
-    grid-area: OpponentFour;
 }
