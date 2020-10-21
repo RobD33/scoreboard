@@ -1,6 +1,6 @@
 .TwoPlayer {
     display: grid;
-    grid-template-rows: 20% 60% 20%;
+    grid-template-rows: 1fr 3fr 1fr;
     grid-template-areas:
         "PlayerTag"
         "PlayerScore"
@@ -9,20 +9,23 @@
 
 .ThreePlayer {
     display: grid;
-    grid-template-rows: 20% 20% 60%;
+    grid-template-rows: 10% 20% 60% 10%;
     grid-template-areas:
         "PlayerTag"
         "OpponentsSelector"
         "PlayerScore"
+        "EightballScoreDisplay"
 }
 
 .FourPlayer {
+    overflow: hidden;
     display: grid;
-    grid-template-rows: 20% 20% 60%;
+    grid-template-rows: 18% 18% 46% 18%;
     grid-template-areas:
         "PlayerTag"
         "OpponentsSelector"
         "PlayerScore"
+        "EightballScoreDisplay"
 }
 
 .FivePlayer {

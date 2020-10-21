@@ -15,19 +15,20 @@
 
 .threePlayer {
     display: grid;
-    grid-template-columns: 10% 20% 10% 20% 10% 20% 10%;
-    grid-template-rows: 10% 60% 5% 25%;
+    grid-template-columns: 15% 27% 26% 27% 5%;
+    grid-template-rows: 5% 30% 30% 30% 5%;
     grid-template-areas:
-        ". . . . . . ."
-        ". playerOne . playerTwo . playerThree ."
-        ". . . . . . ."
-        ". EightballToggle . SettingsButton . EditPlayers .";
+        ". . . . ."
+        "SettingsButton playerOne playerTwo playerThree ."
+        "EditPlayers playerOne playerTwo playerThree ."
+        "EightballToggle playerOne playerTwo playerThree ."
+        ". . . . .";
 }
 
 .fourPlayer {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr 3fr 1fr;
-    grid-template-rows: 1fr 6fr 1fr 6fr 1fr 4fr;
+    grid-template-columns: 11% 33% 12% 33% 11%;
+    grid-template-rows: 5% 35% 5% 35% 5% 15%;
     grid-template-areas:
         ". . . . ."
         ". playerOne . playerTwo ."
@@ -52,6 +53,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.6em;
-    margin-top: 10%;
+    font-size: 0.4em;
 }

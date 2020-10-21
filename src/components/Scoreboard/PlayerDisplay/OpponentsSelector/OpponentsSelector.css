@@ -39,15 +39,21 @@
 }
 
 .TwoOpponentsButton {
-    font-size: 3vw;
+    font-size: 0.03em;
+    position: relative;
+    z-index: 1;
 }
 
 .ThreeOpponentsButton {
     font-size: 2vw;
+    position: relative;
+    z-index: 1;
 }
 
 .FourOpponentsButton {
     font-size: 2vw;
+    position: relative;
+    z-index: 1;
 }
 
 .OpponentOne {
@@ -64,8 +70,4 @@
 
 .OpponentFour {
     grid-area: OpponentFour;
-}
-
-.PlayerNumberOne {
-    color: yellow;
 }

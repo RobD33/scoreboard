@@ -1,4 +1,23 @@
 .EightballScoreDisplay {
     grid-area: EightballScoreDisplay;
     font-size: 0.04em;
+    display: grid;
+    grid-template-columns: 40% 10% 10% 40%;
+    grid-template-areas:
+        ". eightballIconLabel eightballScoreLabel ."
+}
+
+.eightballIconLabel {
+    grid-area: eightballIconLabel;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+}
+
+.eightballScoreLabel {
+    grid-area: eightballScoreLabel;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

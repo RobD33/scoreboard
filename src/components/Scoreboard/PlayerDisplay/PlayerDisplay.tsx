@@ -28,7 +28,7 @@ const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, t
                 />
             }
             {displaySettings.eightballClears &&
-                <EightballScoreDisplay player={ player } playerFrames={playerFrames} />
+                <EightballScoreDisplay playerFrames={playerFrames} />
             }
         </div>
     )
