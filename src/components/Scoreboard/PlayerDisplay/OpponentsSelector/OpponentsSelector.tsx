@@ -2,12 +2,11 @@ import React from 'react'
 import DisplaySettings from '../../../../Data/DisplaySettings'
 import Frame from '../../../../Data/Frame'
 import OpponentDisplay from './OpponentDisplay/OpponentDisplay'
-import { numberOfPlayersHashMap } from '../../../../utils/hashMaps'
 import './OpponentsSelector.css'
 
 const OpponentsSelector = ({ addFrame, createFrameAndToggleEightball, sessionPlayers, player, frames, displaySettings }: Props) => {
     return (
-        <div className={`OpponentsSelector ${numberOfPlayersHashMap[sessionPlayers.length]}`}>
+        <div className='OpponentsSelector'>
             {opponents(player, sessionPlayers).map((opponent, index) => {
                 return (
                     <OpponentDisplay
@@ -18,7 +17,6 @@ const OpponentsSelector = ({ addFrame, createFrameAndToggleEightball, sessionPla
                         opponent={ opponent }
                         showScore={ displaySettings.individualScores }
                         score={ score(player, opponent, frames) }
-                        numberOfPlayers={ sessionPlayers.length }
                     />
                 )
             })}

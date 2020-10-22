@@ -1,4 +1,4 @@
-.TwoPlayer {
+.twoPlayer .PlayerDisplay {
     display: grid;
     grid-template-rows: 1fr 3fr 1fr;
     grid-template-areas:
@@ -7,7 +7,7 @@
         "EightballScoreDisplay"
 }
 
-.ThreePlayer {
+.threePlayer .PlayerDisplay {
     display: grid;
     grid-template-rows: 10% 20% 60% 10%;
     grid-template-areas:
@@ -17,18 +17,59 @@
         "EightballScoreDisplay"
 }
 
-.FourPlayer {
+.fourPlayer .PlayerDisplay.playerOne,
+.fourPlayer .PlayerDisplay.playerThree  {
     overflow: hidden;
     display: grid;
     grid-template-columns: 40% 60%;
-    grid-template-rows: 20% 70% 10%;
+    grid-template-rows: 20% 60% 20%;
     grid-template-areas:
         "PlayerTag PlayerTag"
         "OpponentsSelector PlayerScore"
         "EightballScoreDisplay PlayerScore"
 }
 
-.FivePlayer {
+.fourPlayer .PlayerDisplay.playerTwo,
+.fourPlayer .PlayerDisplay.playerFour {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 20% 60% 20%;
+    grid-template-areas:
+        "PlayerTag PlayerTag"
+        "PlayerScore OpponentsSelector"
+        "PlayerScore EightballScoreDisplay "
+}
+
+.fourPlayer .PlayerDisplay.playerOne {
+    border-right: dotted;
+    border-bottom: dotted;
+    border-width: 0.001em;
+    border-color: var(--mainColor);
+}
+
+.fourPlayer .PlayerDisplay.playerTwo {
+    border-left: dotted;
+    border-bottom: dotted;
+    border-width: 0.001em;
+    border-color: var(--mainColor);
+}
+
+.fourPlayer .PlayerDisplay.playerThree {
+    border-right: dotted;
+    border-top: dotted;
+    border-width: 0.001em;
+    border-color: var(--mainColor);
+}
+
+.fourPlayer .PlayerDisplay.playerFour {
+    border-left: dotted;
+    border-top: dotted;
+    border-width: 0.001em;
+    border-color: var(--mainColor);
+}
+
+.fivePlayer .PlayerDisplay {
     display: grid;
     grid-template-rows: 20% 30% 40% 10%;
     grid-template-areas:
@@ -62,9 +103,10 @@
     grid-area: playerSix;
 }
 
-.PlayerDisplay.ThreePlayer.playerTwo {
+.threePlayer .PlayerDisplay.playerTwo {
     border-left: dashed;
     border-right: dashed;
     border-color: var(--mainColor);
+    border-width: 0.001em;
 }
 

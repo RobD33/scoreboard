@@ -1,8 +1,17 @@
-.EightballScoreDisplay {
+.twoPlayer .EightballScoreDisplay {
     grid-area: EightballScoreDisplay;
     font-size: 0.04em;
     display: grid;
     grid-template-columns: 40% 10% 10% 40%;
+    grid-template-areas:
+        ". eightballIconLabel eightballScoreLabel ."
+}
+
+.threePlayer .EightballScoreDisplay {
+    grid-area: EightballScoreDisplay;
+    font-size: 0.04em;
+    display: grid;
+    grid-template-columns: 30% 20% 20% 30%;
     grid-template-areas:
         ". eightballIconLabel eightballScoreLabel ."
 }
@@ -20,4 +29,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.fourPlayer .playerTwo .EightballScoreDisplay,
+.fourPlayer .playerFour .EightballScoreDisplay {
+    grid-area: EightballScoreDisplay;
+    font-size: 0.04em;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+        "eightballScoreLabel eightballIconLabel"
+}
+
+.fourPlayer .playerOne .EightballScoreDisplay,
+.fourPlayer .playerThree .EightballScoreDisplay {
+    grid-area: EightballScoreDisplay;
+    font-size: 0.04em;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+        "eightballIconLabel eightballScoreLabel"
 }

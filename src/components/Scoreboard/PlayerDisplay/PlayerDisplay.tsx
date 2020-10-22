@@ -6,10 +6,11 @@ import './PlayerDisplay.css'
 import DisplaySettings from '../../../Data/DisplaySettings'
 import EightballScoreDisplay from './EightballScoreDisplay/EightballScoreDisplay'
 import Frame from '../../../Data/Frame'
+import { playerNumberHashMap } from '../../../utils/hashMaps'
 
 const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, toggleEightball, displaySettings, playerNumber, sessionPlayers, frames } :Props) => {
     return (
-        <div className={`PlayerDisplay player${classNameHashMap[playerNumber]} ${classNameHashMap[opponents.length + 1]}Player`}>
+        <div className={`PlayerDisplay ${playerNumberHashMap[playerNumber]}`}>
             <PlayerTag player={player} numberOfPlayers={opponents.length + 1}/>
             {opponents.length > 1 &&
                 <OpponentsSelector
@@ -42,15 +43,6 @@ const createFrameAndToggleEightball = (player: string, eightball: boolean, toggl
         if(eightball) toggleEightball()
         return { winner: player, loser: opponent, eightball: frameEightball }
     }
-}
-
-const classNameHashMap: { [value: number] : string } = {
-    1: 'One',
-    2: 'Two',
-    3: 'Three',
-    4: 'Four',
-    5: 'Five',
-    6: 'Six'
 }
 
 interface Props {

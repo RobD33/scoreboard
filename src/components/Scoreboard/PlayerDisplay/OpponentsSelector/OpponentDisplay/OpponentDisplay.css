@@ -1,4 +1,4 @@
-.OpponentDisplay.threePlayer {
+.threePlayer .OpponentDisplay {
     display: grid;
     grid-template-columns: none;
     grid-template-rows: 50% 50%;
@@ -7,12 +7,22 @@
         "opponentScore";
 }
 
-.OpponentDisplay.fourPlayer {
+.fourPlayer .playerOne .OpponentDisplay,
+.fourPlayer .playerThree .OpponentDisplay {
     display: grid;
     grid-template-columns: none;
     grid-template-columns: 50% 50%;
     grid-template-areas:
         "opponentName opponentScore";
+}
+
+.fourPlayer .playerTwo .OpponentDisplay,
+.fourPlayer .playerFour .OpponentDisplay {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+        "opponentScore opponentName";
 }
 
 .opponentName {

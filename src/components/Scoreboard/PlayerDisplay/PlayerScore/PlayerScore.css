@@ -13,18 +13,18 @@
     font-family: inherit;
 }
 
-.twoPlayerScore {
+.twoPlayer .PlayerScore {
     font-size: 0.3em;
 }
 
-.threePlayerScore {
+.threePlayer .PlayerScore {
     font-size: 0.35em;
 }
 
-.fourPlayerScore {
-    font-size: 0.2em;
+.fourPlayer .PlayerScore {
+    font-size: 0.27em;
 }
 
-.fivePlayerScore {
+.fivePlayer .PlayerScore {
     font-size: 15vw;
 }

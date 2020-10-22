@@ -1,10 +1,10 @@
 import React from 'react';
-import { numberOfPlayersHashMap, opponentNumberHashMap, playerNumberHashMap } from '../../../../../utils/hashMaps'
+import { opponentNumberHashMap, playerNumberHashMap } from '../../../../../utils/hashMaps'
 import './OpponentDisplay.css'
 
-const OpponentDisplay = ({ recordFrame, opponentNumber, opponentPlayerNumber, opponent, showScore, score, numberOfPlayers}: Props) => {
+const OpponentDisplay = ({ recordFrame, opponentNumber, opponentPlayerNumber, opponent, showScore, score}: Props) => {
     return (
-        <div onClick={(e) => recordFrame()} className={`OpponentDisplay ${opponentNumberHashMap[opponentNumber]} ${playerNumberHashMap[opponentPlayerNumber]} ${numberOfPlayersHashMap[numberOfPlayers]}`}>
+        <div onClick={(e) => recordFrame()} className={`OpponentDisplay ${opponentNumberHashMap[opponentNumber]} ${playerNumberHashMap[opponentPlayerNumber]}`}>
             <label className='opponentName'>{opponent}</label>
             {showScore && <label className='opponentScore'>{score}</label>}
         </div>
@@ -18,7 +18,6 @@ interface Props {
     opponent: string;
     showScore: boolean;
     score: number;
-    numberOfPlayers: number;
 }
 
 export default OpponentDisplay;
