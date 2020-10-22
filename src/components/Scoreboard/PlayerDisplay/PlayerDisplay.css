@@ -17,9 +17,15 @@
         "EightballScoreDisplay"
 }
 
+.threePlayer .PlayerDisplay.playerTwo {
+    border-left: dashed;
+    border-right: dashed;
+    border-color: var(--mainColor);
+    border-width: 0.001em;
+}
+
 .fourPlayer .PlayerDisplay.playerOne,
 .fourPlayer .PlayerDisplay.playerThree  {
-    overflow: hidden;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 20% 60% 20%;
@@ -31,7 +37,6 @@
 
 .fourPlayer .PlayerDisplay.playerTwo,
 .fourPlayer .PlayerDisplay.playerFour {
-    overflow: hidden;
     display: grid;
     grid-template-columns: 60% 40%;
     grid-template-rows: 20% 60% 20%;
@@ -101,12 +106,5 @@
 
 .playerSix {
     grid-area: playerSix;
-}
-
-.threePlayer .PlayerDisplay.playerTwo {
-    border-left: dashed;
-    border-right: dashed;
-    border-color: var(--mainColor);
-    border-width: 0.001em;
 }
 

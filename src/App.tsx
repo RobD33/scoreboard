@@ -110,9 +110,9 @@ const getDisplaySettings = (): DisplaySettings => {
     fontFamily: 'Trebuchet MS',
     colors: {
       mainColor: 'rgb(0, 255, 0)',
-      playerOneColor: 'rgb(255, 255, 0)',
-      playerTwoColor: 'rgb(0, 0, 255)',
-      playerThreeColor: 'rgb(255, 0, 0)',
+      playerOneColor: 'rgb(175, 175, 0)',
+      playerTwoColor: 'rgb(100, 100, 200)',
+      playerThreeColor: 'rgb(175, 0, 0)',
       playerFourColor: 'rgb(255, 192, 203)',
       playerFiveColor: 'rgb(255, 165, 0)',
       playerSixColor: 'rgb(0, 128, 0)',
