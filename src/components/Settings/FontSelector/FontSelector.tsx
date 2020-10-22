@@ -10,7 +10,7 @@ const FontSelector = ({ handleFontChange, displaySettings }: Props) => {
             <h2 className='fontHeader'>Fonts</h2>
             {fonts.map((font, index) => {
                 return (
-                    <ul className={`fontListItem item${classNameHashMap[index]}`} >
+                    <ul className={`fontListItem item${classNameHashMap[index]}`} key={index} >
                         <label>
                             <input
                                 type='radio'

@@ -20,12 +20,12 @@
 .FourPlayer {
     overflow: hidden;
     display: grid;
-    grid-template-rows: 18% 18% 46% 18%;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 20% 70% 10%;
     grid-template-areas:
-        "PlayerTag"
-        "OpponentsSelector"
-        "PlayerScore"
-        "EightballScoreDisplay"
+        "PlayerTag PlayerTag"
+        "OpponentsSelector PlayerScore"
+        "EightballScoreDisplay PlayerScore"
 }
 
 .FivePlayer {
@@ -61,3 +61,10 @@
 .playerSix {
     grid-area: playerSix;
 }
+
+.PlayerDisplay.ThreePlayer.playerTwo {
+    border-left: dashed;
+    border-right: dashed;
+    border-color: var(--mainColor);
+}
+

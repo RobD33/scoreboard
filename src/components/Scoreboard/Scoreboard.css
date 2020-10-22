@@ -3,7 +3,7 @@
     width: 100%;
 }
 
-.twoPlayer {
+.Scoreboard.twoPlayer {
     display: grid;
     grid-template-columns: 35% 10% 10% 10% 35%;
     grid-template-rows: 10% 60% 30%;
@@ -13,7 +13,7 @@
         ". EightballToggle SettingsButton EditPlayers .";
 }
 
-.threePlayer {
+.Scoreboard.threePlayer {
     display: grid;
     grid-template-columns: 15% 27% 26% 27% 5%;
     grid-template-rows: 5% 30% 30% 30% 5%;
@@ -25,17 +25,15 @@
         ". . . . .";
 }
 
-.fourPlayer {
+.Scoreboard.fourPlayer {
     display: grid;
-    grid-template-columns: 11% 33% 12% 33% 11%;
-    grid-template-rows: 5% 35% 5% 35% 5% 15%;
+    grid-template-columns: 15% 40% 40% 5%;
+    grid-template-rows: 5% 22% 23% 45% 5%;
     grid-template-areas:
-        ". . . . ."
-        ". playerOne . playerTwo ."
-        ". . . . ."
-        ". playerThree . playerFour ."
-        ". . . . ."
-        ". EightballToggle SettingsButton EditPlayers .";
+        ". . . ."
+        "SettingsButton playerOne playerTwo ."
+        "EditPlayers playerOne playerTwo ."
+        "EightballToggle playerThree playerFour .";
 }
 
 .fivePlayer {
