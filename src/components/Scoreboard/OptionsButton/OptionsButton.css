@@ -36,8 +36,8 @@
 }
 
 .OptionsButton {
-    width: 5vmin;
-    height: 5vmin;
+    width: 3vw;
+    height: 5vh;
     position: fixed;
     top: 3%;
     right: 3%;

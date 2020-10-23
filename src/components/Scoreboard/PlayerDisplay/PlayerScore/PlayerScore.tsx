@@ -3,12 +3,11 @@ import './PlayerScore.css'
 
 const PlayerScore = ({ playerFrames, createFrameAndToggleEightball, opponents, addFrame } :Props) => {
     return (
-        <button className='PlayerScore'
-            onClick={(e) => addFrame(createFrameAndToggleEightball(opponents[0]))}
-            disabled={opponents.length > 1}
+        <label className='PlayerScore'
+            onClick={(e) => {if(opponents.length === 1) addFrame(createFrameAndToggleEightball(opponents[0]))}}
         >
             {playerFrames.length}
-        </button>
+        </label>
     )
 }
 
