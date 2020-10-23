@@ -21,6 +21,7 @@
     height: 100%;
     border: none;
     outline: none;
+    box-shadow: none;
     background-color: black;
     display: grid;
     grid-template-rows: 15% 13% 15% 14% 15% 13% 15%;

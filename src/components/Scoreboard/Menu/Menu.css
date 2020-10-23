@@ -1,0 +1,17 @@
+.Menu {
+    width: 20vw;
+    height: 100vh;
+    position: fixed;
+    left: 100vw;
+    background-color: black;
+    border-radius: 2vw 0vw 0vw 2vw;
+    border-style: solid;
+    border-width: 1vw;
+    border-color: var(--border-color);
+    transition: left 0.5s;
+    z-index: 2;
+}
+
+.show {
+   left: 80vw
+} 

@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import DisplaySettings from '../../Data/DisplaySettings';
 import EditPlayers from './EditPlayers/EditPlayers';
 import EightballToggle from './EightballToggle/EightballToggle';
 import OptionsButton from './OptionsButton/OptionsButton';
 import PlayerDisplay from './PlayerDisplay/PlayerDisplay';
-import './Scoreboard.css'
 import SettingsButton from './SettingsButton/SettingsButton';
+import './Scoreboard.css';
+import Menu from './Menu/Menu';
+import { numberOfPlayersHashMap } from '../../utils/hashMaps';
 
 const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, displaySettings }: Props) => {
 
     const [state, setState] = React.useState({ eightball: false, menu: false });
+
+    const setMenuState = useCallback((value: boolean): void => {
+        setState(s =>  {return {...s, menu: value}})
+    }, [])
+
     return (
-        <div className={`Scoreboard ${classNameHashMap[sessionPlayers.length]}`}>
+        <div className={`Scoreboard ${numberOfPlayersHashMap[sessionPlayers.length]}`}>
             {sessionPlayers.map((player, index) => {
                 return <PlayerDisplay
                     key={ index }
@@ -19,7 +26,7 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, display
                     player={ player }
                     playerFrames={ getPlayerFrames(frames, player) }
                     opponents={ getOpponents(player, sessionPlayers) }
-                    addFrame={ addFrame }
+                    addFrame={ checkForMenu(addFrame, state.menu) }
                     eightball={ state.eightball }
                     toggleEightball={ toggleEightball(state, setState) }
                     displaySettings={ displaySettings }
@@ -38,7 +45,8 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, display
             />
             <EditPlayers changeComponent={ changeComponent }/>
             <SettingsButton changeComponent={ changeComponent }/>
-            <OptionsButton setMenuState={ setMenuState(state, setState) }/>
+            <OptionsButton setMenuState={ setMenuState }/>
+            <Menu changeComponent={ changeComponent } show={state.menu} setMenuState={ setMenuState }/>
         </div>
     )
 }
@@ -59,18 +67,9 @@ const toggleEightball = (state: State, setState: Function): Function => {
     }
 }
 
-const setMenuState = (state: State, setState: Function): Function => {
-    return (value: boolean): void => {
-        setState({ ...state, menu: value})
-    }
-}
-
-const classNameHashMap: { [index: number]: string} = {
-    2: 'twoPlayer',
-    3: 'threePlayer',
-    4: 'fourPlayer',
-    5: 'fivePlayer',
-    6: 'sixPlayer' 
+const checkForMenu = (addFrame: Function, menu: boolean): Function => {
+    if(menu) return () => {}
+    else return addFrame;
 }
 
 interface Props {
