@@ -1,0 +1,43 @@
+.iconLine {
+    width: 100%;
+    height: 100%;
+    background-color: var(--mainColor);
+}
+
+.lineOne {
+    grid-area: lineOne;
+}
+
+.lineTwo {
+    grid-area: lineTwo;
+}
+
+.lineThree {
+    grid-area: lineThree;
+}
+
+.optionsButtonButton {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: black;
+    display: grid;
+    grid-template-rows: 15% 13% 15% 14% 15% 13% 15%;
+    grid-template-areas:
+    "."
+    "lineOne"
+    "."
+    "lineTwo"
+    "."
+    "lineThree"
+    "."
+}
+
+.OptionsButton {
+    width: 5vmin;
+    height: 5vmin;
+    position: fixed;
+    top: 3%;
+    right: 3%;
+}

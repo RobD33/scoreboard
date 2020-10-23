@@ -16,8 +16,8 @@
         "opponentScore";
 }
 
-.fourPlayer .playerOne .OpponentDisplay,
-.fourPlayer .playerThree .OpponentDisplay {
+.fourPlayer .playerOne .OpponentDisplay.withScore,
+.fourPlayer .playerThree .OpponentDisplay.withScore {
     display: grid;
     grid-template-columns: none;
     grid-template-columns: 50% 50%;
@@ -25,8 +25,8 @@
         "opponentName opponentScore";
 }
 
-.fourPlayer .playerTwo .OpponentDisplay,
-.fourPlayer .playerFour .OpponentDisplay {
+.fourPlayer .playerTwo .OpponentDisplay.withScore,
+.fourPlayer .playerFour .OpponentDisplay.withScore {
     display: grid;
     grid-template-columns: none;
     grid-template-columns: 50% 50%;

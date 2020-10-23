@@ -109,11 +109,11 @@ const getDisplaySettings = (): DisplaySettings => {
     theme: 'mono',
     fontFamily: 'Trebuchet MS',
     colors: {
-      mainColor: 'rgb(0, 255, 0)',
+      mainColor: 'rgb(20, 160, 20)',
       playerOneColor: 'rgb(175, 175, 0)',
       playerTwoColor: 'rgb(100, 100, 200)',
       playerThreeColor: 'rgb(175, 0, 0)',
-      playerFourColor: 'rgb(255, 192, 203)',
+      playerFourColor: 'rgb(175, 132, 139)',
       playerFiveColor: 'rgb(255, 165, 0)',
       playerSixColor: 'rgb(0, 128, 0)',
     }

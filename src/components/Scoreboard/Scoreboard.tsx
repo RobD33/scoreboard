@@ -2,13 +2,14 @@ import React from 'react';
 import DisplaySettings from '../../Data/DisplaySettings';
 import EditPlayers from './EditPlayers/EditPlayers';
 import EightballToggle from './EightballToggle/EightballToggle';
+import OptionsButton from './OptionsButton/OptionsButton';
 import PlayerDisplay from './PlayerDisplay/PlayerDisplay';
 import './Scoreboard.css'
 import SettingsButton from './SettingsButton/SettingsButton';
 
 const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, displaySettings }: Props) => {
 
-    const [state, setState] = React.useState({ eightball: false });
+    const [state, setState] = React.useState({ eightball: false, menu: false });
     return (
         <div className={`Scoreboard ${classNameHashMap[sessionPlayers.length]}`}>
             {sessionPlayers.map((player, index) => {
@@ -37,6 +38,7 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, display
             />
             <EditPlayers changeComponent={ changeComponent }/>
             <SettingsButton changeComponent={ changeComponent }/>
+            <OptionsButton setMenuState={ setMenuState(state, setState) }/>
         </div>
     )
 }
@@ -49,11 +51,17 @@ const getPlayerFrames = (frames: { winner: string, loser: string, eightball: boo
     return frames.filter(frame => frame.winner === player)
 }
 
-const toggleEightball = (state: { eightball:boolean }, setState: Function): Function => {
+const toggleEightball = (state: State, setState: Function): Function => {
     return () => {
         const newState = { ...state }
         newState.eightball = !newState.eightball
         setState(newState)
+    }
+}
+
+const setMenuState = (state: State, setState: Function): Function => {
+    return (value: boolean): void => {
+        setState({ ...state, menu: value})
     }
 }
 
@@ -71,6 +79,11 @@ interface Props {
     addFrame: Function;
     changeComponent: Function;
     displaySettings: DisplaySettings;
+}
+
+interface State {
+    eightball: boolean;
+    menu: boolean;
 }
 
 export default Scoreboard

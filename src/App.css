@@ -1,13 +1,14 @@
 :root {
-  --mainColor: rgb(0, 255, 0);
-  --playerOneColor: rgb(0, 255, 0);
-  --playerTwoColor: rgb(0, 255, 0);
-  --playerThreeColor: rgb(0, 255, 0);
-  --playerFourColor: rgb(0, 255, 0);
-  --playerFiveColor: rgb(0, 255, 0);
-  --playerSixColor: rgb(0, 255, 0);
+  --mainColor: rgb(20, 160, 20);
+  --playerOneColor: rgb(20, 160, 20);
+  --playerTwoColor: rgb(20, 160, 20);
+  --playerThreeColor: rgb(20, 160, 20);
+  --playerFourColor: rgb(20, 160, 20);
+  --playerFiveColor: rgb(20, 160, 20);
+  --playerSixColor: rgb(20, 160, 20);
   --font-family: 'Trebuchet MS';
   --font-size: 100vmin;
+  --border-color: rgb(60, 60, 60);
 }
 
 .App {

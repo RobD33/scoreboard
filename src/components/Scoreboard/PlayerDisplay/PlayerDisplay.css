@@ -20,7 +20,7 @@
 .threePlayer .PlayerDisplay.playerTwo {
     border-left: dashed;
     border-right: dashed;
-    border-color: var(--mainColor);
+    border-color: var(--border-color);
     border-width: 0.001em;
 }
 
@@ -50,28 +50,28 @@
     border-right: dotted;
     border-bottom: dotted;
     border-width: 0.001em;
-    border-color: var(--mainColor);
+    border-color: var(--border-color);
 }
 
 .fourPlayer .PlayerDisplay.playerTwo {
     border-left: dotted;
     border-bottom: dotted;
     border-width: 0.001em;
-    border-color: var(--mainColor);
+    border-color: var(--border-color);
 }
 
 .fourPlayer .PlayerDisplay.playerThree {
     border-right: dotted;
     border-top: dotted;
     border-width: 0.001em;
-    border-color: var(--mainColor);
+    border-color: var(--border-color);
 }
 
 .fourPlayer .PlayerDisplay.playerFour {
     border-left: dotted;
     border-top: dotted;
     border-width: 0.001em;
-    border-color: var(--mainColor);
+    border-color: var(--border-color);
 }
 
 .fivePlayer .PlayerDisplay {
