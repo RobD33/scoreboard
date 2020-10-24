@@ -1,10 +1,8 @@
 import React, { useCallback } from 'react';
 import DisplaySettings from '../../Data/DisplaySettings';
-import EditPlayers from './EditPlayers/EditPlayers';
 import EightballToggle from './EightballToggle/EightballToggle';
 import OptionsButton from './OptionsButton/OptionsButton';
 import PlayerDisplay from './PlayerDisplay/PlayerDisplay';
-import SettingsButton from './SettingsButton/SettingsButton';
 import './Scoreboard.css';
 import Menu from './Menu/Menu';
 import { numberOfPlayersHashMap } from '../../utils/hashMaps';
@@ -13,8 +11,8 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, display
 
     const [state, setState] = React.useState({ eightball: false, menu: false });
 
-    const setMenuState = useCallback((value: boolean): void => {
-        setState(s =>  {return {...s, menu: value}})
+    const setMenuState = useCallback((menu: boolean): void => {
+        setState(s =>  {return {...s, menu}})
     }, [])
 
     return (
@@ -43,8 +41,6 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, display
                 toggleEightball={ toggleEightball(state, setState) }
                 eightball={ state.eightball }
             />
-            <EditPlayers changeComponent={ changeComponent }/>
-            <SettingsButton changeComponent={ changeComponent }/>
             <OptionsButton setMenuState={ setMenuState }/>
             <Menu changeComponent={ changeComponent } show={state.menu} setMenuState={ setMenuState }/>
         </div>

@@ -1,6 +1,6 @@
 import React, { useMemo, useRef } from 'react';
-import EditPlayers from '../EditPlayers/EditPlayers';
-import SettingsButton from '../SettingsButton/SettingsButton';
+import EditPlayers from './EditPlayers/EditPlayers';
+import SettingsButton from './SettingsButton/SettingsButton';
 import ExitMenu from './ExitMenu/ExitMenu';
 import './Menu.css'
 
@@ -24,7 +24,7 @@ const Menu = ({ changeComponent, show, setMenuState }: Props) => {
     }
 
     return (
-        <div className={`Menu ${show?'show':''}`} ref={node}>
+        <div className={`Menu ${show ? 'show' : ''}`} ref={node}>
             <ExitMenu setMenuState={ setMenuState }/>
             <EditPlayers changeComponent={ changeComponent }/>
             <SettingsButton changeComponent={ changeComponent }/>

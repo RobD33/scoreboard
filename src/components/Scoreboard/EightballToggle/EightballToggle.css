@@ -3,14 +3,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
 }
 
 .ToggleButton {
     position: relative;
-    font-size: 16vh;
+    font-size: 10vh;
     border-radius: 50%;
-    height: 15vh;
-    width: 15vh;
+    height: 9vh;
+    width: 9vh;
     outline: none;
     background-color: black;
     border: none;

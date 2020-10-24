@@ -1,5 +1,5 @@
 .Menu {
-    width: 20vw;
+    width: 15vw;
     height: 100vh;
     position: fixed;
     left: 100vw;
@@ -10,8 +10,17 @@
     border-color: var(--border-color);
     transition: left 0.5s;
     z-index: 2;
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-areas:
+        "SettingsButton"
+        "EditPlayers"
+        "."
+        "."
+        "ExitMenu";
 }
 
 .show {
-   left: 80vw
+   left: 85vw
 } 
