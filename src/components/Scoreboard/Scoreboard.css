@@ -25,13 +25,13 @@
 
 .Scoreboard.fourPlayer {
     display: grid;
-    grid-template-columns: 15% 40% 40% 5%;
-    grid-template-rows: 5% 22% 23% 45% 5%;
+    grid-template-columns: 5% 45% 45% 5%;
+    grid-template-rows: 5% 45% 45% 5%;
     grid-template-areas:
         ". . . ."
         ". playerOne playerTwo ."
-        ". playerOne playerTwo ."
-        "EightballToggle playerThree playerFour .";
+        ". playerThree playerFour ."
+        ". . . .";
 }
 
 .fivePlayer {
