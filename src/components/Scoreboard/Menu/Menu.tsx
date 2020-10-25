@@ -4,7 +4,8 @@ import SettingsButton from './SettingsButton/SettingsButton';
 import ExitMenu from './ExitMenu/ExitMenu';
 import './Menu.css'
 
-const Menu = ({ changeComponent, show, setMenuState }: Props) => {
+
+const Menu = ({ changeComponent, show, setMenuState, setModalProps }: Props) => {
 
     const closeMenu = useMemo(() => {
         return (e: MouseEvent)=> {
@@ -36,6 +37,7 @@ interface Props {
     changeComponent: Function;
     show: boolean;
     setMenuState: Function;
+    setModalProps: Function;
 }
 
 export default Menu;

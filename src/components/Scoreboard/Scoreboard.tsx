@@ -7,7 +7,7 @@ import './Scoreboard.css';
 import Menu from './Menu/Menu';
 import { numberOfPlayersHashMap } from '../../utils/hashMaps';
 
-const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, displaySettings }: Props) => {
+const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, displaySettings, setModalProps }: Props) => {
 
     const [state, setState] = React.useState({ eightball: false, menu: false });
 
@@ -42,7 +42,7 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, display
                 eightball={ state.eightball }
             />
             <OptionsButton setMenuState={ setMenuState }/>
-            <Menu changeComponent={ changeComponent } show={state.menu} setMenuState={ setMenuState }/>
+            <Menu changeComponent={ changeComponent } show={state.menu} setMenuState={ setMenuState } setModalProps={setModalProps}/>
         </div>
     )
 }
@@ -74,6 +74,7 @@ interface Props {
     addFrame: Function;
     changeComponent: Function;
     displaySettings: DisplaySettings;
+    setModalProps: Function;
 }
 
 interface State {

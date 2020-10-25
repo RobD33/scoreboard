@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import './App.css';
 import CreateBoard from './components/CreateBoard/CreateBoard';
+import Modal from './components/Modal/Modal';
 import Scoreboard from './components/Scoreboard/Scoreboard'
 import Settings from './components/Settings/Settings';
 import DisplaySettings from './Data/DisplaySettings';
+import ModalProps from './Data/ModalProps';
 
 function App() {
 
   const [appState, setAppState] = React.useState(generateNewAppState());
 
+  const closeModal = useCallback(() => {setAppState(s => {return{...s, modalProps: {...s.modalProps, active: false}}})}, [])
+
   return (
     <div className='App'>
+      <Modal {...appState.modalProps} closeModal={closeModal}/>
       {appState.showComponent === 'Scoreboard' && 
         <Scoreboard 
           frames={ appState.frames }
@@ -18,6 +23,7 @@ function App() {
           addFrame={ addFrame(appState, setAppState) }
           changeComponent={ changeComponent(appState, setAppState) }
           displaySettings={ appState.displaySettings }
+          setModalProps={setModalProps(appState, setAppState)}
         />
       }
       {appState.showComponent === 'CreateBoard' &&
@@ -48,7 +54,15 @@ const generateNewAppState = (): AppState => {
     frames: [],
     groupPlayers: getGroupPlayers(),
     sessionPlayers: [],
-    displaySettings: getDisplaySettings()
+    displaySettings: getDisplaySettings(),
+    modalProps: {
+      message: '',
+      positiveButtonText: '',
+      negativeButtonText: '',
+      positiveCallback: () => {},
+      negativeCallback: () => {},
+      active: false
+    }
   }
 }
 
@@ -141,12 +155,19 @@ const setCSSVariables = (displaySettings: DisplaySettings): void => {
   root.style.setProperty(`--font-family`, displaySettings.fontFamily)
 }
 
+const setModalProps = (appState: AppState, setAppState: Function): Function => {
+  return (modalProps: ModalProps): void => {
+    setAppState({...appState, modalProps})
+  }
+}
+
 interface AppState {
   showComponent: string,
   frames: { winner: string, loser: string, eightball: boolean }[];
   groupPlayers: string[];
   sessionPlayers: string[];
   displaySettings: DisplaySettings;
+  modalProps: ModalProps;
 }
 
 export default App;
