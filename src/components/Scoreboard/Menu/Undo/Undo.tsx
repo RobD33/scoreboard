@@ -1,22 +1,21 @@
 import React from 'react';
-import Frame from '../../../../Data/Frame';
 import ModalProps from '../../../../Data/ModalProps';
 import './Undo.css'
 
-const Undo = ({ setModalProps, frames }: Props) => {
+const Undo = ({ setModalProps, setMenuState, removeLastFrame }: Props) => {
 
     const modalProps: ModalProps = {
         message: 'Delete last played frame?',
         positiveButtonText: 'Yes',
         negativeButtonText: 'No',
-        positiveCallback: ()=>{frames.length && frames.pop()},
+        positiveCallback: ()=> {removeLastFrame();setMenuState(false)},
         negativeCallback: ()=>{},
         active: true
     }
 
     return (
         <div className='Undo'>
-            <button className='UndoButton' onClick={(e) => setModalProps(modalProps)}>Undo</button>
+            <button className='UndoButton' onClick={(e) => {setModalProps(modalProps)}}>Undo</button>
         </div>
     )
 }
@@ -25,7 +24,8 @@ const Undo = ({ setModalProps, frames }: Props) => {
 
 interface Props {
     setModalProps: Function;
-    frames: Frame[];
+    setMenuState: Function;
+    removeLastFrame: Function;
 }
 
 export default Undo;

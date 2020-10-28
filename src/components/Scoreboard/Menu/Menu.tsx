@@ -1,37 +1,22 @@
-import React, { useMemo, useRef } from 'react';
+import React from 'react';
 import EditPlayers from './EditPlayers/EditPlayers';
 import SettingsButton from './SettingsButton/SettingsButton';
 import ExitMenu from './ExitMenu/ExitMenu';
 import './Menu.css'
 import Undo from './Undo/Undo';
-import Frame from '../../../Data/Frame';
 
 
-const Menu = ({ changeComponent, show, setMenuState, setModalProps, frames }: Props) => {
-
-    const closeMenu = useMemo(() => {
-        return (e: MouseEvent)=> {
-            if(node.current) {
-                if(node.current.contains(e.target as Node)) return;
-                else setMenuState(false)
-            }
-        }
-    }, [setMenuState])
-
-    const node = useRef<HTMLDivElement>(null)
-
-    if(show) {
-        document.addEventListener('click', closeMenu)
-    } else {
-        document.removeEventListener('click', closeMenu)
-    }
+const Menu = ({ changeComponent, show, setMenuState, setModalProps, removeLastFrame }: Props) => {
 
     return (
-        <div className={`Menu ${show ? 'show' : ''}`} ref={node}>
-            <ExitMenu setMenuState={ setMenuState }/>
-            <EditPlayers changeComponent={ changeComponent }/>
-            <Undo setModalProps={setModalProps} frames={frames}/>
-            <SettingsButton changeComponent={ changeComponent }/>
+        <div>
+            {show && <div className='menuOverlay' onClick={(e) => setMenuState(false)}/>}
+            <div className={`Menu ${show ? 'show' : ''}`}>
+                <ExitMenu setMenuState={ setMenuState }/>
+                <EditPlayers changeComponent={ changeComponent }/>
+                <Undo setModalProps={setModalProps} setMenuState={setMenuState} removeLastFrame={removeLastFrame}/>
+                <SettingsButton changeComponent={ changeComponent }/>
+            </div>
         </div>
     )
 }
@@ -41,7 +26,7 @@ interface Props {
     show: boolean;
     setMenuState: Function;
     setModalProps: Function;
-    frames: Frame[];
+    removeLastFrame: Function;
 }
 
 export default Menu;

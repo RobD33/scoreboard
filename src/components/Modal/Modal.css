@@ -20,7 +20,7 @@
     border-width: 1vmin;
     border-color: var(--border-color);
     border-radius: 2vmin;
-    z-index: 101;
+    z-index: 200;
     display: grid;
     grid-template-columns: 10% 35% 10% 35% 10%;
     grid-template-rows: 10% 50% 10% 20% 10%;

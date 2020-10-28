@@ -9,7 +9,7 @@
     border-width: 1vw;
     border-color: var(--border-color);
     transition: left 0.5s;
-    z-index: 2;
+    z-index: 51;
     display: grid;
     grid-template-columns: none;
     grid-template-rows: 20% 20% 20% 20% 20%;
@@ -24,3 +24,14 @@
 .show {
    left: 85vw
 } 
+
+.menuOverlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    opacity: 0.6;
+    z-index: 50;
+}

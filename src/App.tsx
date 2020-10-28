@@ -21,6 +21,7 @@ function App() {
           frames={ appState.frames }
           sessionPlayers={ appState.sessionPlayers }
           addFrame={ addFrame(appState, setAppState) }
+          removeLastFrame={ removeLastFrame(appState, setAppState) }
           changeComponent={ changeComponent(appState, setAppState) }
           displaySettings={ appState.displaySettings }
           setModalProps={setModalProps(appState, setAppState)}
@@ -158,6 +159,14 @@ const setCSSVariables = (displaySettings: DisplaySettings): void => {
 const setModalProps = (appState: AppState, setAppState: Function): Function => {
   return (modalProps: ModalProps): void => {
     setAppState({...appState, modalProps})
+  }
+}
+
+const removeLastFrame = (appState: AppState, setAppState: Function): Function => {
+  return ():void => {
+    let frames = [...appState.frames]
+    frames.pop()
+    setAppState({...appState, frames})
   }
 }
 
