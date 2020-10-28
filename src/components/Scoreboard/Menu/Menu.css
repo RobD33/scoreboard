@@ -16,7 +16,7 @@
     grid-template-areas:
         "SettingsButton"
         "EditPlayers"
-        "."
+        "Undo"
         "."
         "ExitMenu";
 }

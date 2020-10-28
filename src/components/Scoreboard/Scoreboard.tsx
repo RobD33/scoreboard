@@ -42,7 +42,13 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, changeComponent, display
                 eightball={ state.eightball }
             />
             <OptionsButton setMenuState={ setMenuState }/>
-            <Menu changeComponent={ changeComponent } show={state.menu} setMenuState={ setMenuState } setModalProps={setModalProps}/>
+            <Menu
+                changeComponent={ changeComponent }
+                show={state.menu}
+                setMenuState={ setMenuState }
+                setModalProps={setModalProps}
+                frames={frames}
+            />
         </div>
     )
 }

@@ -4,7 +4,8 @@ import './Modal.css';
 
 const Modal = ({ message, positiveButtonText, negativeButtonText, positiveCallback, negativeCallback, active, closeModal}: Props) => {
     return active ? (
-        <div className='overlay'>
+        <div>
+        <div className='overlay'></div>
             <div className='popUp'>
                 <label className='message'>{message}</label>
                 <button className='positiveButton' onClick={(e) => closeModalAndExecuteCallback(closeModal, positiveCallback)}>{positiveButtonText}</button>
