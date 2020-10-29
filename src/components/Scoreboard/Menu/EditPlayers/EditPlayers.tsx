@@ -4,7 +4,7 @@ import './EditPlayers.css';
 
 const EditPlayers = () => {
     const history = useHistory();
-    const redirectToCreateBoard = useCallback(() => history.push('/'), [history]);
+    const redirectToCreateBoard = useCallback(() => history.push('/createboard'), [history]);
 
     return (
         <div className='EditPlayers'>

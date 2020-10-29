@@ -1,0 +1,38 @@
+.Landing {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-areas:
+    ". . ."
+    ". new ."
+    ". . ."
+    ". continue ."
+    ". . .";
+}
+
+.new {
+    grid-area: new;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.04em;
+}
+
+.continue {
+    grid-area: continue;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.04em;
+}
+
+.noSession {
+    text-decoration: line-through;
+    opacity: 0.6;
+}

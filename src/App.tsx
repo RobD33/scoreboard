@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import CreateBoard from './components/CreateBoard/CreateBoard';
+import Landing from './components/Landing/Landing';
 import Modal from './components/Modal/Modal';
 import Scoreboard from './components/Scoreboard/Scoreboard'
 import Settings from './components/Settings/Settings';
@@ -11,7 +12,11 @@ import ModalProps from './Data/ModalProps';
 
 function App() {
 
-  const [appState, setAppState] = React.useState(getAppState());
+  const [appState, setAppState] = React.useState(getAppState);
+
+  useEffect(() => {
+    localStorage.setItem('scoreboard', JSON.stringify(appState));
+  })
 
   const closeModal = useCallback(() => {
     setAppState(state => {
@@ -84,6 +89,18 @@ function App() {
     })
   }, [])
 
+  const createNewSession = useCallback(() => {
+    setAppState(state => {
+      return {
+        ...state,
+        sessionPlayers: [],
+        frames: []
+      }
+    })
+  },[])
+
+  const sessionValid = appState.sessionPlayers.length > 1
+
   const listOfPotentialPLayers = appState.groupPlayers.filter(player => !appState.sessionPlayers.includes(player))
 
 
@@ -91,7 +108,12 @@ function App() {
     <div className='App'>
       <Modal {...appState.modalProps} closeModal={closeModal}/>
       <Switch>
-        <Route exact path='/' render={(props) => <CreateBoard
+        <Route exact path='/' render={(props) => <Landing
+          {...props}
+          createNewSession={ createNewSession }
+          sessionValid={ sessionValid }
+        />}/>
+        <Route exact path='/createboard' render={(props) => <CreateBoard
           {...props}
           addPlayerToSession={ addPlayerToSession }
           listOfPotentialPlayers={ listOfPotentialPLayers }
@@ -119,8 +141,10 @@ function App() {
 }
 
 const getAppState = ():AppState => {
-  const stateJSON = localStorage.getItem('scoreboard')
-  const state = stateJSON ? JSON.parse(stateJSON) : null 
+  console.log('getAppState')
+  const stateJSON: string | null = localStorage.getItem('scoreboard')
+  const state: AppState | null = stateJSON ? JSON.parse(stateJSON) : null
+  if(state) setCSSVariables(state.displaySettings)
   return state ? state : generateNewAppState()
 }
 
