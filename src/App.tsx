@@ -1,18 +1,91 @@
 import React, { useCallback } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import CreateBoard from './components/CreateBoard/CreateBoard';
 import Modal from './components/Modal/Modal';
 import Scoreboard from './components/Scoreboard/Scoreboard'
 import Settings from './components/Settings/Settings';
 import DisplaySettings from './Data/DisplaySettings';
+import Frame from './Data/Frame';
 import ModalProps from './Data/ModalProps';
 
 function App() {
 
-  const [appState, setAppState] = React.useState(generateNewAppState());
+  const [appState, setAppState] = React.useState(getAppState());
 
-  const closeModal = useCallback(() => {setAppState(s => {return{...s, modalProps: {...s.modalProps, active: false}}})}, [])
+  const closeModal = useCallback(() => {
+    setAppState(state => {
+      return { ...state, modalProps: { ...state.modalProps, active: false }}
+    })
+  }, [])
+
+  const addPlayerToSession = useCallback((player: string) => {
+    setAppState(state => {
+      return {
+        ...state,
+        sessionPlayers: [ ...state.sessionPlayers, player]
+      }
+    })
+  }, [])
+
+  const addPlayerToGroupAndSession = useCallback((player: string) => {
+    setAppState(state => {
+      return {
+        ...state,
+        sessionPlayers: [ ...state.sessionPlayers, player],
+        groupPlayers: [ ...state.groupPlayers, player]
+      }
+    })
+  }, [])
+
+  const removePlayerFromSession = useCallback((playerOut: string) => {
+    setAppState(state => {
+      return {
+        ...state,
+        sessionPlayers: state.sessionPlayers.filter(player => player !== playerOut)
+      }
+    })
+  }, [])
+
+  const addFrame = useCallback((frame: Frame) => {
+    setAppState(state => {
+      return {
+        ...state,
+        frames: [...state.frames, frame]
+      }
+    })
+  },[])
+
+  const updateDisplaySettings = useCallback((displaySettings: DisplaySettings) => {
+    setAppState(state => {
+      return {
+        ...state,
+        displaySettings
+      }
+    });
+    setCSSVariables(displaySettings)
+  }, [])
+
+  const setModalProps = useCallback((modalProps: ModalProps) => {
+    setAppState(state => {
+      return {
+        ...state,
+        modalProps
+      }
+    })
+  }, [])
+
+  const removeLastFrame = useCallback(() => {
+    setAppState(state => {
+      return {
+        ...state,
+        frames: state.frames.slice(0, -1)
+      }
+    })
+  }, [])
+
+  const listOfPotentialPLayers = appState.groupPlayers.filter(player => !appState.sessionPlayers.includes(player))
+
 
   return (
     <div className='App'>
@@ -20,29 +93,35 @@ function App() {
       <Switch>
         <Route exact path='/' render={(props) => <CreateBoard
           {...props}
-          addPlayerToSession={ addPlayerToSession(appState,setAppState) }
-          listOfPotentialPlayers={ getListOfPotentialPLayers(appState) }
+          addPlayerToSession={ addPlayerToSession }
+          listOfPotentialPlayers={ listOfPotentialPLayers }
           sessionPlayers={ appState.sessionPlayers }
-          addPlayerToGroupAndSession={ addPlayerToGroupAndSession(appState, setAppState) }
-          removePlayerFromSession={ removePlayerFromSession(appState, setAppState) }
+          addPlayerToGroupAndSession={ addPlayerToGroupAndSession }
+          removePlayerFromSession={ removePlayerFromSession }
         />}/>
         <Route exact path='/scoreboard' render={(props) => <Scoreboard
           {...props}
           frames={ appState.frames }
           sessionPlayers={ appState.sessionPlayers }
-          addFrame={ addFrame(appState, setAppState) }
-          removeLastFrame={ removeLastFrame(appState, setAppState) }
+          addFrame={ addFrame}
+          removeLastFrame={ removeLastFrame }
           displaySettings={ appState.displaySettings }
-          setModalProps={setModalProps(appState, setAppState)}
+          setModalProps={ setModalProps }
         />}/>
         <Route exact path='/settings' render={(props) => <Settings
           {...props}
-          updateDisplaySettings={updateDisplaySettings(appState, setAppState)}
-          displaySettings={appState.displaySettings}
+          updateDisplaySettings={ updateDisplaySettings }
+          displaySettings={ appState.displaySettings }
         />}/>
       </Switch>
     </div>
   );
+}
+
+const getAppState = ():AppState => {
+  const stateJSON = localStorage.getItem('scoreboard')
+  const state = stateJSON ? JSON.parse(stateJSON) : null 
+  return state ? state : generateNewAppState()
 }
 
 const generateNewAppState = (): AppState => {
@@ -59,43 +138,6 @@ const generateNewAppState = (): AppState => {
       negativeCallback: () => {},
       active: false
     }
-  }
-}
-
-const addPlayerToSession = (appState : AppState , setAppState : Function) => {
-  return (player: string) => {
-    const sessionPlayers = [ ...appState.sessionPlayers, player ]
-    appState = { ...appState, sessionPlayers }
-    setAppState(appState)
-  }
-}
-
-const addPlayerToGroupAndSession = (appState : AppState , setAppState : Function) => {
-  return (player: string) => {
-    const sessionPlayers = [ ...appState.sessionPlayers, player ]
-    const groupPlayers = [ ...appState.groupPlayers, player ]
-    appState = { ...appState, sessionPlayers, groupPlayers }
-    setAppState(appState)
-  }
-}
-
-const removePlayerFromSession = (appState: AppState, setAppState: Function): Function => {
-  return (playerOut: string) => {
-    const sessionPlayers = [ ...appState.sessionPlayers.filter(player => player !== playerOut) ]
-    appState = { ...appState, sessionPlayers }
-    setAppState(appState)
-  }
-}
-
-const getListOfPotentialPLayers = (appState: AppState) => {
-  return appState.groupPlayers.filter(player => !appState.sessionPlayers.includes(player))
-}
-
-const addFrame = (appState: AppState, setAppState: Function): Function => {
-  return (frame: { winner: string, loser: string, eightball: boolean }) => {
-    const newAppState = { ...appState };
-    newAppState.frames = [ ...newAppState.frames, frame]
-    setAppState(newAppState)
   }
 }
 
@@ -122,13 +164,6 @@ const getDisplaySettings = (): DisplaySettings => {
   }
 }
 
-const updateDisplaySettings = (appState : AppState , setAppState : Function): Function => {
-  return (displaySettings: DisplaySettings): void => {
-    setAppState({...appState, displaySettings})
-    setCSSVariables(displaySettings)
-  }
-}
-
 const setCSSVariables = (displaySettings: DisplaySettings): void => {
   let root = document.documentElement
   if(displaySettings.theme==='mono') {
@@ -143,22 +178,8 @@ const setCSSVariables = (displaySettings: DisplaySettings): void => {
   root.style.setProperty(`--font-family`, displaySettings.fontFamily)
 }
 
-const setModalProps = (appState: AppState, setAppState: Function): Function => {
-  return (modalProps: ModalProps): void => {
-    setAppState({...appState, modalProps})
-  }
-}
-
-const removeLastFrame = (appState: AppState, setAppState: Function): Function => {
-  return ():void => {
-    let frames = [...appState.frames]
-    frames.pop()
-    setAppState({...appState, frames})
-  }
-}
-
 interface AppState {
-  frames: { winner: string, loser: string, eightball: boolean }[];
+  frames: Frame[];
   groupPlayers: string[];
   sessionPlayers: string[];
   displaySettings: DisplaySettings;

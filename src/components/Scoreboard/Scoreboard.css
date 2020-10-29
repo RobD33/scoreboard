@@ -15,12 +15,12 @@
 
 .Scoreboard.threePlayer {
     display: grid;
-    grid-template-columns: 30% 30% 30% 10%;
+    grid-template-columns: 5% 30% 30% 30% 5%;
     grid-template-rows: 5% 90% 5%;
     grid-template-areas:
-        ". . . ."
-        "playerOne playerTwo playerThree ."
-        ". . . .";
+        ". . . . ."
+        ". playerOne playerTwo playerThree ."
+        ". . . . .";
 }
 
 .Scoreboard.fourPlayer {
