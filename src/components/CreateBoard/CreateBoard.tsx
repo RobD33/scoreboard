@@ -5,13 +5,13 @@ import PlayerList from './PlayerList/PlayerList'
 import PlayerSelector from './PlayerSelector/PlayerSelector'
 import './CreateBoard.css'
 
-const CreateBoard = ({ addPlayerToSession, listOfPotentialPlayers, sessionPlayers, addPlayerToGroupAndSession, removePlayerFromSession, changeComponent }: Props) => {
+const CreateBoard = ({ addPlayerToSession, listOfPotentialPlayers, sessionPlayers, addPlayerToGroupAndSession, removePlayerFromSession}: Props) => {
     return (
         <div className='CreateBoard'>
             <PlayerSelector listOfPotentialPlayers={ listOfPotentialPlayers } addPlayerToSession={ addPlayerToSession }/>
             <AddPlayer addPlayerToGroupAndSession={ addPlayerToGroupAndSession }/>
             <PlayerList sessionPlayers={ sessionPlayers } removePlayerFromSession={ removePlayerFromSession }/>
-            <DoneButton numberOfSessionPlayers={sessionPlayers.length} changeComponent={changeComponent}/>
+            <DoneButton numberOfSessionPlayers={sessionPlayers.length}/>
         </div>
     )
 }
@@ -22,7 +22,6 @@ interface Props {
     sessionPlayers: string[];
     addPlayerToGroupAndSession: Function;
     removePlayerFromSession: Function;
-    changeComponent: Function;
 }
 
 export default CreateBoard;

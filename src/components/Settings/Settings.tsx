@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import DisplaySettings from '../../Data/DisplaySettings';
 import { ColorResult } from 'react-color'
 import FontSelector from './FontSelector/FontSelector';
-import './Settings.css'
 import ThemeSelector from './ThemeSelector/ThemeSelector';
 import ScoresToggle from './ScoresToggle/ScoresToggle';
+import './Settings.css';
 
-const Settings = ( { changeComponent, updateDisplaySettings, displaySettings }: Props) => {
+const Settings = ( { updateDisplaySettings, displaySettings }: Props) => {
+    const history = useHistory();
+    const redirectToScoreboard = useCallback(() => history.push('/scoreboard'), [history]);
+
     return (
         <div className='Settings'>
-            <button className='BackButton' onClick={ (e) => changeComponent('Scoreboard') }>Exit</button>
+            <button className='BackButton' onClick={ redirectToScoreboard }>Exit</button>
             <ThemeSelector displaySettings={ displaySettings } handleThemeChange={ handleThemeChange(displaySettings, updateDisplaySettings) } onChangeComplete={ onChangeComplete(displaySettings, updateDisplaySettings) }/>
             <FontSelector displaySettings={ displaySettings } handleFontChange= { handleFontChange(displaySettings, updateDisplaySettings) }/>
             <ScoresToggle displaySettings={ displaySettings } handleScoresToggle={ handleScoresToggle(displaySettings, updateDisplaySettings) } />
@@ -47,7 +51,6 @@ const handleScoresToggle = (displaySettings: DisplaySettings, updateDisplaySetti
 }
 
 interface Props {
-    changeComponent: Function;
     updateDisplaySettings: Function;
     displaySettings: DisplaySettings;
 }

@@ -1,19 +1,20 @@
-import React from 'react'
-import './EditPlayers.css'
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
+import './EditPlayers.css';
 
-const EditPlayers = ({ changeComponent }: Props) => {
+const EditPlayers = () => {
+    const history = useHistory();
+    const redirectToCreateBoard = useCallback(() => history.push('/'), [history]);
+
     return (
         <div className='EditPlayers'>
             <button
-                onClick={ (e) => changeComponent('CreateBoard')}
+                onClick={ redirectToCreateBoard }
                 className='EditPlayersButton'
             >Edit Players</button>
         </div>
     )
 }
 
-interface Props {
-    changeComponent: Function;
-}
 
 export default EditPlayers;

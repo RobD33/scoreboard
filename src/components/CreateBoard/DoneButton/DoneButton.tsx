@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom'
 import './DoneButton.css'
 
-const DoneButton = ({ numberOfSessionPlayers, changeComponent }: Props) => {
+const DoneButton = ({ numberOfSessionPlayers}: Props) => {
+    const history = useHistory();
+    const redirectToScoreboard = useCallback(() => history.push('/scoreboard'), [history]);
+
     return (
         <div className='DoneButton'>
             <button
                 className='DoneButtonButton'
                 disabled={ numberOfSessionPlayers < 2 }
-                onClick={(e) => changeComponent('Scoreboard')}
+                onClick={redirectToScoreboard}
             >GO</button>
         </div>
     )
@@ -15,7 +19,6 @@ const DoneButton = ({ numberOfSessionPlayers, changeComponent }: Props) => {
 
 interface Props {
     numberOfSessionPlayers: number;
-    changeComponent: Function;
 }
 
 export default DoneButton;

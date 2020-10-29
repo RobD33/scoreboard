@@ -1,15 +1,16 @@
-import React from 'react';
-import './SettingsButton.css'
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
+import './SettingsButton.css';
 
-const SettingsButton = ({ changeComponent }: Props) => {
+const SettingsButton = () => {
+    const history = useHistory();
+    const redirectToSettings = useCallback(() => history.push('/settings'), [history]);
+
     return (
         <div className='SettingsButton'>
-        <button onClick={(e) => changeComponent('Settings')} className='SettingsButtonButton'>settings</button>
+        <button onClick={ redirectToSettings } className='SettingsButtonButton'>settings</button>
         </div>
     )
 }
 
-interface Props {
-    changeComponent: Function;
-}
 export default SettingsButton;

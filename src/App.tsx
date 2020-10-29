@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { Route, Switch } from 'react-router-dom'
 import './App.css';
 import CreateBoard from './components/CreateBoard/CreateBoard';
 import Modal from './components/Modal/Modal';
@@ -16,42 +17,36 @@ function App() {
   return (
     <div className='App'>
       <Modal {...appState.modalProps} closeModal={closeModal}/>
-      {appState.showComponent === 'Scoreboard' && 
-        <Scoreboard 
-          frames={ appState.frames }
-          sessionPlayers={ appState.sessionPlayers }
-          addFrame={ addFrame(appState, setAppState) }
-          removeLastFrame={ removeLastFrame(appState, setAppState) }
-          changeComponent={ changeComponent(appState, setAppState) }
-          displaySettings={ appState.displaySettings }
-          setModalProps={setModalProps(appState, setAppState)}
-        />
-      }
-      {appState.showComponent === 'CreateBoard' &&
-        <CreateBoard
+      <Switch>
+        <Route exact path='/' render={(props) => <CreateBoard
+          {...props}
           addPlayerToSession={ addPlayerToSession(appState,setAppState) }
           listOfPotentialPlayers={ getListOfPotentialPLayers(appState) }
           sessionPlayers={ appState.sessionPlayers }
           addPlayerToGroupAndSession={ addPlayerToGroupAndSession(appState, setAppState) }
           removePlayerFromSession={ removePlayerFromSession(appState, setAppState) }
-          changeComponent={changeComponent(appState, setAppState)}
-        />
-      }
-      {
-        appState.showComponent === 'Settings' &&
-          <Settings
-          changeComponent={changeComponent(appState, setAppState)}
+        />}/>
+        <Route exact path='/scoreboard' render={(props) => <Scoreboard
+          {...props}
+          frames={ appState.frames }
+          sessionPlayers={ appState.sessionPlayers }
+          addFrame={ addFrame(appState, setAppState) }
+          removeLastFrame={ removeLastFrame(appState, setAppState) }
+          displaySettings={ appState.displaySettings }
+          setModalProps={setModalProps(appState, setAppState)}
+        />}/>
+        <Route exact path='/settings' render={(props) => <Settings
+          {...props}
           updateDisplaySettings={updateDisplaySettings(appState, setAppState)}
           displaySettings={appState.displaySettings}
-          />
-      }
+        />}/>
+      </Switch>
     </div>
   );
 }
 
 const generateNewAppState = (): AppState => {
   return {
-    showComponent: 'CreateBoard',
     frames: [],
     groupPlayers: getGroupPlayers(),
     sessionPlayers: [],
@@ -94,14 +89,6 @@ const removePlayerFromSession = (appState: AppState, setAppState: Function): Fun
 
 const getListOfPotentialPLayers = (appState: AppState) => {
   return appState.groupPlayers.filter(player => !appState.sessionPlayers.includes(player))
-}
-
-const changeComponent = (appState: AppState, setAppState: Function): Function => {
-  return (component: string) => {
-    const newAppState: AppState = { ...appState };
-    newAppState.showComponent = component
-    setAppState(newAppState)
-  }
 }
 
 const addFrame = (appState: AppState, setAppState: Function): Function => {
@@ -171,7 +158,6 @@ const removeLastFrame = (appState: AppState, setAppState: Function): Function =>
 }
 
 interface AppState {
-  showComponent: string,
   frames: { winner: string, loser: string, eightball: boolean }[];
   groupPlayers: string[];
   sessionPlayers: string[];
