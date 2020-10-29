@@ -1,5 +1,3 @@
-import { defaultMaxListeners } from "stream";
-
 export default interface DisplaySettings {
     [index: string]:  string|boolean|{},
     totalScores: boolean
