@@ -12,7 +12,7 @@ const Menu = ({ show, setMenuState, setModalProps, removeLastFrame }: Props) => 
         <div>
             {show && <div className='menuOverlay' onClick={(e) => setMenuState(false)}/>}
             <div className={`Menu ${show ? 'show' : ''}`}>
-                <ExitMenu setMenuState={ setMenuState }/>
+                <ExitMenu />
                 <EditPlayers />
                 <Undo setModalProps={setModalProps} setMenuState={setMenuState} removeLastFrame={removeLastFrame}/>
                 <SettingsButton />

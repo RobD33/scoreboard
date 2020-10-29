@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import './ExitMenu.css';
 
-const ExitMenu = ({ setMenuState }: Props) => {
+const ExitMenu = () => {
+
+    const history = useHistory();
+    const redirectToLanding = useCallback(() => history.push('/'), [history]);
+
     return (
         <div className='ExitMenu'>
-            <button className='ExitMenuButton' onClick={(e) => setMenuState(false)}>
+            <button className='ExitMenuButton' onClick={redirectToLanding}>
                 exit
             </button>
         </div>
     )
-}
-
-interface Props {
-    setMenuState: Function
 }
 
 export default ExitMenu;
