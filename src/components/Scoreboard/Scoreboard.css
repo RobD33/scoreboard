@@ -5,12 +5,12 @@
 
 .Scoreboard.twoPlayer {
     display: grid;
-    grid-template-columns: 40% 10% 40% 10%;
+    grid-template-columns: 5% 40% 10% 40% 5%;
     grid-template-rows: 10% 80% 10%;
     grid-template-areas:
-        ". . . ."
-        "playerOne dash playerTwo ."
-        ". . . .";
+        ". . . . ."
+        ". playerOne dash playerTwo ."
+        ". . . . .";
 }
 
 .Scoreboard.threePlayer {

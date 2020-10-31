@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import './App.css';
 import CreateBoard from './components/CreateBoard/CreateBoard';
 import Landing from './components/Landing/Landing';
 import Modal from './components/Modal/Modal';
@@ -9,6 +8,7 @@ import Settings from './components/Settings/Settings';
 import DisplaySettings from './Data/DisplaySettings';
 import Frame from './Data/Frame';
 import ModalProps from './Data/ModalProps';
+import './App.css';
 
 function App() {
 
@@ -28,7 +28,7 @@ function App() {
     setAppState(state => {
       return {
         ...state,
-        sessionPlayers: [ ...state.sessionPlayers, player]
+        sessionPlayers: [ ...state.sessionPlayers, player ]
       }
     })
   }, [])
@@ -37,8 +37,8 @@ function App() {
     setAppState(state => {
       return {
         ...state,
-        sessionPlayers: [ ...state.sessionPlayers, player],
-        groupPlayers: [ ...state.groupPlayers, player]
+        sessionPlayers: [ ...state.sessionPlayers, player ],
+        groupPlayers: [ ...state.groupPlayers, player ]
       }
     })
   }, [])
@@ -65,7 +65,7 @@ function App() {
     setAppState(state => {
       return {
         ...state,
-        displaySettings
+        displaySettings: { ...displaySettings, colors: { ...displaySettings.colors } }
       }
     });
     setCSSVariables(displaySettings)
@@ -98,6 +98,10 @@ function App() {
       }
     })
   },[])
+
+  const setDefaultDisplaySettings = useCallback(() => {
+    updateDisplaySettings(defaultDisplaySettings)
+  },[updateDisplaySettings])
 
   const sessionValid = appState.sessionPlayers.length > 1
 
@@ -134,6 +138,7 @@ function App() {
           {...props}
           updateDisplaySettings={ updateDisplaySettings }
           displaySettings={ appState.displaySettings }
+          setDefaultDisplaySettings={ setDefaultDisplaySettings }
         />}/>
       </Switch>
     </div>
@@ -141,7 +146,6 @@ function App() {
 }
 
 const getAppState = ():AppState => {
-  console.log('getAppState')
   const stateJSON: string | null = localStorage.getItem('scoreboard')
   const state: AppState | null = stateJSON ? JSON.parse(stateJSON) : null
   if(state) setCSSVariables(state.displaySettings)
@@ -153,7 +157,7 @@ const generateNewAppState = (): AppState => {
     frames: [],
     groupPlayers: getGroupPlayers(),
     sessionPlayers: [],
-    displaySettings: getDisplaySettings(),
+    displaySettings: defaultDisplaySettings,
     modalProps: {
       message: '',
       positiveButtonText: '',
@@ -169,8 +173,7 @@ const getGroupPlayers = () => {
   return ['Rob', 'Jamie', 'Bails','JP']
 }
 
-const getDisplaySettings = (): DisplaySettings => {
-  return { 
+const defaultDisplaySettings: DisplaySettings = { 
     totalScores: true,
     individualScores: false,
     eightballClears: false,
@@ -186,15 +189,15 @@ const getDisplaySettings = (): DisplaySettings => {
       playerSixColor: 'rgb(0, 128, 0)',
     }
   }
-}
+
 
 const setCSSVariables = (displaySettings: DisplaySettings): void => {
   let root = document.documentElement
-  if(displaySettings.theme==='mono') {
+  if( displaySettings.theme === 'mono' ) {
     for(let variable in displaySettings.colors) {
       root.style.setProperty(`--${variable}`, displaySettings.colors.mainColor)
     }
-  } else if (displaySettings.theme==='individual') {
+  } else if ( displaySettings.theme === 'individual' ) {
     for(let variable in displaySettings.colors) {
       root.style.setProperty(`--${variable}`, displaySettings.colors[variable])
     }

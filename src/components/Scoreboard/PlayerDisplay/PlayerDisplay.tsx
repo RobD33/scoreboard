@@ -8,7 +8,12 @@ import EightballScoreDisplay from './EightballScoreDisplay/EightballScoreDisplay
 import Frame from '../../../Data/Frame'
 import { playerNumberHashMap } from '../../../utils/hashMaps'
 
-const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, toggleEightball, displaySettings, playerNumber, sessionPlayers, frames } :Props) => {
+const PlayerDisplay = ({ player, opponents, addFrame, eightball, toggleEightball, displaySettings, playerNumber, sessionPlayers, frames } :Props) => {
+
+    const framesVsOpponents = frames.filter(frame => frame.winner === player && opponents.includes(frame.loser));
+    const eightballScore = framesVsOpponents.filter(frame => frame.eightball).length;
+    const score = framesVsOpponents.length;
+
     return (
         <div className={`PlayerDisplay ${playerNumberHashMap[playerNumber]}`}>
             <PlayerTag player={player} numberOfPlayers={opponents.length + 1}/>
@@ -24,14 +29,14 @@ const PlayerDisplay = ({ player, playerFrames, opponents, addFrame, eightball, t
             }
             {(displaySettings.totalScores || opponents.length === 1) &&
                 <PlayerScore
-                    playerFrames={playerFrames}
+                    score={ score }
                     addFrame={ addFrame }
                     createFrameAndToggleEightball={createFrameAndToggleEightball(player, eightball, toggleEightball)}
                     opponents={ opponents }
                 />
             }
             {displaySettings.eightballClears &&
-                <EightballScoreDisplay playerFrames={playerFrames} />
+                <EightballScoreDisplay eightballScore={eightballScore} />
             }
         </div>
     )
@@ -47,7 +52,6 @@ const createFrameAndToggleEightball = (player: string, eightball: boolean, toggl
 
 interface Props {
     player: string;
-    playerFrames: { winner: string, loser: string, eightball: boolean }[];
     opponents: string[];
     addFrame: Function;
     eightball: boolean;

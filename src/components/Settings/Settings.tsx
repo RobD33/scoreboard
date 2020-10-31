@@ -7,13 +7,14 @@ import ThemeSelector from './ThemeSelector/ThemeSelector';
 import ScoresToggle from './ScoresToggle/ScoresToggle';
 import './Settings.css';
 
-const Settings = ( { updateDisplaySettings, displaySettings }: Props) => {
+const Settings = ( { updateDisplaySettings, displaySettings, setDefaultDisplaySettings }: Props) => {
     const history = useHistory();
     const redirectToScoreboard = useCallback(() => history.push('/scoreboard'), [history]);
 
     return (
         <div className='Settings'>
             <button className='BackButton' onClick={ redirectToScoreboard }>Exit</button>
+            <button className='DefaultButton' onClick={ () => setDefaultDisplaySettings() }>Restore Defaults</button>
             <ThemeSelector displaySettings={ displaySettings } handleThemeChange={ handleThemeChange(displaySettings, updateDisplaySettings) } onChangeComplete={ onChangeComplete(displaySettings, updateDisplaySettings) }/>
             <FontSelector displaySettings={ displaySettings } handleFontChange= { handleFontChange(displaySettings, updateDisplaySettings) }/>
             <ScoresToggle displaySettings={ displaySettings } handleScoresToggle={ handleScoresToggle(displaySettings, updateDisplaySettings) } />
@@ -35,8 +36,8 @@ const handleFontChange = (displaySettings: DisplaySettings, updateDisplaySetting
 
 const onChangeComplete = ( displaySettings: DisplaySettings, updateDisplaySettings: Function): Function => {
     return (color :ColorResult) => {
-        const newDisplaySettings = {...displaySettings}
-        const { r, g, b} = color.rgb
+        const newDisplaySettings = {...displaySettings, colors: {...displaySettings.colors}}
+        const { r, g, b } = color.rgb
         newDisplaySettings.colors.mainColor = `rgb(${r},${g},${b})`
         updateDisplaySettings(newDisplaySettings)
     }
@@ -53,6 +54,7 @@ const handleScoresToggle = (displaySettings: DisplaySettings, updateDisplaySetti
 interface Props {
     updateDisplaySettings: Function;
     displaySettings: DisplaySettings;
+    setDefaultDisplaySettings: Function;
 }
 
 export default Settings;

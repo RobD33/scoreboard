@@ -22,7 +22,6 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, displaySettings, setModa
                     key={ index }
                     playerNumber={ index + 1 }
                     player={ player }
-                    playerFrames={ getPlayerFrames(frames, player) }
                     opponents={ getOpponents(player, sessionPlayers) }
                     addFrame={ checkForMenu(addFrame, state.menu) }
                     eightball={ state.eightball }
@@ -54,10 +53,6 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, displaySettings, setModa
 
 const getOpponents = (player: string, sessionPlayers: string[]) => {
     return sessionPlayers.filter(sessionPlayer => sessionPlayer !== player)
-}
-
-const getPlayerFrames = (frames: { winner: string, loser: string, eightball: boolean }[], player: string) => {
-    return frames.filter(frame => frame.winner === player)
 }
 
 const toggleEightball = (state: State, setState: Function): Function => {

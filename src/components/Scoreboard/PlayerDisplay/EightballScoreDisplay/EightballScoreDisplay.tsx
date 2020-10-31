@@ -1,8 +1,7 @@
 import React from 'react';
-import Frame from '../../../../Data/Frame';
 import './EightballScoreDisplay.css'
 
-const EightballScoreDisplay = ({ playerFrames }: Props) => {
+const EightballScoreDisplay = ({ eightballScore }: Props) => {
     return (
         <div className='EightballScoreDisplay'>
             <label className='eightballIconLabel'>
@@ -12,18 +11,14 @@ const EightballScoreDisplay = ({ playerFrames }: Props) => {
                 >🎱</span>
             </label>
             <label className='eightballScoreLabel'>
-                {`       ${calculateEightballScore(playerFrames)}`}
+                {eightballScore}
             </label>
         </div>
     )
 }
 
-const calculateEightballScore = (frames: Frame[]): number => {
-    return frames.filter(frame => frame.eightball).length
-}
-
 interface Props {
-    playerFrames: Frame[];
+    eightballScore: number;
 }
 
 export default EightballScoreDisplay;
