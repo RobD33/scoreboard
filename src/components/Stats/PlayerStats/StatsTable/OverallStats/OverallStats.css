@@ -1,0 +1,60 @@
+.OverallStats {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 16% 16% 16% 16% 16%;
+    grid-template-areas: "overallStatsLabel playedOverall winsOverall lossesOverall eightballsOverall percentageOverall";
+}
+
+.overallStatsLabel {
+    grid-area: overallStatsLabel;
+    font-size: 0.06em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+}
+
+.playedOverall {
+    grid-area: playedOverall;
+    font-size: 0.06em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+}
+
+.winsOverall {
+    grid-area: winsOverall;
+    font-size: 0.06em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+}
+
+.lossesOverall {
+    grid-area: lossesOverall;
+    font-size: 0.06em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+}
+
+.percentageOverall {
+    grid-area: percentageOverall;
+    font-size: 0.06em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eightballsOverall {
+    grid-area: eightballsOverall;
+    font-size: 0.06em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+}

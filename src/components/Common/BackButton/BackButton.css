@@ -1,0 +1,57 @@
+.BackButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 11vmin;
+    width: 11vmin;
+    grid-area: BackButton;
+}
+
+.BackButtonButton {
+    border-radius: 50%;
+    height: 10vmin;
+    width: 10vmin;
+    font-family: inherit;
+    outline: none;
+    box-shadow: 0px 0px 1px 1px inset, 0px 0px 1px 1px;
+    display: grid;
+    grid-template-columns: 20% 20% 40% 20%;
+    grid-template-rows: 17% 35% 30% 18%;
+    grid-template-areas: 
+    ". . . ."
+    ". arrowHead arrowBodyWrapper ."
+    ". BackButtonText BackButtonText ."
+    ". . . .";
+}
+
+.arrowHead {
+    grid-area: arrowHead;
+    width: 0; 
+    height: 0; 
+    border-top: 1vw solid transparent;
+    border-bottom: 1vw solid transparent;
+    border-right: 1vw solid var(--mainColor);
+}
+
+.arrowBodyWrapper {
+    grid-area: arrowBodyWrapper;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrowBody {
+    position: relative;
+    right: 0.2vw;
+    width: 2vw;
+    height: 1.5vh;
+    background-color: var(--mainColor);
+}
+
+.BackButtonText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: BackButtonText;
+    font-size: 0.02em;
+}

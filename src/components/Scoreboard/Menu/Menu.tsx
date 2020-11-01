@@ -4,6 +4,7 @@ import SettingsButton from './SettingsButton/SettingsButton';
 import ExitMenu from './ExitMenu/ExitMenu';
 import './Menu.css'
 import Undo from './Undo/Undo';
+import StatsButton from './StatsButton/StatsButton';
 
 
 const Menu = ({ show, setMenuState, setModalProps, removeLastFrame }: Props) => {
@@ -16,6 +17,7 @@ const Menu = ({ show, setMenuState, setModalProps, removeLastFrame }: Props) => 
                 <EditPlayers />
                 <Undo setModalProps={setModalProps} setMenuState={setMenuState} removeLastFrame={removeLastFrame}/>
                 <SettingsButton />
+                <StatsButton />
             </div>
         </div>
     )

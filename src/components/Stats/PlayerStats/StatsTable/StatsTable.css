@@ -1,0 +1,5 @@
+.StatsTable {
+    grid-area: StatsTable;
+    display: grid;
+    
+}

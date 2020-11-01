@@ -1,0 +1,66 @@
+.StatsVsOpponent {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 16% 16% 16% 16% 16%;
+    grid-template-areas: "statsOpponentName playedVsOpponent winsVsOpponent lossesVsOpponent eightballsVsOpponent percentageVsOpponent";
+}
+
+.statsOpponentName {
+    grid-area: statsOpponentName;
+    font-size: 0.04em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+    border-bottom: 0.1vw var(--border-color) solid;
+}
+
+.playedVsOpponent {
+    grid-area: playedVsOpponent;
+    font-size: 0.04em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+    border-bottom: 0.1vw var(--border-color) solid;
+}
+
+.winsVsOpponent {
+    grid-area: winsVsOpponent;
+    font-size: 0.04em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+    border-bottom: 0.1vw var(--border-color) solid;
+}
+
+.lossesVsOpponent {
+    grid-area: lossesVsOpponent;
+    font-size: 0.04em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+    border-bottom: 0.1vw var(--border-color) solid;
+}
+
+.percentageVsOpponent {
+    grid-area: percentageVsOpponent;
+    font-size: 0.04em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.1vw var(--border-color) solid;
+}
+
+.eightballsVsOpponent {
+    grid-area: eightballsVsOpponent;
+    font-size: 0.04em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.1vw var(--border-color) solid;
+    border-right: 0.1vw var(--border-color) solid;
+}

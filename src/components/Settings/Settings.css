@@ -9,9 +9,11 @@
         ". ThemeSelector ThemeSelector ."
         ". FontSelector FontSelector ."
         ". ScoresToggle ScoresToggle ."
-        "BackButton . . .";
+        ". . . .";
 }
 
 .BackButton {
-    grid-area: BackButton;
+    position: fixed;
+    left: 2vw;
+    bottom: 2vw;
 }

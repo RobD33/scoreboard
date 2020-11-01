@@ -1,0 +1,59 @@
+.TableHeader {
+    grid-area: TableHeader;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 20% 16% 16% 16% 16% 16%;
+    grid-template-areas: "cornerCell playedHeader wonHeader lostHeader eightballHeader percentHeader";
+    font-size: 0.04em;
+}
+
+.cornerCell {
+    grid-area: cornerCell;
+    border-right: 0.1vw var(--border-color) solid;
+    border-bottom: 0.1vw var(--border-color) solid;
+}
+
+.playedHeader {
+    grid-area: playedHeader;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+    border-bottom: 0.1vw var(--border-color) solid;
+}
+
+.wonHeader {
+    grid-area: wonHeader;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+    border-bottom: 0.1vw var(--border-color) solid;
+}
+
+.lostHeader {
+    grid-area: lostHeader;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1vw var(--border-color) solid;
+    border-bottom: 0.1vw var(--border-color) solid;
+}
+
+.percentHeader {
+    grid-area: percentHeader;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.1vw var(--border-color) solid;
+}
+
+.eightballHeader {
+    grid-area: eightballHeader;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.1vw var(--border-color) solid;
+    border-right: 0.1vw var(--border-color) solid;
+}

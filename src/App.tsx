@@ -9,6 +9,7 @@ import DisplaySettings from './Data/DisplaySettings';
 import Frame from './Data/Frame';
 import ModalProps from './Data/ModalProps';
 import './App.css';
+import SessionStats from './components/Stats/SessionStats';
 
 function App() {
 
@@ -139,6 +140,11 @@ function App() {
           updateDisplaySettings={ updateDisplaySettings }
           displaySettings={ appState.displaySettings }
           setDefaultDisplaySettings={ setDefaultDisplaySettings }
+        />}/>
+        <Route exact path='/sessionstats' render={props => <SessionStats 
+          {...props}
+          frames={ appState.frames }
+          sessionPlayers={ appState.sessionPlayers }
         />}/>
       </Switch>
     </div>

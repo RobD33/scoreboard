@@ -1,0 +1,48 @@
+.SessionStats {
+    width: 100vw;
+    height: 100vh;
+}
+
+.leftButton {
+    width: 10vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 45vh;
+    left: 2vw;
+}
+
+.rightButton {
+    width: 10vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 45vh;
+    right: 2vw;
+}
+
+.leftArrow {
+    width: 0; 
+    height: 0; 
+    border-top: 3vw solid transparent;
+    border-bottom: 3vw solid transparent;
+    border-right: 3vw solid var(--mainColor);
+}
+
+.rightArrow {
+    width: 0; 
+    height: 0; 
+    border-top: 3vw solid transparent;
+    border-bottom: 3vw solid transparent;
+    border-left: 3vw solid var(--mainColor);
+}
+
+.BackButton {
+    position: fixed;
+    left: 2vw;
+    bottom: 2vw;
+}

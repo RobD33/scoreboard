@@ -1,0 +1,15 @@
+.StatsButton {
+    grid-area: StatsButton;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.StatsButtonButton {
+    border-radius: 50%;
+    height: 15vh;
+    width: 15vh;
+    font-family: inherit;
+    outline: none;
+    box-shadow: none;
+}
