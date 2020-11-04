@@ -16,7 +16,7 @@
     box-shadow: 0px 0px 1px 1px inset, 0px 0px 1px 1px;
     display: grid;
     grid-template-columns: 20% 20% 40% 20%;
-    grid-template-rows: 17% 35% 30% 18%;
+    grid-template-rows: 19% 35% 30% 16%;
     grid-template-areas: 
     ". . . ."
     ". arrowHead arrowBodyWrapper ."

@@ -12,11 +12,15 @@ const SessionStats = ({ frames, sessionPlayers }: Props) => {
 
     const [playersIndex, setPlayersIndex] = useState(0)
 
-    const players: string[] = frames.reduce((acc: string[], frame: Frame) => {
+    let players: string[] = frames.reduce((acc: string[], frame: Frame) => {
         if(!acc.includes(frame.winner)) acc.push(frame.winner)
         if(!acc.includes(frame.loser)) acc.push(frame.loser)
         return acc
     },[ ...sessionPlayers ])
+
+    const numberOfPlayers = players.length
+
+    if(numberOfPlayers < 4) players = players.concat(players)
 
     const lastIndex: number = players.length - 1;
 
@@ -28,7 +32,7 @@ const SessionStats = ({ frames, sessionPlayers }: Props) => {
 
     const indexesToDisplay: number[] = [ sanitizeIndex(playersIndex - 1), playersIndex, sanitizeIndex(playersIndex + 1) ]
 
-    const positionHasMap: {[index: number]: string} = {
+    const positionHashMap: {[index: number]: string} = {
         0: 'left',
         1: 'middle',
         2: 'right'
@@ -50,9 +54,9 @@ const SessionStats = ({ frames, sessionPlayers }: Props) => {
             {indexesToDisplay.map((indexToDisplay, index)=> {
                 return (
                     <PlayerStats
-                        key={ players[indexToDisplay] }
+                        key={ `${players[indexToDisplay]}${indexToDisplay}` }
                         player={ players[indexToDisplay] }
-                        className={ positionHasMap[index] }
+                        className={ positionHashMap[index] }
                         frames={ frames }
                         players={ players }
                     />

@@ -11,7 +11,8 @@
     align-items: center;
     position: fixed;
     top: 45vh;
-    left: 2vw;
+    left: 1.5vw;
+    z-index: 1;
 }
 
 .rightButton {
@@ -22,7 +23,8 @@
     align-items: center;
     position: fixed;
     top: 45vh;
-    right: 2vw;
+    right: 1.5vw;
+    z-index: 1;
 }
 
 .leftArrow {
