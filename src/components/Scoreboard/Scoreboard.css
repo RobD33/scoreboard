@@ -34,14 +34,15 @@
         ". . . .";
 }
 
-.fivePlayer {
+.Scoreboard.fivePlayer {
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr;
-    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-columns: 5% 30% 30% 30% 5%;
+    grid-template-rows: 5% 45% 45% 5%;
     grid-template-areas:
-        "playerOne playerTwo playerThree"
-        "playerFour playerFive EightballToggle"
-        "playerFour playerFive .";
+        ". . . . ."
+        ". playerOne playerTwo playerThree ."
+        ". playerFour playerFive . ."
+        ". . . . .";
 }
 
 .dash {

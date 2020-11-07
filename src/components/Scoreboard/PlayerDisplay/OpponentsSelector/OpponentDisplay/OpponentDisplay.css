@@ -34,6 +34,15 @@
         "opponentScore opponentName";
 }
 
+.fivePlayer .OpponentDisplay.withScore {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "opponentName"
+        "opponentScore";
+}
+
 .opponentName {
     grid-area: opponentName;
     width: 100%;

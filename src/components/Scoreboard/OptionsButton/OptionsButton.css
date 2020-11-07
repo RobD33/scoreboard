@@ -38,6 +38,7 @@
 .OptionsButton {
     width: 9vh;
     height: 9vh;
+    z-index: 10;
     position: fixed;
     top: 3%;
     right: 3%;
