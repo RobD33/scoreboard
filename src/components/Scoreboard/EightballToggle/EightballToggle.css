@@ -1,5 +1,6 @@
 .EightballToggle {
     grid-area: EightballToggle;
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -14,7 +14,7 @@ const PlayerSelector = ({ listOfPotentialPlayers, addPlayerToSession }: Props) =
                 )
             })
         :
-        <div>Add players below</div>}
+            <div>Add players below</div>}
         </div>
     )
 }

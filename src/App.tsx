@@ -27,20 +27,26 @@ function App() {
 
   const addPlayerToSession = useCallback((player: string) => {
     setAppState(state => {
-      return {
+      return state.sessionPlayers.length < 6 ? {
         ...state,
         sessionPlayers: [ ...state.sessionPlayers, player ]
+      } : {
+        ...state
       }
     })
   }, [])
 
   const addPlayerToGroupAndSession = useCallback((player: string) => {
     setAppState(state => {
-      return {
-        ...state,
-        sessionPlayers: [ ...state.sessionPlayers, player ],
-        groupPlayers: [ ...state.groupPlayers, player ]
-      }
+      return state.sessionPlayers.length < 6 ? {
+          ...state,
+          sessionPlayers: [ ...state.sessionPlayers, player ],
+          groupPlayers: [ ...state.groupPlayers, player ]
+        }
+        : {
+          ...state,
+          groupPlayers: [ ...state.groupPlayers, player ]
+        }
     })
   }, [])
 
@@ -161,7 +167,7 @@ const getAppState = ():AppState => {
 const generateNewAppState = (): AppState => {
   return {
     frames: [],
-    groupPlayers: getGroupPlayers(),
+    groupPlayers: [],
     sessionPlayers: [],
     displaySettings: defaultDisplaySettings,
     modalProps: {
@@ -173,10 +179,6 @@ const generateNewAppState = (): AppState => {
       active: false
     }
   }
-}
-
-const getGroupPlayers = () => {
-  return ['Rob', 'Jamie', 'Bails','JP']
 }
 
 const defaultDisplaySettings: DisplaySettings = { 
