@@ -23,5 +23,9 @@
 }
 
 .fivePlayer .PlayerScore {
-    font-size: 15vw;
+    font-size: 0.20em;
+}
+
+.sixPlayer .PlayerScore {
+    font-size: 0.20em;
 }

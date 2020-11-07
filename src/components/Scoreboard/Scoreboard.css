@@ -45,6 +45,17 @@
         ". . . . .";
 }
 
+.Scoreboard.sixPlayer {
+    display: grid;
+    grid-template-columns: 5% 30% 30% 30% 5%;
+    grid-template-rows: 5% 45% 45% 5%;
+    grid-template-areas:
+        ". . . . ."
+        ". playerOne playerTwo playerThree ."
+        ". playerFour playerFive playerSix ."
+        ". . . . .";
+}
+
 .dash {
     grid-area: dash;
     display: flex;

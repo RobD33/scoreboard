@@ -59,3 +59,12 @@
     grid-template-areas:
         ". eightballIconLabel eightballScoreLabel ."
 }
+
+.sixPlayer .EightballScoreDisplay {
+    grid-area: EightballScoreDisplay;
+    font-size: 0.04em;
+    display: grid;
+    grid-template-columns: 30% 20% 20% 30%;
+    grid-template-areas:
+        ". eightballIconLabel eightballScoreLabel ."
+}

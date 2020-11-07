@@ -125,6 +125,57 @@
     border-color: var(--border-color);
 }
 
+.sixPlayer .PlayerDisplay {
+    position: relative;
+    display: grid;
+    grid-template-rows: 5% 15% 40% 20% 15% 5%;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-areas:
+        ". . ."
+        "PlayerTag PlayerTag PlayerTag"
+        ". PlayerScore ."
+        ". PlayerScore ."
+        ". EightballScoreDisplay ."
+        ". . ."
+}
+
+.sixPlayer .PlayerDisplay.playerOne {
+    border-right: dotted;
+    border-bottom: dotted;
+    border-width: 0.002em;
+    border-color: var(--border-color);
+}
+
+.sixPlayer .PlayerDisplay.playerTwo {
+    border-left: dotted;
+    border-right: dotted;
+    border-bottom: dotted;
+    border-width: 0.002em;
+    border-color: var(--border-color);
+}
+
+.sixPlayer .PlayerDisplay.playerThree {
+    border-left: dotted;
+    border-bottom: dotted;
+    border-width: 0.002em;
+    border-color: var(--border-color);
+}
+
+.sixPlayer .PlayerDisplay.playerFour {
+    border-right: dotted;
+    border-top: dotted;
+    border-width: 0.002em;
+    border-color: var(--border-color);
+}
+
+.sixPlayer .PlayerDisplay.playerFive {
+    border-left: dotted;
+    border-right: dotted;
+    border-top: dotted;
+    border-width: 0.002em;
+    border-color: var(--border-color);
+}
+
 .playerOne {
     grid-area: playerOne;
 }
