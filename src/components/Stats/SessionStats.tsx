@@ -12,7 +12,7 @@ const SessionStats = ({ frames, sessionPlayers }: Props) => {
 
     const [playersIndex, setPlayersIndex] = useState(0)
 
-    let players: string[] = frames.reduce((acc: string[], frame: Frame) => {
+    const players: string[] = frames.reduce((acc: string[], frame: Frame) => {
         if(!acc.includes(frame.winner)) acc.push(frame.winner)
         if(!acc.includes(frame.loser)) acc.push(frame.loser)
         return acc
@@ -20,9 +20,9 @@ const SessionStats = ({ frames, sessionPlayers }: Props) => {
 
     const numberOfPlayers = players.length
 
-    if(numberOfPlayers < 4) players = players.concat(players)
+    const playersToDisplay = numberOfPlayers < 4 ? players.concat(players) : players 
 
-    const lastIndex: number = players.length - 1;
+    const lastIndex: number = playersToDisplay.length - 1;
 
     const sanitizeIndex = useCallback((index: number) => {
         if (index < 0) return lastIndex;
@@ -54,8 +54,8 @@ const SessionStats = ({ frames, sessionPlayers }: Props) => {
             {indexesToDisplay.map((indexToDisplay, index)=> {
                 return (
                     <PlayerStats
-                        key={ `${players[indexToDisplay]}${indexToDisplay}` }
-                        player={ players[indexToDisplay] }
+                        key={ `${ playersToDisplay[indexToDisplay] }${ indexToDisplay }` }
+                        player={ playersToDisplay[indexToDisplay] }
                         className={ positionHashMap[index] }
                         frames={ frames }
                         players={ players }
