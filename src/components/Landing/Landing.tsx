@@ -17,6 +17,7 @@ const Landing = ({ createNewSession, sessionValid }: Props) => {
 
     return (
         <div className='Landing'>
+            <label className='title'>PoolTracker</label>
             <label className='new' onClick={(e) => handleNew()}>Create New Session</label>
             <label className={`continue ${!sessionValid && 'noSession'}`} onClick={(e) => handleContinue()}>Continue Last Session</label>
         </div>
