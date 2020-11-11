@@ -15,7 +15,7 @@ const Undo = ({ setModalProps, setMenuState, removeLastFrame }: Props) => {
 
     return (
         <div className='Undo'>
-            <button className='UndoButton' onClick={(e) => {setModalProps(modalProps)}}>Undo</button>
+            <button className='MenuButton' onClick={() => {setModalProps(modalProps)}}>Undo</button>
         </div>
     )
 }

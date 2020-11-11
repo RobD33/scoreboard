@@ -4,12 +4,3 @@
     justify-content: center;
     align-items: center;
 }
-
-.EditPlayersButton {
-    border-radius: 50%;
-    height: 15vh;
-    width: 15vh;
-    font-family: inherit;
-    outline: none;
-    box-shadow: none;
-}

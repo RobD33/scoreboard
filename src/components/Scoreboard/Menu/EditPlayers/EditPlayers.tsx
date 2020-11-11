@@ -10,7 +10,7 @@ const EditPlayers = () => {
         <div className='EditPlayers'>
             <button
                 onClick={ redirectToCreateBoard }
-                className='EditPlayersButton'
+                className='MenuButton'
             >Edit Players</button>
         </div>
     )

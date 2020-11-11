@@ -10,7 +10,7 @@ const StatsButton = () => {
         <div className='StatsButton'>
             <button
                 onClick={ redirectToSessionStats }
-                className='StatsButtonButton'
+                className='MenuButton'
             >Stats</button>
         </div>
     )
