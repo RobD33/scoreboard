@@ -19,21 +19,29 @@
     grid-template-rows: 19% 35% 30% 16%;
     grid-template-areas: 
     ". . . ."
-    ". arrowHead arrowBodyWrapper ."
+    ". arrowHeadWrapper arrowBodyWrapper ."
     ". BackButtonText BackButtonText ."
     ". . . .";
+}
+
+.arrowHeadWrapper {
+    grid-area: arrowHeadWrapper;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .arrowHead {
     grid-area: arrowHead;
     width: 0; 
     height: 0; 
-    border-top: 1vw solid transparent;
-    border-bottom: 1vw solid transparent;
-    border-right: 1vw solid var(--mainColor);
+    border-top: 2vmin solid transparent;
+    border-bottom: 2vmin solid transparent;
+    border-right: 2vmin solid var(--mainColor);
 }
 
 .arrowBodyWrapper {
+    position: relative;
     grid-area: arrowBodyWrapper;
     display: flex;
     justify-content: center;
@@ -41,10 +49,10 @@
 }
 
 .arrowBody {
-    position: relative;
-    right: 0.2vw;
-    width: 2vw;
-    height: 1.5vh;
+    position: absolute;
+    left: 0px;
+    width: 90%;
+    height: 50%;
     background-color: var(--mainColor);
 }
 

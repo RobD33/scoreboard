@@ -5,7 +5,9 @@ const BackButton = ({ onClick }: Props) => {
     return (
         <div className='BackButton'>
             <div className='BackButtonButton' onClick={() => onClick()}>
-                <div className='arrowHead' />
+                <div className='arrowHeadWrapper'>
+                    <div className='arrowHead' />
+                </div>
                 <div className='arrowBodyWrapper'>
                     <div className='arrowBody' />
                 </div>
