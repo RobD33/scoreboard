@@ -44,5 +44,7 @@
     font-family: inherit;
     outline: none;
     box-shadow: none;
-    font-size: inherit;
+    font-size: 1.5em;
+    background-color: black;
+    color: var(--mainColor);
 }

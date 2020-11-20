@@ -10,7 +10,7 @@ const ExitMenu = () => {
     return (
         <div className='ExitMenu'>
             <button className='MenuButton' onClick={redirectToLanding}>
-                exit
+                Exit
             </button>
         </div>
     )

@@ -8,7 +8,7 @@ const SettingsButton = () => {
 
     return (
         <div className='SettingsButton'>
-        <button onClick={ redirectToSettings } className='MenuButton'>settings</button>
+        <button onClick={ redirectToSettings } className='MenuButton'>Settings</button>
         </div>
     )
 }
