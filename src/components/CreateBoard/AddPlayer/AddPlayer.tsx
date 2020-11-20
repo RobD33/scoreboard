@@ -35,6 +35,7 @@ const handleSubmit = (value: string, addPlayerToGroupAndSession: Function, setSt
 }
 
 const handleKeyDown = (value: string, addPlayerToGroupAndSession: Function, setState: Function, e: React.KeyboardEvent<HTMLDivElement>): void => {
+    console.log(e.key)
     if( e.key === 'Enter'){
         handleSubmit(value, addPlayerToGroupAndSession, setState)
     }
