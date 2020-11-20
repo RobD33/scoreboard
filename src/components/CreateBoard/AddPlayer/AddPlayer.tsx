@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { SyntheticEvent } from 'react'
 import './AddPlayer.css'
 
 const AddPlayer = ({ addPlayerToGroupAndSession} :Props) => {
@@ -12,6 +12,7 @@ const AddPlayer = ({ addPlayerToGroupAndSession} :Props) => {
                     type="text"
                     value={state.value}
                     onChange={(e) => handleChange(e, setState)}
+                    onKeyDown={(e) => handleKeyDown(state.value, addPlayerToGroupAndSession, setState, e)}
                 />
             </label>
             <button
@@ -30,6 +31,12 @@ const handleSubmit = (value: string, addPlayerToGroupAndSession: Function, setSt
     if(value) {
         addPlayerToGroupAndSession(value)
         setState({ value: '' })
+    }
+}
+
+const handleKeyDown = (value: string, addPlayerToGroupAndSession: Function, setState: Function, e: React.KeyboardEvent<HTMLDivElement>): void => {
+    if( e.key === 'Enter'){
+        handleSubmit(value, addPlayerToGroupAndSession, setState)
     }
 }
 
