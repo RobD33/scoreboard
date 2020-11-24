@@ -20,7 +20,8 @@
     }
   ],
   "start_url": "https://poolaholics-anonymous.herokuapp.com/",
-  "display": "fullscreen",
+  "display": "standalone",
+  "orientation":  "landscape",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
