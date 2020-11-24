@@ -10,13 +10,24 @@ import Frame from './Data/Frame';
 import ModalProps from './Data/ModalProps';
 import './App.css';
 import SessionStats from './components/Stats/SessionStats';
+import AppState from './Data/AppState';
+import DataStore from './Data/DataStore';
+import LocalStorage from './Data/LocalStorage';
 
 function App() {
+
+  const storage: DataStore = new LocalStorage()
+
+  const getAppState = ():AppState => {
+    const state = storage.loadState()
+    if(state) setCSSVariables(state.displaySettings)
+    return state ? state : generateNewAppState()
+  }
 
   const [appState, setAppState] = React.useState(getAppState);
 
   useEffect(() => {
-    localStorage.setItem('scoreboard', JSON.stringify(appState));
+    storage.saveState(appState);
   })
 
   const closeModal = useCallback(() => {
@@ -157,13 +168,6 @@ function App() {
   );
 }
 
-const getAppState = ():AppState => {
-  const stateJSON: string | null = localStorage.getItem('scoreboard')
-  const state: AppState | null = stateJSON ? JSON.parse(stateJSON) : null
-  if(state) setCSSVariables(state.displaySettings)
-  return state ? state : generateNewAppState()
-}
-
 const generateNewAppState = (): AppState => {
   return {
     frames: [],
@@ -211,14 +215,6 @@ const setCSSVariables = (displaySettings: DisplaySettings): void => {
     }
   }
   root.style.setProperty(`--font-family`, displaySettings.fontFamily)
-}
-
-interface AppState {
-  frames: Frame[];
-  groupPlayers: string[];
-  sessionPlayers: string[];
-  displaySettings: DisplaySettings;
-  modalProps: ModalProps;
 }
 
 export default App;
