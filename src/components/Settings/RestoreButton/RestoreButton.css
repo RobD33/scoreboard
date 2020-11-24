@@ -1,0 +1,29 @@
+.RestoreButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 11vmin;
+  width: 11vmin;
+  grid-area: RestoreButton;
+}
+
+.RestoreButtonButton {
+  border-radius: 50%;
+  height: 10vmin;
+  width: 10vmin;
+  font-family: inherit;
+  outline: none;
+  box-shadow: 0px 0px 1px 1px inset, 0px 0px 1px 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.RestoreButtonText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  grid-area: RestoreButtonText;
+  font-size: 0.018em;
+}

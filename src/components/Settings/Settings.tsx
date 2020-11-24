@@ -7,6 +7,7 @@ import ThemeSelector from './ThemeSelector/ThemeSelector';
 import ScoresToggle from './ScoresToggle/ScoresToggle';
 import './Settings.css';
 import BackButton from '../Common/BackButton/BackButton';
+import RestoreButton from './RestoreButton/RestoreButton';
 
 const Settings = ( { updateDisplaySettings, displaySettings, setDefaultDisplaySettings }: Props) => {
     const history = useHistory();
@@ -15,7 +16,7 @@ const Settings = ( { updateDisplaySettings, displaySettings, setDefaultDisplaySe
     return (
         <div className='Settings'>
             <BackButton onClick={ redirectToScoreboard } />
-            <button className='DefaultButton' onClick={ () => setDefaultDisplaySettings() }>Restore Defaults</button>
+            <RestoreButton setDefaultDisplaySettings={ setDefaultDisplaySettings } />
             <ThemeSelector displaySettings={ displaySettings } handleThemeChange={ handleThemeChange(displaySettings, updateDisplaySettings) } onChangeComplete={ onChangeComplete(displaySettings, updateDisplaySettings) }/>
             <FontSelector displaySettings={ displaySettings } handleFontChange= { handleFontChange(displaySettings, updateDisplaySettings) }/>
             <ScoresToggle displaySettings={ displaySettings } handleScoresToggle={ handleScoresToggle(displaySettings, updateDisplaySettings) } />

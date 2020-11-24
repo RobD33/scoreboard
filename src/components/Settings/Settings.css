@@ -17,3 +17,9 @@
     left: 2vw;
     bottom: 2vw;
 }
+
+.RestoreButton {
+    position: fixed;
+    right: 2vw;
+    bottom: 2vw;
+}

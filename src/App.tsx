@@ -49,7 +49,8 @@ function App() {
 
   const addPlayerToGroupAndSession = useCallback((player: string) => {
     setAppState(state => {
-      return state.sessionPlayers.length < 6 ? {
+      if(!state.groupPlayers.includes(player)) {
+        return state.sessionPlayers.length < 6 ? {
           ...state,
           sessionPlayers: [ ...state.sessionPlayers, player ],
           groupPlayers: [ ...state.groupPlayers, player ]
@@ -58,6 +59,9 @@ function App() {
           ...state,
           groupPlayers: [ ...state.groupPlayers, player ]
         }
+      } else {
+        return { ...state }
+      }
     })
   }, [])
 
@@ -65,7 +69,7 @@ function App() {
     setAppState(state => {
       return {
         ...state,
-        sessionPlayers: state.sessionPlayers.filter(player => player !== playerOut)
+        sessionPlayers: [...state.sessionPlayers.filter(player => player !== playerOut)]
       }
     })
   }, [])
