@@ -3,23 +3,18 @@
     font-size: 0.07em;
     border-style: double;
     padding: 5%;
-    border-radius: 5%;
-    
+    border-radius: 5%; 
 }
 
-.RemoveButton {
-    background-color: black;
-    font-size: 100%;
-    border: none;
-    outline: none;
-    color: red;
-    float: right;
-}
-
-.Player {
+.PlayerList .Player {
     height: 15%;
     display: grid;
-    grid-template-columns: 85% 15%;
+    grid-template-columns: 15% 85%;
     grid-template-areas:
-        "Name RemoveButton"
+        "RemoveButton Name"
+}
+
+.PlayerList .Name {
+    grid-area: Name;
+    text-align: right;
 }

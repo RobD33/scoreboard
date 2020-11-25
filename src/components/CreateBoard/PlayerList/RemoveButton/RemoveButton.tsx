@@ -1,9 +1,9 @@
 import React from 'react'
-import './AddButton.css'
+import './RemoveButton.css'
 
-const AddButton = ({ addPlayerToSession, player }: Props) => {
+const RemoveButton = ({ removePlayerFromSession, player }: Props) => {
     return (
-        <div className='AddButton' onClick={() => addPlayerToSession(player)}>
+        <div className='RemoveButton' onClick={() => removePlayerFromSession(player)}>
             <div className='arrowHeadWrapper'>
                     <div className='arrowHead' />
                 </div>
@@ -15,8 +15,8 @@ const AddButton = ({ addPlayerToSession, player }: Props) => {
 }
 
 interface Props {
-    addPlayerToSession: Function;
+    removePlayerFromSession: Function;
     player: string;
 }
 
-export default AddButton;
+export default RemoveButton;

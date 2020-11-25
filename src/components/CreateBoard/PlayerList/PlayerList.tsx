@@ -1,5 +1,6 @@
 import React from 'react'
 import './PlayerList.css'
+import RemoveButton from './RemoveButton/RemoveButton'
 
 const PlayerList = ({ sessionPlayers, removePlayerFromSession }: Props) => {
     return (
@@ -8,7 +9,10 @@ const PlayerList = ({ sessionPlayers, removePlayerFromSession }: Props) => {
                 return(
                     <div key={player} className='Player'>
                         <label className='Name'>{player}</label>
-                        <button className='RemoveButton' onClick={(e) => removePlayerFromSession(player) }>-</button>
+                        <RemoveButton
+                            removePlayerFromSession={ removePlayerFromSession }
+                            player={ player }
+                        />
                     </div>
                 )
             })}

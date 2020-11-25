@@ -24,14 +24,14 @@
     ". . . .";
 }
 
-.arrowHeadWrapper {
+.BackButton .arrowHeadWrapper {
     grid-area: arrowHeadWrapper;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.arrowHead {
+.BackButton .arrowHead {
     grid-area: arrowHead;
     width: 0; 
     height: 0; 
@@ -40,7 +40,7 @@
     border-right: 2vmin solid var(--mainColor);
 }
 
-.arrowBodyWrapper {
+.BackButton .arrowBodyWrapper {
     position: relative;
     grid-area: arrowBodyWrapper;
     display: flex;
@@ -48,7 +48,7 @@
     align-items: center;
 }
 
-.arrowBody {
+.BackButton .arrowBody {
     position: absolute;
     left: 0px;
     width: 90%;

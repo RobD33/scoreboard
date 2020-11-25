@@ -1,0 +1,43 @@
+.RemoveButton {
+  grid-area: RemoveButton;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "arrowHeadWrapper arrowBodyWrapper";
+}
+
+.RemoveButton .arrowHeadWrapper {
+  grid-area: arrowHeadWrapper;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.RemoveButton .arrowHead {
+  grid-area: arrowHead;
+  position: absolute;
+  width: 0; 
+  height: 0;
+  right: 0px;
+  border-top: 2vmin solid transparent;
+  border-bottom: 2vmin solid transparent;
+  border-right: 2vmin solid var(--mainColor);
+}
+
+.RemoveButton .arrowBodyWrapper {
+  position: relative;
+  grid-area: arrowBodyWrapper;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.RemoveButton .arrowBody {
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  left: 0px;
+  background-color: var(--mainColor);
+}

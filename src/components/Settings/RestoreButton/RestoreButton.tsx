@@ -5,7 +5,7 @@ const RestoreButton = ({ setDefaultDisplaySettings }: Props) => {
   return (
     <div className='RestoreButton'>
         <div className='RestoreButtonButton' onClick={() => setDefaultDisplaySettings()}>
-            <label className='RestoreButtonText'>RESTORE DEFAULTS</label>
+            <label className='RestoreButtonText'>RESET</label>
         </div>
     </div>
   )
