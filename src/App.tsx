@@ -121,6 +121,16 @@ function App() {
     })
   },[])
 
+  const clearAllPlayers = useCallback(() => {
+    setAppState(state => {
+      return {
+        ...state,
+        groupPlayers: [],
+        sessionPlayers: []
+      }
+    })
+  }, [])
+
   const setDefaultDisplaySettings = useCallback(() => {
     updateDisplaySettings(defaultDisplaySettings)
   },[updateDisplaySettings])
@@ -146,6 +156,8 @@ function App() {
           sessionPlayers={ appState.sessionPlayers }
           addPlayerToGroupAndSession={ addPlayerToGroupAndSession }
           removePlayerFromSession={ removePlayerFromSession }
+          setModalProps={ setModalProps }
+          clearAllPlayers={ clearAllPlayers }
         />}/>
         <Route exact path='/scoreboard' render={(props) => <Scoreboard
           {...props}

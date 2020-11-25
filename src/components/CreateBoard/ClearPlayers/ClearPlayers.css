@@ -1,0 +1,21 @@
+.ClearPlayers {
+  grid-area: ClearPlayers;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ClearPlayersButton {
+  font-size: 0.04em;
+  border-style: double;
+  border-radius: 2vmin;
+  border-color: var(--mainColor);
+  text-align: center;
+  height: 40%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
