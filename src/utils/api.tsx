@@ -7,4 +7,6 @@ const authorize = (username:String, password: String) => {
   .catch(console.log)
 }
 
-export default { authorize }
+const API = { authorize }
+
+export default API
