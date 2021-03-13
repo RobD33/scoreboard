@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
+import api from '../../utils/api';
 import './Login.css'
 
 const Login = ({} :Props) => {
-  const [state, setState] = React.useState({ username: '', password: ''});
+  const [state, setState] = React.useState({ username: '', password: '', authorized: false});
 
   const handleUsernameChange = useCallback((e) => {
     const username = e.target.value
@@ -17,6 +18,11 @@ const Login = ({} :Props) => {
       return {...state, password}
     })
   }, [])
+
+  const submit = () => {
+    api.authorize(state.username, state.password)
+      .then(console.log)
+  }
 
   return(
     <div className='Login'>
@@ -37,6 +43,14 @@ const Login = ({} :Props) => {
           value={state.password}
           onChange={(e) => handlePasswordChange(e)}
         />
+      </div>
+      <div className='buttons'>
+        <button
+          className='loginButton'
+          onClick={submit}
+        >
+          Log In
+        </button>
       </div>
     </div>
   )
