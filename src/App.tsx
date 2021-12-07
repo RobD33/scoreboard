@@ -13,6 +13,7 @@ import SessionStats from './components/Stats/SessionStats';
 import AppState from './Data/AppState';
 import DataStore from './Data/DataStore';
 import LocalStorage from './Data/LocalStorage';
+import SessionType from "./Data/SessionType";
 
 function App() {
 
@@ -174,7 +175,7 @@ function App() {
           displaySettings={ appState.displaySettings }
           setDefaultDisplaySettings={ setDefaultDisplaySettings }
         />}/>
-        <Route exact path='/sessionstats' render={props => <SessionStats 
+        <Route exact path='/sessionstats' render={props => <SessionStats
           {...props}
           frames={ appState.frames }
           sessionPlayers={ appState.sessionPlayers }
@@ -197,11 +198,12 @@ const generateNewAppState = (): AppState => {
       positiveCallback: () => {},
       negativeCallback: () => {},
       active: false
-    }
+    },
+    sessionType: SessionType.freePlay,
   }
 }
 
-const defaultDisplaySettings: DisplaySettings = { 
+const defaultDisplaySettings: DisplaySettings = {
     totalScores: true,
     individualScores: false,
     eightballClears: false,
