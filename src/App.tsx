@@ -15,6 +15,7 @@ import DataStore from './Data/DataStore';
 import LocalStorage from './Data/LocalStorage';
 import Login from './components/Login/Login';
 import SessionType from "./Data/SessionType";
+import TournamentBoard from "./components/TournamentBoard/TournamentBoard";
 
 function App() {
 
@@ -170,6 +171,7 @@ function App() {
           displaySettings={ appState.displaySettings }
           setModalProps={ setModalProps }
         />}/>
+        <Route exact path='/tournament' render={() => <TournamentBoard/>}/>
         <Route exact path='/settings' render={(props) => <Settings
           {...props}
           updateDisplaySettings={ updateDisplaySettings }
