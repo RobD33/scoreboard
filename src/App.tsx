@@ -13,6 +13,7 @@ import SessionStats from './components/Stats/SessionStats';
 import AppState from './Data/AppState';
 import DataStore from './Data/DataStore';
 import LocalStorage from './Data/LocalStorage';
+import Login from './components/Login/Login';
 import SessionType from "./Data/SessionType";
 
 function App() {
@@ -179,6 +180,9 @@ function App() {
           {...props}
           frames={ appState.frames }
           sessionPlayers={ appState.sessionPlayers }
+        />}/>
+        <Route exact path='/login' render={props => <Login
+        {...props}
         />}/>
       </Switch>
     </div>

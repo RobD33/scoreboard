@@ -15,8 +15,13 @@ const Landing = ({ createNewSession, sessionValid }: Props) => {
         if (sessionValid) redirectTo('scoreboard')
     }, [redirectTo, sessionValid])
 
+    const handleLogin = useCallback(() => {
+        redirectTo('login')
+    },[redirectTo])
+
     return (
         <div className='Landing'>
+            <label className='login' onClick={e => handleLogin()}>Log In</label>
             <label className='title'>PoolTracker</label>
             <label className='new' onClick={(e) => handleNew()}>Create New Session</label>
             <label className={`continue ${!sessionValid && 'noSession'}`} onClick={(e) => handleContinue()}>Continue Last Session</label>
