@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DisplaySettings from '../../Data/DisplaySettings';
 import { ColorResult } from 'react-color'
 import FontSelector from './FontSelector/FontSelector';
@@ -10,8 +10,8 @@ import BackButton from '../Common/BackButton/BackButton';
 import RestoreButton from './RestoreButton/RestoreButton';
 
 const Settings = ( { updateDisplaySettings, displaySettings, setDefaultDisplaySettings }: Props) => {
-    const history = useHistory();
-    const redirectToScoreboard = useCallback(() => history.push('/scoreboard'), [history]);
+    const navigate = useNavigate();
+    const redirectToScoreboard = useCallback(() => navigate('/scoreboard'), [navigate]);
 
     return (
         <div className='Settings'>

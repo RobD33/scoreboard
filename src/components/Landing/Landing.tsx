@@ -1,23 +1,22 @@
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Landing.css';
 
 const Landing = ({ createNewSession, sessionValid }: Props) => {
-    const history = useHistory();
-    const redirectTo = useCallback((path) => history.push(path), [history]);
+    const navigate = useNavigate();
 
     const handleNew = useCallback(() => {
         createNewSession();
-        redirectTo('createboard');
-    }, [createNewSession, redirectTo])
+        navigate('createboard');
+    }, [createNewSession, navigate])
 
     const handleContinue = useCallback(() => {
-        if (sessionValid) redirectTo('scoreboard')
-    }, [redirectTo, sessionValid])
+        if (sessionValid) navigate('scoreboard')
+    }, [sessionValid, navigate])
 
     const handleLogin = useCallback(() => {
-        redirectTo('login')
-    },[redirectTo])
+        navigate('login')
+    },[navigate])
 
     return (
         <div className='Landing'>

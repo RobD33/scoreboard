@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './SettingsButton.css';
 
 const SettingsButton = () => {
-    const history = useHistory();
-    const redirectToSettings = useCallback(() => history.push('/settings'), [history]);
+    const navigate = useNavigate();
+    const redirectToSettings = useCallback(() => navigate('/settings'), [navigate]);
 
     return (
         <div className='SettingsButton'>

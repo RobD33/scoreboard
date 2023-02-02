@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './StatsButton.css';
 
 const StatsButton = () => {
-    const history = useHistory();
-    const redirectToSessionStats = useCallback(() => history.push('/sessionstats'), [history]);
+    const navigate = useNavigate();
+    const redirectToSessionStats = useCallback(() => navigate('/sessionstats'), [navigate]);
 
     return (
         <div className='StatsButton'>

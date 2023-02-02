@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Frame from '../../Data/Frame';
 import BackButton from '../Common/BackButton/BackButton';
 import PlayerStats from './PlayerStats/PlayerStats';
@@ -7,8 +7,8 @@ import './SessionStats.css';
 
 const SessionStats = ({ frames, sessionPlayers }: Props) => {
 
-    const history = useHistory()
-    const redirectToScoreboard = useCallback(() => history.push('/scoreboard'), [history]);
+    const navigate = useNavigate()
+    const redirectToScoreboard = useCallback(() => navigate('/scoreboard'), [navigate]);
 
     const [playersIndex, setPlayersIndex] = useState(0)
 
@@ -38,7 +38,7 @@ const SessionStats = ({ frames, sessionPlayers }: Props) => {
         2: 'right'
     }
 
-    const changePlayersIndex = useCallback((increment) => {
+    const changePlayersIndex = useCallback((increment: number) => {
         setPlayersIndex(playersIndex => sanitizeIndex(playersIndex + increment))
     }, [sanitizeIndex])
 

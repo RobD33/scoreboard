@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './ExitMenu.css';
 
 const ExitMenu = () => {
 
-    const history = useHistory();
-    const redirectToLanding = useCallback(() => history.push('/'), [history]);
+    const navigate = useNavigate();
+    const redirectToLanding = useCallback(() => navigate('/'), [navigate]);
 
     return (
         <div className='ExitMenu'>

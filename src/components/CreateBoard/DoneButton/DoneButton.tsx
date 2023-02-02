@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './DoneButton.css'
 
 const DoneButton = ({ numberOfSessionPlayers}: Props) => {
-    const history = useHistory();
-    const redirectToScoreboard = useCallback(() => history.push('/scoreboard'), [history]);
+    const navigate = useNavigate();
+    const redirectToScoreboard = useCallback(() => navigate('/scoreboard'), [navigate]);
 
     return (
         <div className='DoneButton'>

@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './EditPlayers.css';
 
 const EditPlayers = () => {
-    const history = useHistory();
-    const redirectToCreateBoard = useCallback(() => history.push('/createboard'), [history]);
+    const navigate = useNavigate();
+    const redirectToCreateBoard = useCallback(() => navigate('/createboard'), [navigate]);
 
     return (
         <div className='EditPlayers'>

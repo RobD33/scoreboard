@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import CreateBoard from './components/CreateBoard/CreateBoard';
 import Landing from './components/Landing/Landing';
 import Modal from './components/Modal/Modal';
@@ -145,14 +145,12 @@ function App() {
   return (
     <div className='App'>
       <Modal {...appState.modalProps} closeModal={closeModal}/>
-      <Switch>
-        <Route exact path='/' render={(props) => <Landing
-          {...props}
+      <Routes>
+        <Route path='/' element={<Landing
           createNewSession={ createNewSession }
           sessionValid={ sessionValid }
         />}/>
-        <Route exact path='/createboard' render={(props) => <CreateBoard
-          {...props}
+        <Route path='/createboard' element={<CreateBoard
           addPlayerToSession={ addPlayerToSession }
           listOfPotentialPlayers={ listOfPotentialPLayers }
           sessionPlayers={ appState.sessionPlayers }
@@ -161,8 +159,7 @@ function App() {
           setModalProps={ setModalProps }
           clearAllPlayers={ clearAllPlayers }
         />}/>
-        <Route exact path='/scoreboard' render={(props) => <Scoreboard
-          {...props}
+        <Route path='/scoreboard' element={<Scoreboard
           frames={ appState.frames }
           sessionPlayers={ appState.sessionPlayers }
           addFrame={ addFrame}
@@ -170,21 +167,18 @@ function App() {
           displaySettings={ appState.displaySettings }
           setModalProps={ setModalProps }
         />}/>
-        <Route exact path='/settings' render={(props) => <Settings
-          {...props}
+        <Route path='/settings' element={<Settings
           updateDisplaySettings={ updateDisplaySettings }
           displaySettings={ appState.displaySettings }
           setDefaultDisplaySettings={ setDefaultDisplaySettings }
         />}/>
-        <Route exact path='/sessionstats' render={props => <SessionStats
-          {...props}
+        <Route path='/sessionstats' element={<SessionStats
           frames={ appState.frames }
           sessionPlayers={ appState.sessionPlayers }
         />}/>
-        <Route exact path='/login' render={props => <Login
-        {...props}
+        <Route path='/login' element={<Login
         />}/>
-      </Switch>
+      </Routes>
     </div>
   );
 }

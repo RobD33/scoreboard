@@ -2,17 +2,17 @@ import React, { useCallback } from 'react';
 import api from '../../utils/api';
 import './Login.css'
 
-const Login = ({} :Props) => {
+const Login = () => {
   const [state, setState] = React.useState({ username: '', password: '', authorized: false});
 
-  const handleUsernameChange = useCallback((e) => {
+  const handleUsernameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const username = e.target.value
     setState(state => {
       return {...state, username}
     })
   }, [])
 
-  const handlePasswordChange = useCallback((e) => {
+  const handlePasswordChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const password = e.target.value
     setState(state => {
       return {...state, password}
@@ -56,6 +56,6 @@ const Login = ({} :Props) => {
   )
 }
 
-interface Props {}
+// interface Props {}
 
 export default Login
