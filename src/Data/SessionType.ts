@@ -1,7 +1,8 @@
 enum SessionType {
-  league = 'league',
-  tournament = 'tournament',
-  freePlay = 'freePlay'
+  league = 'League',
+  tournament = 'Tournament',
+  freePlay = 'Free Play',
+  roundRobin = 'Round Robin',
 }
 
 export default SessionType;

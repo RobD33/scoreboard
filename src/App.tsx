@@ -15,6 +15,7 @@ import DataStore from './Data/DataStore';
 import LocalStorage from './Data/LocalStorage';
 import Login from './components/Login/Login';
 import SessionType from "./Data/SessionType";
+import GameSelect from './components/GameSelect/GameSelect';
 
 function App() {
 
@@ -178,6 +179,7 @@ function App() {
         />}/>
         <Route path='/login' element={<Login
         />}/>
+        <Route path='/gameselect' element={<GameSelect/>}/>
       </Routes>
     </div>
   );
