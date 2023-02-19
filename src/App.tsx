@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import CreateBoard from './components/CreateBoard/CreateBoard';
 import Landing from './components/Landing/Landing';
 import Modal from './components/Modal/Modal';
-import Scoreboard from './components/Scoreboard/Scoreboard'
 import Settings from './components/Settings/Settings';
 import DisplaySettings from './Data/DisplaySettings';
 import Frame from './Data/Frame';
@@ -16,6 +15,8 @@ import LocalStorage from './Data/LocalStorage';
 import Login from './components/Login/Login';
 import SessionType from "./Data/SessionType";
 import GameSelect from './components/GameSelect/GameSelect';
+import Display from './components/Display/Display';
+import Match from './Data/Match';
 
 function App() {
 
@@ -23,7 +24,11 @@ function App() {
 
   const getAppState = ():AppState => {
     const state = storage.loadState()
+
     if(state) setCSSVariables(state.displaySettings)
+    if(state && !state.RRmatches) {
+      state.RRmatches = [];
+    }
     return state ? state : generateNewAppState()
   }
 
@@ -119,7 +124,8 @@ function App() {
       return {
         ...state,
         sessionPlayers: [],
-        frames: []
+        frames: [],
+        RRmatches: [],
       }
     })
   },[])
@@ -129,7 +135,43 @@ function App() {
       return {
         ...state,
         groupPlayers: [],
-        sessionPlayers: []
+        sessionPlayers: [],
+      }
+    })
+  }, [])
+
+  const setSessionType = useCallback((sessionType: SessionType) => {
+    setAppState(state => ({
+      ...state,
+      sessionType,
+    }))
+  }, [])
+
+  const createRoundRobin = useCallback(() => {
+    setAppState(state => {
+      const RRmatches = state.sessionPlayers.reduce((acc: Match[], playerOne) => [
+        ...acc, ...state.sessionPlayers.map(playerTwo => ({
+            playerOne, playerTwo, winner: undefined, frames: [],
+        }))], []).filter(match => match.playerOne !== match.playerTwo)
+
+      return {
+        ...state,
+        RRmatches,
+      }
+    })
+  }, [])
+
+  const addFrameToMatch = useCallback((match: Match, frame: Frame) => {
+    setAppState(state => {
+      const RRmatches = [...state.RRmatches]
+      const index = RRmatches.indexOf(match)
+      RRmatches[index] = {
+        ...match,
+        frames: [...match.frames, frame]
+      }
+      return {
+        ...state,
+        RRmatches,
       }
     })
   }, [])
@@ -141,7 +183,6 @@ function App() {
   const sessionValid = appState.sessionPlayers.length > 1
 
   const listOfPotentialPLayers = appState.groupPlayers.filter(player => !appState.sessionPlayers.includes(player))
-
 
   return (
     <div className='App'>
@@ -160,13 +201,16 @@ function App() {
           setModalProps={ setModalProps }
           clearAllPlayers={ clearAllPlayers }
         />}/>
-        <Route path='/scoreboard' element={<Scoreboard
+        <Route path='/play' element={<Display
           frames={ appState.frames }
           sessionPlayers={ appState.sessionPlayers }
           addFrame={ addFrame}
           removeLastFrame={ removeLastFrame }
           displaySettings={ appState.displaySettings }
           setModalProps={ setModalProps }
+          sessionType={ appState.sessionType }
+          RRmatches={ appState.RRmatches }
+          addFrameToMatch={ addFrameToMatch }
         />}/>
         <Route path='/settings' element={<Settings
           updateDisplaySettings={ updateDisplaySettings }
@@ -179,7 +223,11 @@ function App() {
         />}/>
         <Route path='/login' element={<Login
         />}/>
-        <Route path='/gameselect' element={<GameSelect/>}/>
+        <Route path='/gameselect' element={<GameSelect
+          setSessionType={setSessionType}
+          RRmatches={ appState.RRmatches }
+          createRoundRobin={ createRoundRobin }
+        />}/>
       </Routes>
     </div>
   );
@@ -191,6 +239,7 @@ const generateNewAppState = (): AppState => {
     groupPlayers: [],
     sessionPlayers: [],
     displaySettings: defaultDisplaySettings,
+    RRmatches: [],
     modalProps: {
       message: '',
       positiveButtonText: '',
@@ -218,8 +267,7 @@ const defaultDisplaySettings: DisplaySettings = {
       playerFiveColor: 'rgb(255, 165, 0)',
       playerSixColor: 'rgb(0, 128, 0)',
     }
-  }
-
+}
 
 const setCSSVariables = (displaySettings: DisplaySettings): void => {
   let root = document.documentElement

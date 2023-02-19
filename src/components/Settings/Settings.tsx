@@ -11,7 +11,7 @@ import RestoreButton from './RestoreButton/RestoreButton';
 
 const Settings = ( { updateDisplaySettings, displaySettings, setDefaultDisplaySettings }: Props) => {
     const navigate = useNavigate();
-    const redirectToScoreboard = useCallback(() => navigate('/scoreboard'), [navigate]);
+    const redirectToScoreboard = useCallback(() => navigate(-1), [navigate]);
 
     return (
         <div className='Settings'>

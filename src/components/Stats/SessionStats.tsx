@@ -8,7 +8,7 @@ import './SessionStats.css';
 const SessionStats = ({ frames, sessionPlayers }: Props) => {
 
     const navigate = useNavigate()
-    const redirectToScoreboard = useCallback(() => navigate('/scoreboard'), [navigate]);
+    const redirectToScoreboard = useCallback(() => navigate(-1), [navigate]);
 
     const [playersIndex, setPlayersIndex] = useState(0)
 

@@ -9,7 +9,7 @@
     grid-template-rows: 10% 80% 10%;
     grid-template-areas:
         ". . . . ."
-        ". playerOne dash playerTwo ."
+        ". pdplayerOne dash pdplayerTwo ."
         ". . . . .";
 }
 
@@ -19,7 +19,7 @@
     grid-template-rows: 5% 90% 5%;
     grid-template-areas:
         ". . . . ."
-        ". playerOne playerTwo playerThree ."
+        ". pdplayerOne pdplayerTwo pdplayerThree ."
         ". . . . .";
 }
 
@@ -29,8 +29,8 @@
     grid-template-rows: 5% 45% 45% 5%;
     grid-template-areas:
         ". . . ."
-        ". playerOne playerTwo ."
-        ". playerThree playerFour ."
+        ". pdplayerOne pdplayerTwo ."
+        ". pdplayerThree pdplayerFour ."
         ". . . .";
 }
 
@@ -40,8 +40,8 @@
     grid-template-rows: 5% 45% 45% 5%;
     grid-template-areas:
         ". . . . ."
-        ". playerOne playerTwo playerThree ."
-        ". playerFour playerFive . ."
+        ". pdplayerOne pdplayerTwo pdplayerThree ."
+        ". pdplayerFour pdplayerFive . ."
         ". . . . .";
 }
 
@@ -51,8 +51,8 @@
     grid-template-rows: 5% 45% 45% 5%;
     grid-template-areas:
         ". . . . ."
-        ". playerOne playerTwo playerThree ."
-        ". playerFour playerFive playerSix ."
+        ". pdplayerOne pdplayerTwo pdplayerThree ."
+        ". pdplayerFour pdplayerFive pdplayerSix ."
         ". . . . .";
 }
 

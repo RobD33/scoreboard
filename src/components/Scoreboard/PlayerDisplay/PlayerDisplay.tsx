@@ -15,7 +15,7 @@ const PlayerDisplay = ({ player, opponents, addFrame, eightball, toggleEightball
     const score = framesVsOpponents.length;
 
     return (
-        <div className={`PlayerDisplay ${playerNumberHashMap[playerNumber]}`}>
+        <div className={`PlayerDisplay pd${playerNumberHashMap[playerNumber]} ${playerNumberHashMap[playerNumber]}`}>
             <PlayerTag player={player} numberOfPlayers={opponents.length + 1}/>
             {opponents.length > 1 &&
                 <OpponentsSelector

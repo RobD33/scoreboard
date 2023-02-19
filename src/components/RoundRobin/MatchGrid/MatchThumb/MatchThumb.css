@@ -1,0 +1,21 @@
+.MatchThumb {
+    display: grid;
+    font-size: 0.015em;
+    border-style: double;
+    padding: 3%;
+    border-radius: 5%;
+    border-width: thin;
+}
+
+.active {
+    background-color: var(--mainColor);
+}
+
+.innerMatchThumb {
+    display: grid;
+    border-style: double;
+    padding: 5%;
+    border-radius: 5%;
+    border-width: thin;
+    background-color: black;
+}
