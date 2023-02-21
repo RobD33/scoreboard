@@ -164,6 +164,26 @@ function App() {
     })
   }, [])
 
+  const updateRoundRobin = useCallback(() => {
+    setAppState(state => {
+      const oldRRmatches = [...state.RRmatches]
+      const newRRmatches = state.sessionPlayers.reduce((acc: Match[], playerOne) => [
+        ...acc, ...state.sessionPlayers.map(playerTwo => ({
+            playerOne, playerTwo, winner: undefined, frames: [],
+        }))], []).filter(match => match.playerOne !== match.playerTwo)
+
+      const RRmatches = newRRmatches.map(newMatch => {
+        const oldMatch = oldRRmatches.find(match => match.playerOne === newMatch.playerOne && match.playerTwo === newMatch.playerTwo);
+        return oldMatch || newMatch
+      })
+
+      return {
+        ...state,
+        RRmatches,
+      }
+    })
+  }, [])
+
   const getWinner = (frames: Frame[]): string | undefined => {
     const raceTo = 3;
     let result: string | undefined = undefined
@@ -194,23 +214,6 @@ function App() {
         frames,
         winner
       }
-      return {
-        ...state,
-        RRmatches,
-      }
-    })
-  }, [])
-
-  const setMatchWinner = useCallback((match: Match, winner: string) => {
-    setAppState(state => {
-      const RRmatches = [...state.RRmatches]
-      const index = RRmatches.indexOf(match)
-      RRmatches[index] = {
-        ...match,
-        winner,
-      }
-      console.log('setting winner: ', winner)
-      console.log('on match: ', RRmatches[index])
       return {
         ...state,
         RRmatches,
@@ -300,7 +303,6 @@ function App() {
             displayProps={ displayProps }
             RRmatches={ appState.RRmatches }
             addFrameToMatch={ addFrameToMatch }
-            setMatchWinner={ setMatchWinner }
             sessionPlayers={ appState.sessionPlayers }
             displaySettings={ appState.displaySettings }
             toggleEightball={ toggleEightball }
@@ -327,6 +329,7 @@ function App() {
               setSessionType={setSessionType}
               RRmatches={ appState.RRmatches }
               createRoundRobin={ createRoundRobin }
+              updateRoundRobin={ updateRoundRobin }
             />
           </Display>
         }/>

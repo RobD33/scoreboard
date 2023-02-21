@@ -4,7 +4,7 @@ import SessionType from '../../Data/SessionType'
 import './GameSelect.css'
 import SelectButton from './SelectButton/SelectButton'
 
-const GameSelect = ({ setSessionType, createRoundRobin, RRmatches }: Props) => {
+const GameSelect = ({ setSessionType, createRoundRobin, RRmatches, updateRoundRobin }: Props) => {
     return (
         <div className='GameSelect'>
             { Object.values(SessionType).map((sessionType, index) => {
@@ -15,6 +15,7 @@ const GameSelect = ({ setSessionType, createRoundRobin, RRmatches }: Props) => {
                     setSessionType={ setSessionType }
                     createRoundRobin={ createRoundRobin }
                     RRmatches= { RRmatches }
+                    updateRoundRobin= { updateRoundRobin }
                 />
             })}
         </div>
@@ -25,6 +26,7 @@ interface Props {
     setSessionType: Function;
     createRoundRobin: Function;
     RRmatches: Match[];
+    updateRoundRobin: Function;
 }
 
 export default GameSelect

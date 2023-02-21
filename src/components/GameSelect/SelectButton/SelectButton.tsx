@@ -3,12 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import Match from "../../../Data/Match";
 import SessionType from "../../../Data/SessionType";
 
-const SelectButton = ({ sessionType, index, setSessionType, createRoundRobin, RRmatches }: Props) => {
+const SelectButton = ({ sessionType, index, setSessionType, createRoundRobin, RRmatches, updateRoundRobin }: Props) => {
     const navigate = useNavigate();
 
     const initRR = () => {
-        if (sessionType === SessionType.roundRobin && !RRmatches.length) {
-            createRoundRobin()
+        if (sessionType === SessionType.roundRobin) {
+            if (!RRmatches.length){
+                createRoundRobin()
+            } else {
+                updateRoundRobin()
+            }        
         }
     }
     const path = `/${sessionType.replaceAll(' ', '').toLowerCase()}`
@@ -33,6 +37,7 @@ interface Props {
     setSessionType: Function;
     createRoundRobin: Function;
     RRmatches: Match[];
+    updateRoundRobin: Function;
 }
 
 export default SelectButton

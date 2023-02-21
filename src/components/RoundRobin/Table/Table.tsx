@@ -1,5 +1,6 @@
 import React from "react";
 import Match from "../../../Data/Match";
+import { playerNumberHashMap } from "../../../utils/hashMaps";
 import './Table.css'
 import TableRow from "./TableRow/TableRow";
 
@@ -11,6 +12,8 @@ const Table = ({ RRmatches, sessionPlayers }: Props) => {
     const lost = playedMatches.filter(match => match.winner).length - won;
     const played = won + lost;
     const points = won * 3
+    const playerNumber = sessionPlayers.indexOf(player) + 1;
+    const className = `${playerNumberHashMap[playerNumber]}`
 
     let wonFrame = 0;
     let lostFrame = 0;
@@ -39,6 +42,7 @@ const Table = ({ RRmatches, sessionPlayers }: Props) => {
     frameDiff,
     eightballs,
     points,
+    className,
   }
   }).sort((a, b) => {
     if (a.points > b.points) return -1;
@@ -52,8 +56,9 @@ const Table = ({ RRmatches, sessionPlayers }: Props) => {
 
   return (
     <div className="Table" style={{ gridTemplateRows: `repeat(${sessionPlayers.length}, 1fr)` }}>
-      {rows.map(row => {
+      {rows.map((row, index) => {
         return (<TableRow
+          key={index}
           {...row}
         />)
       })}

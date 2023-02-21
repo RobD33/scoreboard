@@ -11,7 +11,7 @@ import './RoundRobin.css';
 import Table from './Table/Table';
 import TableRow from './Table/TableRow/TableRow';
 
-const RoundRobin = ({ displayProps, RRmatches, sessionPlayers, displaySettings, menu, eightball, toggleEightball, addFrameToMatch, setMatchWinner }: Props) => {
+const RoundRobin = ({ displayProps, RRmatches, sessionPlayers, displaySettings, menu, eightball, toggleEightball, addFrameToMatch }: Props) => {
     const [activeMatchIndex, setActiveMatchIndex] = useState(0);
 
     const addFrame = useCallback((frame: Frame) => {
@@ -44,6 +44,7 @@ const RoundRobin = ({ displayProps, RRmatches, sessionPlayers, displaySettings, 
                                     frameDiff={'+/-'}
                                     eightballs={'8'}
                                     points={'PTS'}
+                                    className={''}
                                 />
                             </div>
                             <Table
@@ -85,5 +86,4 @@ interface Props {
     eightball: boolean;
     toggleEightball: Function;
     addFrameToMatch: Function;
-    setMatchWinner: Function;
 }

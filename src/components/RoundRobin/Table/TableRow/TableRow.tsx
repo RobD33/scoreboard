@@ -1,9 +1,9 @@
 import React from "react";
 import './TableRow.css'
 
-const TableRow = ({ name, played, won, lost, frameDiff, eightballs, points }: Props) => {
+const TableRow = ({ name, played, won, lost, frameDiff, eightballs, points, className }: Props) => {
   return (
-    <div className="TableRow">
+    <div className={`TableRow ${className}`}>
       <label className="RRname">{name}</label>
       <label className="RRplayed">{played}</label>
       <label className="RRwon">{won}</label>
@@ -23,6 +23,7 @@ interface Props {
   frameDiff: number | string;
   eightballs: number | string;
   points: number | string;
+  className: string;
 }
 
 export default TableRow
