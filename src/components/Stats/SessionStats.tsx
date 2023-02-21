@@ -1,14 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Frame from '../../Data/Frame';
 import BackButton from '../Common/BackButton/BackButton';
 import PlayerStats from './PlayerStats/PlayerStats';
 import './SessionStats.css';
 
 const SessionStats = ({ frames, sessionPlayers }: Props) => {
-
-    const navigate = useNavigate()
-    const redirectToScoreboard = useCallback(() => navigate('/scoreboard'), [navigate]);
 
     const [playersIndex, setPlayersIndex] = useState(0)
 
@@ -50,7 +46,7 @@ const SessionStats = ({ frames, sessionPlayers }: Props) => {
             <div onClick={() => changePlayersIndex(1)} className='rightButton'>
                 <div className='rightArrow'/>
             </div>
-            <BackButton onClick={ redirectToScoreboard }/>
+            <BackButton/>
             {indexesToDisplay.map((indexToDisplay, index)=> {
                 return (
                     <PlayerStats

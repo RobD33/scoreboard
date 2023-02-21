@@ -9,7 +9,7 @@
     grid-template-rows: 10% 80% 10%;
     grid-template-areas:
         ". . . . ."
-        ". playerOne dash playerTwo ."
+        ". pdplayerOne dash pdplayerTwo ."
         ". . . . .";
 }
 
@@ -19,7 +19,7 @@
     grid-template-rows: 5% 90% 5%;
     grid-template-areas:
         ". . . . ."
-        ". playerOne playerTwo playerThree ."
+        ". pdplayerOne pdplayerTwo pdplayerThree ."
         ". . . . .";
 }
 
@@ -29,19 +29,19 @@
     grid-template-rows: 5% 45% 45% 5%;
     grid-template-areas:
         ". . . ."
-        ". playerOne playerTwo ."
-        ". playerThree playerFour ."
+        ". pdplayerOne pdplayerTwo ."
+        ". pdplayerThree pdplayerFour ."
         ". . . .";
 }
 
 .Scoreboard.fivePlayer {
     display: grid;
-    grid-template-columns: 5% 30% 30% 30% 5%;
+    grid-template-columns: 8% 28% 28% 28% 8%;
     grid-template-rows: 5% 45% 45% 5%;
     grid-template-areas:
         ". . . . ."
-        ". playerOne playerTwo playerThree ."
-        ". playerFour playerFive . ."
+        ". pdplayerOne pdplayerTwo pdplayerThree ."
+        ". pdplayerFour pdplayerFive . ."
         ". . . . .";
 }
 
@@ -51,8 +51,8 @@
     grid-template-rows: 5% 45% 45% 5%;
     grid-template-areas:
         ". . . . ."
-        ". playerOne playerTwo playerThree ."
-        ". playerFour playerFive playerSix ."
+        ". pdplayerOne pdplayerTwo pdplayerThree ."
+        ". pdplayerFour pdplayerFive pdplayerSix ."
         ". . . . .";
 }
 
@@ -62,4 +62,22 @@
     justify-content: center;
     align-items: center;
     font-size: 0.4em;
+}
+
+.winnerBanner {
+    grid-area: winnerBanner;
+    font-size: 0.05em;
+}
+
+.winnerOverlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    opacity: 0.6;
 }

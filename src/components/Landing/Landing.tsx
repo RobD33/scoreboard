@@ -11,16 +11,16 @@ const Landing = ({ createNewSession, sessionValid }: Props) => {
     }, [createNewSession, navigate])
 
     const handleContinue = useCallback(() => {
-        if (sessionValid) navigate('scoreboard')
+        if (sessionValid) navigate('gameSelect')
     }, [sessionValid, navigate])
 
-    const handleLogin = useCallback(() => {
-        navigate('login')
-    },[navigate])
+    // const handleLogin = useCallback(() => {
+    //     navigate('login')
+    // },[navigate])
 
     return (
         <div className='Landing'>
-            <label className='login' onClick={e => handleLogin()}>Log In</label>
+            {/* <label className='login' onClick={e => handleLogin()}>Log In</label> */}
             <label className='title'>PoolTracker</label>
             <label className='new' onClick={(e) => handleNew()}>Create New Session</label>
             <label className={`continue ${!sessionValid && 'noSession'}`} onClick={(e) => handleContinue()}>Continue Last Session</label>

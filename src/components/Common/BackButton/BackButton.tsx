@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './BackButton.css';
 
-const BackButton = ({ onClick }: Props) => {
+const BackButton = () => {
+    const navigate = useNavigate()
     return (
         <div className='BackButton'>
-            <div className='BackButtonButton' onClick={() => onClick()}>
+            <div className='BackButtonButton' onClick={() => navigate(-1)}>
                 <div className='arrowHeadWrapper'>
                     <div className='arrowHead' />
                 </div>
@@ -17,8 +19,5 @@ const BackButton = ({ onClick }: Props) => {
     )
 }
 
-interface Props {
-    onClick: Function;
-}
 
 export default BackButton;

@@ -4,6 +4,7 @@
     height: 96vh;
     position: fixed;
     left: 100vw;
+    top: 0;
     background-color: black;
     border-radius: 2vw 0vw 0vw 2vw;
     border-style: solid;

@@ -4,14 +4,14 @@ import './DoneButton.css'
 
 const DoneButton = ({ numberOfSessionPlayers}: Props) => {
     const navigate = useNavigate();
-    const redirectToScoreboard = useCallback(() => navigate('/scoreboard'), [navigate]);
+    const redirectToGameSelect = useCallback(() => navigate('/gameselect'), [navigate]);
 
     return (
         <div className='DoneButton'>
             <button
                 className='DoneButtonButton'
                 disabled={ numberOfSessionPlayers < 2 }
-                onClick={redirectToScoreboard}
+                onClick={() => redirectToGameSelect()}
             >GO</button>
         </div>
     )

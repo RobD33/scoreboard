@@ -176,27 +176,27 @@
     border-color: var(--border-color);
 }
 
-.playerOne {
-    grid-area: playerOne;
+.pdplayerOne {
+    grid-area: pdplayerOne;
 }
 
-.playerTwo {
-    grid-area: playerTwo;
+.pdplayerTwo {
+    grid-area: pdplayerTwo;
 }
 
-.playerThree {
-    grid-area: playerThree;
+.pdplayerThree {
+    grid-area: pdplayerThree;
 }
 
-.playerFour {
-    grid-area: playerFour;
+.pdplayerFour {
+    grid-area: pdplayerFour;
 }
 
-.playerFive {
-    grid-area: playerFive;
+.pdplayerFive {
+    grid-area: pdplayerFive;
 }
 
-.playerSix {
-    grid-area: playerSix;
+.pdplayerSix {
+    grid-area: pdplayerSix;
 }
 

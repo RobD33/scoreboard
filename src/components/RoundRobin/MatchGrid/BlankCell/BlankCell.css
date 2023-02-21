@@ -1,0 +1,13 @@
+.BlankCell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: double;
+    border-radius: 5%;
+}
+
+.line1 {
+    position: relative;
+    border-bottom: 3px solid;
+    width: 30%;
+}
