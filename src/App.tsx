@@ -17,6 +17,9 @@ import SessionType from "./Data/SessionType";
 import GameSelect from './components/GameSelect/GameSelect';
 import Display from './components/Display/Display';
 import Match from './Data/Match';
+import Scoreboard from './components/Scoreboard/Scoreboard';
+import RoundRobin from './components/RoundRobin/RoundRobin';
+import DisplayProps from './Data/DisplayProps';
 
 function App() {
 
@@ -161,19 +164,72 @@ function App() {
     })
   }, [])
 
+  const getWinner = (frames: Frame[]): string | undefined => {
+    const raceTo = 3;
+    let result: string | undefined = undefined
+    const scores = frames.reduce((acc, frame) => {
+        const { winner } = frame;
+        acc[winner] = (acc[winner] || 0) + 1;
+        return acc;
+    }, {} as Record<string, number>)
+
+    Object.keys(scores).forEach((player) => {
+        if (scores[player] >= raceTo) {
+            result = player;
+            return;
+        }
+    })
+    
+    return result
+}
+
   const addFrameToMatch = useCallback((match: Match, frame: Frame) => {
     setAppState(state => {
       const RRmatches = [...state.RRmatches]
       const index = RRmatches.indexOf(match)
+      const frames = [...match.frames, frame]
+      const winner = getWinner(frames)
       RRmatches[index] = {
         ...match,
-        frames: [...match.frames, frame]
+        frames,
+        winner
       }
       return {
         ...state,
         RRmatches,
       }
     })
+  }, [])
+
+  const setMatchWinner = useCallback((match: Match, winner: string) => {
+    setAppState(state => {
+      const RRmatches = [...state.RRmatches]
+      const index = RRmatches.indexOf(match)
+      RRmatches[index] = {
+        ...match,
+        winner,
+      }
+      console.log('setting winner: ', winner)
+      console.log('on match: ', RRmatches[index])
+      return {
+        ...state,
+        RRmatches,
+      }
+    })
+  }, [])
+
+  const toggleEightball = useCallback(() => {
+    setAppState(state => ({
+      ...state,
+      eightball: !state.eightball,
+    }))
+}, [])
+
+  const setShowMenu = useCallback((showMenu: boolean) => {
+    setAppState(state => ({
+      ...state,
+      showMenu,
+    }))
   }, [])
 
   const setDefaultDisplaySettings = useCallback(() => {
@@ -184,34 +240,74 @@ function App() {
 
   const listOfPotentialPLayers = appState.groupPlayers.filter(player => !appState.sessionPlayers.includes(player))
 
+  const displayProps: DisplayProps = {
+    removeLastFrame,
+    setModalProps,
+    toggleEightball,
+    eightball: appState.eightball,
+    showEBT: false,
+    showBack: true,
+    showOpts: true,
+    showMenu: appState.showMenu,
+    setShowMenu,
+  }
+
   return (
     <div className='App'>
       <Modal {...appState.modalProps} closeModal={closeModal}/>
       <Routes>
-        <Route path='/' element={<Landing
+        <Route path='/' element={
+        <Display
+          displayProps={{ ...displayProps, showBack: false }}
+        >
+          <Landing
           createNewSession={ createNewSession }
           sessionValid={ sessionValid }
-        />}/>
-        <Route path='/createboard' element={<CreateBoard
-          addPlayerToSession={ addPlayerToSession }
-          listOfPotentialPlayers={ listOfPotentialPLayers }
-          sessionPlayers={ appState.sessionPlayers }
-          addPlayerToGroupAndSession={ addPlayerToGroupAndSession }
-          removePlayerFromSession={ removePlayerFromSession }
-          setModalProps={ setModalProps }
-          clearAllPlayers={ clearAllPlayers }
-        />}/>
-        <Route path='/play' element={<Display
-          frames={ appState.frames }
-          sessionPlayers={ appState.sessionPlayers }
-          addFrame={ addFrame}
-          removeLastFrame={ removeLastFrame }
-          displaySettings={ appState.displaySettings }
-          setModalProps={ setModalProps }
-          sessionType={ appState.sessionType }
-          RRmatches={ appState.RRmatches }
-          addFrameToMatch={ addFrameToMatch }
-        />}/>
+          />
+        </Display>
+        }/>
+        <Route path='/createboard' element={
+        <Display
+          displayProps={{ ...displayProps }}
+        >
+          <CreateBoard
+            addPlayerToSession={ addPlayerToSession }
+            listOfPotentialPlayers={ listOfPotentialPLayers }
+            sessionPlayers={ appState.sessionPlayers }
+            addPlayerToGroupAndSession={ addPlayerToGroupAndSession }
+            removePlayerFromSession={ removePlayerFromSession }
+            setModalProps={ setModalProps }
+            clearAllPlayers={ clearAllPlayers }
+          />
+        </Display>
+        }/>
+        <Route path='freeplay' element={
+        <Display  displayProps={{ ...displayProps, showEBT: true }}>
+          <Scoreboard
+            frames={ appState.frames}
+            sessionPlayers={ appState.sessionPlayers }
+            addFrame={ addFrame }
+            displaySettings={ appState.displaySettings }
+            menu={ false }
+            eightball={ appState.eightball }
+            toggleEightball={ toggleEightball }
+            winner={ undefined }
+          />
+        </Display>
+        }/>
+        <Route path='roundrobin/*' element={
+          <RoundRobin
+            displayProps={ displayProps }
+            RRmatches={ appState.RRmatches }
+            addFrameToMatch={ addFrameToMatch }
+            setMatchWinner={ setMatchWinner }
+            sessionPlayers={ appState.sessionPlayers }
+            displaySettings={ appState.displaySettings }
+            toggleEightball={ toggleEightball }
+            menu={ appState.showMenu }
+            eightball={ appState.eightball }
+          />
+        }/>
         <Route path='/settings' element={<Settings
           updateDisplaySettings={ updateDisplaySettings }
           displaySettings={ appState.displaySettings }
@@ -223,11 +319,17 @@ function App() {
         />}/>
         <Route path='/login' element={<Login
         />}/>
-        <Route path='/gameselect' element={<GameSelect
-          setSessionType={setSessionType}
-          RRmatches={ appState.RRmatches }
-          createRoundRobin={ createRoundRobin }
-        />}/>
+        <Route path='/gameselect' element={
+          <Display
+            displayProps={{ ...displayProps }}
+          >
+            <GameSelect
+              setSessionType={setSessionType}
+              RRmatches={ appState.RRmatches }
+              createRoundRobin={ createRoundRobin }
+            />
+          </Display>
+        }/>
       </Routes>
     </div>
   );
@@ -248,6 +350,8 @@ const generateNewAppState = (): AppState => {
       negativeCallback: () => {},
       active: false
     },
+    eightball: false,
+    showMenu: false,
     sessionType: SessionType.freePlay,
   }
 }

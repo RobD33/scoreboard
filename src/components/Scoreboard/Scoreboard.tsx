@@ -4,7 +4,7 @@ import PlayerDisplay from './PlayerDisplay/PlayerDisplay';
 import './Scoreboard.css';
 import { numberOfPlayersHashMap } from '../../utils/hashMaps';
 
-const Scoreboard = ({ frames, sessionPlayers, addFrame, displaySettings, menu, eightball, toggleEightball }: Props) => {
+const Scoreboard = ({ frames, sessionPlayers, addFrame, displaySettings, menu, eightball, toggleEightball, winner }: Props) => {
 
     return (
         <div className={`Scoreboard ${numberOfPlayersHashMap[sessionPlayers.length]}`}>
@@ -25,6 +25,10 @@ const Scoreboard = ({ frames, sessionPlayers, addFrame, displaySettings, menu, e
             {sessionPlayers.length === 2 &&
                 <div className='dash'>
                     -
+                </div>
+            }
+            { winner && <div className='winnerOverlay'>
+                <div className='winnerBanner'>{`* ${winner} wins! *`}</div>
                 </div>
             }
         </div>
@@ -48,6 +52,7 @@ interface Props {
     menu: boolean;
     eightball: boolean;
     toggleEightball: Function;
+    winner: string | undefined;
 }
 
 export default Scoreboard

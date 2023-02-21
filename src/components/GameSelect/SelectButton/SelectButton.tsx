@@ -11,11 +11,12 @@ const SelectButton = ({ sessionType, index, setSessionType, createRoundRobin, RR
             createRoundRobin()
         }
     }
+    const path = `/${sessionType.replaceAll(' ', '').toLowerCase()}`
 
     const handleSelect = useCallback(() => {
         setSessionType(sessionType)
-        navigate('/play')
-    },[navigate, sessionType, setSessionType])
+        navigate(path)
+    },[navigate, sessionType, setSessionType, path])
 
     return (
         <div className={`SelectButton type${index}`}>

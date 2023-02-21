@@ -11,7 +11,7 @@ const Landing = ({ createNewSession, sessionValid }: Props) => {
     }, [createNewSession, navigate])
 
     const handleContinue = useCallback(() => {
-        if (sessionValid) navigate('scoreboard')
+        if (sessionValid) navigate('gameSelect')
     }, [sessionValid, navigate])
 
     // const handleLogin = useCallback(() => {

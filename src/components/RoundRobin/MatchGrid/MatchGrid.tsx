@@ -3,7 +3,7 @@ import Match from "../../../Data/Match";
 import MatchThumb from "./MatchThumb/MatchThumb";
 import './MatchGrid.css'
 
-const MatchGrid = ({ setShowMatch, RRmatches, sessionPlayers, activeMatch, setActiveMatchIndex }: Props) => {
+const MatchGrid = ({ RRmatches, sessionPlayers, activeMatch, setActiveMatchIndex }: Props) => {
     return (
         <div className="MatchGrid" style={{ gridTemplateColumns: `repeat(${sessionPlayers.length - 1}, 1fr)` }}>
             {RRmatches.map((match, matchIndex) => {
@@ -15,7 +15,6 @@ const MatchGrid = ({ setShowMatch, RRmatches, sessionPlayers, activeMatch, setAc
                             activeMatch={activeMatch}
                             setActiveMatchIndex={setActiveMatchIndex}
                             sessionPlayers={sessionPlayers}
-                            setShowMatch={setShowMatch}
                     />
                 )
             })}
@@ -24,8 +23,6 @@ const MatchGrid = ({ setShowMatch, RRmatches, sessionPlayers, activeMatch, setAc
 }
 
 interface Props {
-    showMatch: Boolean;
-    setShowMatch: Function;
     RRmatches: Match[];
     sessionPlayers: string[];
     activeMatch: Match;

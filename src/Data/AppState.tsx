@@ -1,3 +1,4 @@
+import DisplayOptions from "./DisplayProps";
 import DisplaySettings from "./DisplaySettings";
 import Frame from "./Frame";
 import Match from "./Match";
@@ -12,4 +13,6 @@ export default interface AppState {
   displaySettings: DisplaySettings;
   modalProps: ModalProps;
   sessionType: SessionType;
+  eightball: boolean;
+  showMenu: boolean;
 }

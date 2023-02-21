@@ -1,13 +1,17 @@
 import React, { useCallback, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import DisplayProps from '../../Data/DisplayProps';
 import DisplaySettings from '../../Data/DisplaySettings';
 import Frame from '../../Data/Frame';
 import Match from '../../Data/Match';
+import Display from '../Display/Display';
 import Scoreboard from '../Scoreboard/Scoreboard';
 import MatchGrid from './MatchGrid/MatchGrid';
 import './RoundRobin.css';
+import Table from './Table/Table';
+import TableRow from './Table/TableRow/TableRow';
 
-const RoundRobin = ({ RRmatches, sessionPlayers, displaySettings, menu, eightball, toggleEightball, addFrameToMatch }: Props) => {
-    const [showMatch, setShowMatch] = useState(false);
+const RoundRobin = ({ displayProps, RRmatches, sessionPlayers, displaySettings, menu, eightball, toggleEightball, addFrameToMatch, setMatchWinner }: Props) => {
     const [activeMatchIndex, setActiveMatchIndex] = useState(0);
 
     const addFrame = useCallback((frame: Frame) => {
@@ -15,29 +19,57 @@ const RoundRobin = ({ RRmatches, sessionPlayers, displaySettings, menu, eightbal
     }, [activeMatchIndex, addFrameToMatch, RRmatches])
 
     const activeMatch = RRmatches[activeMatchIndex];
-    const { frames } = activeMatch;
-
+    const { frames, winner } = activeMatch;
 
     return (
-        <div className={`RoundRobin ${showMatch ? 'ShowMatch' : 'ShowGrid'}`}>
-            {showMatch ?
-            <Scoreboard
-                frames = { frames }
-                sessionPlayers= { [activeMatch.playerOne, activeMatch.playerTwo] }
-                addFrame = { addFrame }
-                displaySettings = { displaySettings }
-                menu = { menu }
-                eightball = { eightball }
-                toggleEightball = { toggleEightball }
-            /> :
-            <MatchGrid
-                    showMatch={ showMatch }
-                    setShowMatch={ setShowMatch }
-                    RRmatches={ RRmatches }
-                    sessionPlayers={ sessionPlayers }
-                    activeMatch={ activeMatch }
-                    setActiveMatchIndex={ setActiveMatchIndex }
-            />}
+        <div>
+            <Routes>
+                <Route path='/' element={
+                    <Display
+                        displayProps={{...displayProps }}
+                    >
+                        <div  className={'RoundRobin'}>
+                            <MatchGrid
+                                RRmatches={ RRmatches }
+                                sessionPlayers={ sessionPlayers }
+                                activeMatch={ activeMatch }
+                                setActiveMatchIndex={ setActiveMatchIndex }
+                            />
+                            <div className='RRTableHeader'>
+                                <TableRow
+                                    name={''}
+                                    played={'P'}
+                                    won={'W'}
+                                    lost={'L'}
+                                    frameDiff={'+/-'}
+                                    eightballs={'8'}
+                                    points={'PTS'}
+                                />
+                            </div>
+                            <Table
+                                RRmatches={ RRmatches }
+                                sessionPlayers={ sessionPlayers }
+                            />
+                        </div>
+                    </Display>
+                }/>
+                <Route path='/match' element={
+                    <Display
+                    displayProps={{...displayProps, showEBT: true }}
+                    >
+                    <Scoreboard
+                        frames = { frames }
+                        sessionPlayers= { [activeMatch.playerOne, activeMatch.playerTwo] }
+                        addFrame = { addFrame }
+                        displaySettings = { displaySettings }
+                        menu = { menu }
+                        eightball = { eightball }
+                        toggleEightball = { toggleEightball }
+                        winner={ winner }
+                    /> 
+                    </Display>
+                }/>
+            </Routes>
         </div>
     )
 }
@@ -45,6 +77,7 @@ const RoundRobin = ({ RRmatches, sessionPlayers, displaySettings, menu, eightbal
 export default RoundRobin
 
 interface Props {
+    displayProps: DisplayProps;
     RRmatches: Match[];
     sessionPlayers: string[];
     displaySettings: DisplaySettings;
@@ -52,4 +85,5 @@ interface Props {
     eightball: boolean;
     toggleEightball: Function;
     addFrameToMatch: Function;
+    setMatchWinner: Function;
 }

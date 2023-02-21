@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import Match from "../../../../Data/Match";
 import { playerNumberHashMap } from "../../../../utils/hashMaps";
 import './MatchThumb.css'
 
-const MatchThumb = ({ match, matchIndex, activeMatch, setActiveMatchIndex, sessionPlayers, setShowMatch }: Props) => {
+const MatchThumb = ({ match, matchIndex, activeMatch, setActiveMatchIndex, sessionPlayers }: Props) => {
+    const navigate = useNavigate()
 
     const { playerOne, playerTwo, winner } = match;
     const topPlayer = playerNumberHashMap[sessionPlayers.indexOf(playerOne) + 1]
@@ -12,7 +14,7 @@ const MatchThumb = ({ match, matchIndex, activeMatch, setActiveMatchIndex, sessi
     const onClick = () => {
         if(!winner) {
             setActiveMatchIndex(matchIndex);
-            setShowMatch(true);
+            navigate('match')
         }
     }
 
@@ -25,7 +27,7 @@ const MatchThumb = ({ match, matchIndex, activeMatch, setActiveMatchIndex, sessi
             className={`MatchThumb ${(match === activeMatch) ? 'active':''}`}
             onClick={ onClick }
         >
-            <div className="innerMatchThumb">
+            <div className={`innerMatchThumb ${match.winner ? 'complete':''}`}>
                 <label className={`topPlayer ${topPlayer}`}>{`${playerOne} ${getScore(playerOne)}`}</label>
                 <label>Vs</label>
                 <label className={`bottomPlayer ${bottomPlayer}`}>{`${playerTwo} ${getScore(playerTwo)}`}</label>
@@ -39,7 +41,6 @@ interface Props {
     activeMatch: Match;
     setActiveMatchIndex: Function;
     sessionPlayers: string[];
-    setShowMatch: Function;
     matchIndex: number;
 }
 

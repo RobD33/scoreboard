@@ -1,0 +1,53 @@
+.TableRow {
+  font-size: 0.02em;
+  height: 16%;
+  width: 100%;
+  border-width: thin;
+  border-color: var(--mainColor);
+  display: grid;
+  grid-template-columns: 30% 12% 12% 12% 12% 12%;
+  grid-template-areas:
+  "RRname RRplayed RRwon RRlost RRframeDiff RReightballs RRpoints"
+}
+
+.RRname {
+  height: 100%;
+  width: 100%;
+  grid-area: RRname;
+}
+
+.RRplayed {
+  height: 100%;
+  width: 100%;
+  grid-area: RRplayed;
+}
+
+.RRwon {
+  height: 100%;
+  width: 100%;
+  grid-area: RRwon;
+}
+
+.RRlost {
+  height: 100%;
+  width: 100%;
+  grid-area: RRlost;
+}
+
+.RRframeDiff {
+  height: 100%;
+  width: 100%;
+  grid-area: RRframeDiff;
+}
+
+.RReightballs {
+  height: 100%;
+  width: 100%;
+  grid-area: RReightballs;
+}
+
+.RRpoints {
+  height: 100%;
+  width: 100%;
+  grid-area: RRpoints;
+}
